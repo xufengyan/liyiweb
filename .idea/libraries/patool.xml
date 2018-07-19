@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="patool">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../patool/out/artifacts/patool_jar/patool.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

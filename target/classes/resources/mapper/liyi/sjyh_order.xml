@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kesun.dao.liyi.Isjhy_order">
+    <resultMap id="BaseResultMap" type="kesun.entity.liyi.sjyh_order">
+        <result property="id" column="id"/>
+        <result property="orders_id" column="orders_id"/>
+        <result property="ordertime" column="ordertime"/>
+        <result property="goodsnumber" column="goodsnumber"/>
+        <result property="price" column="price"/>
+        <result property="reality" column="reality"/>
+        <result property="st_id" column="st_id"/>
+        <result property="note" column="note"/>
+        <result property="status" column="status"/>
+        <result property="logisname" column="logisname"/>
+        <result property="logisticsnumber" column="logisticsnumber"/>
+        <result property="a_receiver" column="a_receiver"/>
+        <result property="a_phone" column="a_phone"/>
+        <result property="a_address" column="a_address"/>
+        <result property="shiptime" column="shiptime"/>
+        <result property="sendername" column="sendername"/>
+        <result property="senderaddress" column="senderaddress"/>
+        <result property="senderphone" column="senderphone"/>
+        <result property="evalustatus" column="evalustatues"/>
+        <result property="c_id" column="c_id"/>
+        <result property="u_id" column="u_id"/>
+        <result property="signtime" column="signtime"/>
+        <result column="createDate" property="createDate"/>
+
+    </resultMap>
+    <sql id="Base_Column_List">
+      id,orders_id,ordertime,goodsnumber,price,reality,st_id,note,status,shiptime,
+      logisname,logisticsnumber,a_address,a_phone,a_receiver,sendername,senderaddress,senderphone,u_id,c_id,signtime,evalustatus
+    </sql>
+
+    <sql id="colums">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="orders_id != null">
+                orders_id,
+            </if>
+
+            <if test="ordertime != null">
+                ordertime,
+            </if>
+
+            <if test="goodsnumber != null">
+                goodsnumber,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+
+            <if test="reality != null">
+                reality,
+            </if>
+
+            <if test="st_id != null">
+                st_id,
+            </if>
+
+            <if test="note != null">
+                note,
+            </if>
+
+            <if test="status != null">
+                status,
+            </if>
+            <if test="shiptime !=null">
+                shiptime,
+            </if>
+            <if test="logisname">
+                logisname,
+            </if>
+            <if test="logisticsnumber !=null">
+                logisticsnumber,
+            </if>
+
+            <if test="a_address !=null">
+                a_address,
+            </if>
+            <if test="a_phone !=null">
+                a_phone,
+            </if>
+            <if test="a_receiver !=null">
+                a_receiver,
+            </if>
+            <if test="sendername !=null">
+                sendername,
+            </if>
+            <if test="senderaddress !=null">
+                senderaddress,
+            </if>
+            <if test="senderphone !=null">
+                senderphone,
+            </if>
+            <if test="u_id !=null">
+                u_id,
+            </if>
+            <if test="c_id !=null">
+                c_id,
+            </if>
+            <if test="signtime !=null">
+                signtime,
+            </if>
+            <if test="evalustatus !=null">
+                evalustatus,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="columsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="orders_id != null">
+                #{orders_id},
+            </if>
+
+            <if test="ordertime != null">
+                #{createDate},
+            </if>
+
+            <if test="goodsnumber != null">
+                #{goodsnumber},
+            </if>
+            <if test="price != null">
+                #{price},
+            </if>
+
+            <if test="reality != null">
+                #{reality},
+            </if>
+
+            <if test="st_id != null">
+                #{st_id},
+            </if>
+
+            <if test="note != null">
+                #{note},
+            </if>
+
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="shiptime !=null">
+                #{shiptime},
+            </if>
+            <if test="logisname">
+                #{logisname},
+            </if>
+            <if test="logisticsnumber !=null">
+                #{logisticsnumber},
+            </if>
+
+            <if test="a_address !=null">
+                #{a_address},
+            </if>
+            <if test="a_phone !=null">
+                #{a_phone},
+            </if>
+            <if test="a_receiver !=null">
+                #{a_receiver},
+            </if>
+            <if test="sendername !=null">
+                #{sendername},
+            </if>
+            <if test="senderaddress !=null">
+                #{senderaddress},
+            </if>
+            <if test="senderphone !=null">
+                senderphone,
+            </if>
+            <if test="u_id !=null">
+                #{u_id},
+            </if>
+            <if test="c_id !=null">
+                #{c_id},
+            </if>
+            <if test="signtime !=null">
+                #{signtime},
+            </if>
+            <if test="evalustatus !=null">
+                #{evalustatus},
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="columsItemsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="item.id != null">
+                #{item.id},
+            </if>
+            <if test="item.orders_id != null">
+                #{item.orders_id},
+            </if>
+
+            <if test="item.ordertime != null">
+                #{item.ordertime},
+            </if>
+
+            <if test="item.goodsnumber != null">
+                #{item.goodsnumber},
+            </if>
+            <if test="item.price != null">
+                #{item.price},
+            </if>
+
+            <if test="item.reality != null">
+                #{item.reality},
+            </if>
+
+            <if test="item.st_id != null">
+                #{item.st_id},
+            </if>
+
+            <if test="item.note != null">
+                #{item.note},
+            </if>
+
+            <if test="item.status != null">
+                #{item.status},
+            </if>
+            <if test="item.shiptime !=null">
+                #{item.shiptime},
+            </if>
+            <if test="item.logisname">
+                #{item.logisname},
+            </if>
+            <if test="item.logisticsnumber !=null">
+                #{item.logisticsnumber},
+            </if>
+
+            <if test="item.a_address !=null">
+                #{item.a_address},
+            </if>
+            <if test="item.a_phone !=null">
+                #{item.a_phone},
+            </if>
+            <if test="item.a_receiver !=null">
+                #{item.a_receiver},
+            </if>
+            <if test="item.sendername !=null">
+                #{item.sendername},
+            </if>
+            <if test="item.senderaddress !=null">
+                #{item.senderaddress},
+            </if>
+            <if test="item.senderphone !=null">
+                item.senderphone,
+            </if>
+            <if test="item.u_id !=null">
+                #{item.u_id},
+            </if>
+            <if test="item.c_id !=null">
+                #{item.c_id},
+            </if>
+            <if test="item.signtime !=null">
+                #{item.signtime},
+            </if>
+            <if test="item.evalustatus !=null">
+                #{item.evalustatus},
+            </if>
+        </trim>
+    </sql>
+
+    <!--单个对象新增-->
+    <insert id="save" parameterType="kesun.entity.liyi.sjyh_order">
+        insert into i_orders (
+        <include refid="colums"/>
+        ) values (
+        <include refid="columsValue"/>)
+    </insert>
+
+    <!--批量新增-->
+    <insert id="batchSave" parameterType="kesun.entity.educationbaseinfo.College">
+        insert into educationbaseinfo_college (
+        <include refid="colums"/>
+        ) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            <include refid="columsItemsValue"/>
+            );
+        </foreach>
+    </insert>
+
+    <!--单个对象更新-->
+    <update id="update" parameterType="kesun.entity.liyi.sjyh_order">
+        update i_orders set
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                id=#{id},
+            </if>
+            <if test="orders_id != null">
+                orders_id=#{orders_id},
+            </if>
+
+            <if test="ordertime != null">
+                ordertime=#{createDate},
+            </if>
+
+            <if test="goodsnumber != null">
+                goodsnumber=#{goodsnumber},
+            </if>
+
+            <if test="st_id != null">
+                st_id=#{st_id},
+            </if>
+            <if test="note != null">
+                note=#{note},
+            </if>
+            <if test="status != null">
+                status=#{status},
+            </if>
+            <if test="shiptime !=null">
+                shiptime=#{shiptime},
+            </if>
+            <if test="logisname">
+                logisname=#{logisname},
+            </if>
+            <if test="logisticsnumber !=null">
+                logisticsnumber=#{logisticsnumber},
+            </if>
+
+            <if test="a_address !=null">
+                a_address=#{a_address},
+            </if>
+            <if test="a_phone !=null">
+                a_phone=#{a_phone},
+            </if>
+            <if test="a_receiver !=null">
+                a_receiver=#{a_receiver},
+            </if>
+            <if test="sendername !=null">
+                sendername=#{sendername},
+            </if>
+            <if test="senderaddress !=null">
+                senderaddress=#{senderaddress},
+            </if>
+            <if test="senderphone !=null">
+                senderphone=#{senderphone},
+            </if>
+            <if test="u_id !=null">
+                u_id=#{u_id},
+            </if>
+            <if test="c_id !=null">
+                c_id=#{c_id},
+            </if>
+            <if test="signtime !=null">
+                signtime=#{createDate},
+            </if>
+            <if test="evalustatus !=null">
+                evalustatus=#{evalustatus},
+            </if>
+        </trim>
+        where id=#{id,jdbcType=VARCHAR}
+    </update>
+    <!--对象批量更新-->
+    <update id="batchUpdate" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update educationbase_college set
+            <trim suffix="" suffixOverrides=",">
+                <if test="id != null">
+                    id=#{item.id},
+                </if>
+                <if test="oldId != null">
+                    oldId=#{item.oldId},
+                </if>
+                <if test="name != null">
+                    name=#{item.name},
+                </if>
+                <if test="createDate != null">
+                    createDate=#{item.createDate},
+                </if>
+                <if test="status != null">
+                    status=#{item.status},
+                </if>
+                <if test="description != null">
+                    description=#{item.description},
+                </if>
+                <if test="user != null">
+                    user=#{item.user},
+                </if>
+                <if test="actor != null">
+                    actor=#{item.actor},
+                </if>
+                <if test="org != null">
+                    org=#{item.org},
+                </if>
+                <if test="address != null">
+                    address=#{item.address},
+                </if>
+                <if test="logo != null">
+                    logo=#{item.logo},
+                </if>
+                <if test="postcode != null">
+                    postcode=#{item.postcode},
+                </if>
+                <if test="url != null">
+                    url=#{item.url},
+                </if>
+                <if test="introduce != null">
+                    introduce=#{item.introduce},
+                </if>
+                <if test="charger != null">
+                    charger=#{item.charger},
+                </if>
+            </trim>
+            where id=#{item.oldId,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+
+    <!--单个对象删除-->
+    <delete id="delete" parameterType="java.lang.String">
+    delete from i_orders where id = #{id,jdbcType=VARCHAR}
+    </delete>
+
+
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        delete from educationbase_college
+        <where>
+            id in
+            <foreach collection="list" item="item" separator="," open="(" close=")">#{item,jdbcType=VARCHAR}</foreach>
+        </where>
+
+    </delete>
+    <!--单个对象查找-->
+    <select id="getMe" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        *
+        from educationbase_vw_college where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+
+    <select id="ordergetMe2" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        *
+        from i_orders where id = #{id,jdbcType=VARCHAR} and u_id=#{u_id}
+    </select>
+
+
+
+
+    <select id="getstatus" parameterType="java.lang.String" resultType="java.util.Map">
+
+      select COUNT(i_orders.status) as count,status FROM i_orders where i_orders.u_id=#{0} GROUP BY `status`
+
+    </select>
+    <select id="getstatus2" parameterType="java.lang.String" resultType="java.util.Map">
+
+      select COUNT(i_orders.evalustatus) as count,evalustatus FROM i_orders where i_orders.u_id=#{0} GROUP BY `evalustatus`
+
+    </select>
+
+
+    <select id="fandorder" parameterType="java.lang.String" resultType="java.util.Map">
+
+    select * from ordersdingview where u_id=#{0} and status='待收货' order by ordertime DESC
+
+    </select>
+
+
+    <select id="ordersviewgetMe" parameterType="java.lang.String" resultType="java.util.Map">
+
+    select * from ordersdingview where id=#{0}
+
+    </select>
+
+    <select id="ordersviewgetMe2" parameterType="java.lang.String" resultType="java.util.Map">
+    select * from orderstuiview where id=#{0}
+    </select>
+
+
+
+    <select id="fandbyPageorder" parameterType="java.util.Map" resultType="java.util.Map">
+
+        select * from ordersdingview
+        <where>
+                <if test="status!=null">
+                    status like concat('%',#{status},'%')
+                </if>
+                <if test="evalustatus !=null">
+                 and  evalustatus=#{evalustatus}
+                </if>
+            and u_id=#{u_id}
+        </where>
+      order by ordertime desc
+       limit #{start},#{limit}
+    </select>
+
+
+
+    <select id="fandbyPageorder2" parameterType="java.util.Map" resultType="java.util.Map">
+        select * from ordersdingview
+        <where>
+
+            <if test="number!=1">
+                (DATEDIFF(#{newtime},ordertime))&lt;=#{number}  and
+            </if>
+
+            u_id=#{u_id}
+        </where>
+        order by ordertime desc
+        limit #{start},#{limit}
+    </select>
+
+
+
+
+    <select id="refundPageorder" parameterType="java.util.Map" resultType="java.util.Map">
+
+        select * from orderstuiview
+        <where>
+            refundresult like concat('%',#{refundresult},'%')
+            and u_id=#{u_id}
+        </where>
+        order by refundtime desc
+        limit #{start},#{limit}
+    </select>
+
+
+
+    <select id="getOrderCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) as total from ordersdingview
+        <where>
+            <if test="status!=null">
+                status like concat('%',#{status},'%')
+            </if>
+            <if test="evalustatus !=null">
+                and  evalustatus=#{evalustatus}
+            </if>
+            and u_id=#{u_id}
+        </where>
+    </select>
+
+    <select id="getOrderCount2" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) as total from ordersdingview
+        <where>
+            <if test="number!=1">
+                (DATEDIFF(#{newtime},ordertime))&lt;=#{number}  and
+            </if>
+             u_id=#{u_id}
+        </where>
+    </select>
+
+
+    <select id="getRefundCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+
+        select count(1) from orderstuiview
+        <where>
+            refundresult like concat('%',#{refundresult},'%')
+            and u_id=#{u_id}
+        </where>
+    </select>
+
+    <!--查找，以Map返回-->
+    <select id="findForMap" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from educationbase_vw_college
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="name!=null">
+                    name like '%${name}%' or
+                </if>
+            </trim>
+        </where>
+        order by name ASC
+
+    </select>
+    <!--查询，以对象集合返回-->
+    <select id="find" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from educationbase_vw_college
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="name!=null">
+                    name like '%${name}%' or
+                </if>
+            </trim>
+        </where>
+        order by name ASC
+    </select>
+    <!--返回查找条数-->
+    <select id="getRowsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) as total from educationbase_vw_college
+        <where>
+            <if test="name!=null">
+                name like '%${name}%'
+            </if>
+        </where>
+    </select>
+    <!--分页查找-->
+    <select id="findByPage" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from educationbase_vw_college
+        <where>
+            <if test="name!=null">
+                name like '%${name}%'
+            </if>
+        </where>
+        order by name ASC
+        <if test="start !=0 or limit!=0">
+            limit #{start},#{limit}
+        </if>
+
+    </select>
+    <!--判断数据是否在使用中-->
+    <select id="objectInUse" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        <![CDATA[ select count(id) from educationbase_college where name=#{id} ]]>
+    </select>
+</mapper>

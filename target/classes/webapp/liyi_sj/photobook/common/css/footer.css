@@ -1,0 +1,167 @@
+@media screen and (min-width: 751px) {
+  .footer {
+    border-top: 1px solid #e1e1e1;
+  }
+  .footer_pc {
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    height: 260px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .footer_pc .about {
+    width: 20%;
+  }
+  .footer_pc .help {
+    width: 20%;
+  }
+  .footer_pc .codeImg {
+    width: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  .footer_pc .comper {
+    line-height: 0;
+    width: 20%;
+  }
+  .footer_pc > div {
+    float: left;
+    margin-top: 70px;
+  }
+  .footer_pc > div a > img {
+    vertical-align: top;
+    width: 100%;
+    max-width: 230px;
+  }
+  .footer_pc > div > p {
+    font-size: 20px;
+    color: #666666;
+    margin-bottom: 25px;
+  }
+  .footer_pc > div ul li {
+    font-size: 14px;
+    color: #999999;
+    line-height: 30px;
+  }
+  .footer_pc > div ul li a {
+    color: #999999;
+  }
+  .footer_pc > div div:first-child {
+    margin-right: 10%;
+  }
+  .footer_pc > div div {
+    float: left;
+    line-height: 0;
+    width: 40%;
+    text-align: center;
+  }
+  .footer_pc > div div img {
+    width: 100%;
+    max-width: 114px;
+  }
+  .footer_pc > div div p {
+    font-size: 14px;
+    color: #333333;
+    line-height: 14px;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .bottomTipss {
+    font-size: 13px;
+    color: #333333;
+    float: none;
+    clear: both;
+    margin-top: 0;
+    text-align: center;
+    border-top: 1px solid #e1e1e1;
+    height: 50px;
+    line-height: 50px;
+    display: block;
+  }
+  .footer_h5,
+  .bottomBtn {
+    display: none;
+  }
+}
+@media screen and (max-width: 750px) {
+  .footer_pc,
+  .bottomTipss {
+    display: none;
+  }
+  .footer_h5 {
+    display: block;
+    background-color: #f2f2f2;
+    padding-top: 30px;
+  }
+  .footer_h5 .bottomBtn {
+    text-align: center;
+    line-height: 1.6rem;
+  }
+  .footer_h5 > ul {
+    overflow: hidden;
+  }
+  .footer_h5 > ul li {
+    float: left;
+    width: 25%;
+    text-align: center;
+  }
+  .footer_h5 > ul li p {
+    font-size: 0.25rem;
+    margin-top: 0.2rem;
+    color: #7b7b7b;
+  }
+  .footer_h5 > ul li div {
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 50%;
+    border: 1px solid #e1e1e1;
+    font-size: 0.5rem;
+    text-align: center;
+    line-height: 1.1rem;
+    margin: 0 auto;
+  }
+  .footer_h5 .footerMenu {
+    width: 6.9rem;
+    margin: 0.5rem auto 0;
+  }
+  .footer_h5 .footerMenu div {
+    font-size: 0.3rem;
+    color: #333333;
+    border-top: 1px solid #dad9de;
+    line-height: 1rem;
+  }
+  .footer_h5 .footerMenu div .helpCenter,
+  .footer_h5 .footerMenu div .aboutMimo {
+    display: none;
+  }
+  .footer_h5 .footerMenu div .helpCenter li em,
+  .footer_h5 .footerMenu div .aboutMimo li em {
+    float: none;
+    background-color: #000;
+    height: 0.03rem;
+    width: 0.14rem;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.15rem;
+  }
+  .footer_h5 .footerMenu div ul li:last-child {
+    border-bottom: none;
+  }
+  .footer_h5 .footerMenu div ul li {
+    border-bottom: 1px solid #e1e1e1;
+  }
+  .footer_h5 .footerMenu div em {
+    float: right;
+    margin-right: 0.1rem;
+  }
+  .footer_h5 .footerMenu .bottomBtn {
+    display: block;
+    font-size: 0.22rem;
+    text-align: center;
+    padding-top: 0.5rem;
+    line-height: normal;
+    color: #999999;
+    padding-bottom: 0.5rem;
+  }
+}

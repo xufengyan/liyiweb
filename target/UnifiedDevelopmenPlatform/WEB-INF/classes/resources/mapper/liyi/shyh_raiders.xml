@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kesun.dao.liyi.Iyh_raiders">
+    <resultMap id="BaseResultMap" type="kesun.entity.liyi.yh_raiders">
+        <result column="id" property="id"/>
+
+        <result column="u_id" property="u_id"/>
+
+        <result column="time" property="time"/>
+
+        <result column="title" property="title"/>
+
+        <result column="image" property="image"/>
+        <result column="description" property="description"/>
+        <result column="content" property="content"/>
+        <result column="status" property="status"/>
+        <result column="reason" property="reason"/>
+        <result column="sub_id" property="sub_id"/>
+        <result column="likenum" property="likenum"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+
+    id,u_id,time,title,image,description,content,status,reason,sub_id,likenum
+    </sql>
+    <sql id="colums">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="u_id != null">
+                u_id,
+            </if>
+
+            <if test="time != null">
+                time,
+            </if>
+
+            <if test="image != null">
+                image,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="reason != null">
+                reason,
+            </if>
+            <if test="sub_id != null">
+                sub_id,
+            </if>
+            <if test="likenum != null">
+                likenum,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="columsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="u_id != null">
+                #{u_id},
+            </if>
+
+            <if test="time != null">
+                #{time},
+            </if>
+
+            <if test="image != null">
+                #{image},
+            </if>
+            <if test="description != null">
+                #{description},
+            </if>
+            <if test="content != null">
+                #{content},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="reason != null">
+                #{reason},
+            </if>
+            <if test="sub_id != null">
+                #{sub_id},
+            </if>
+            <if test="likenum != null">
+                #{likenum},
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="columsItemsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="item.id != null">
+                #{item.id},
+            </if>
+            <if test="item.u_id != null">
+                #{item.u_id},
+            </if>
+
+            <if test="item.time != null">
+                #{item.time},
+            </if>
+
+            <if test="item.image != null">
+                #{item.image},
+            </if>
+            <if test="item.description != null">
+                #{item.description},
+            </if>
+            <if test="item.content != null">
+                #{item.content},
+            </if>
+            <if test="item.status != null">
+                #{item.status},
+            </if>
+            <if test="item.reason != null">
+                #{item.reason},
+            </if>
+            <if test="item.sub_id != null">
+                #{item.sub_id},
+            </if>
+            <if test="item.likenum != null">
+                #{item.likenum},
+            </if>
+        </trim>
+    </sql>
+
+    <!--单个对象新增-->
+    <insert id="save" parameterType="kesun.entity.educationbaseinfo.College">
+        insert into educationbase_college (
+        <include refid="colums"/>
+        ) values (
+        <include refid="columsValue"/>)
+    </insert>
+    <!--批量新增-->
+    <insert id="batchSave" parameterType="kesun.entity.educationbaseinfo.College">
+        insert into educationbaseinfo_college (
+        <include refid="colums"/>
+        ) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            <include refid="columsItemsValue"/>
+            );
+        </foreach>
+    </insert>
+    <!--单个对象更新-->
+    <update id="update" parameterType="kesun.entity.educationbaseinfo.College">
+        update educationbase_college set
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                id=#{id},
+            </if>
+            <if test="name != null">
+                name=#{name},
+            </if>
+            <if test="createDate != null">
+                createDate=#{createDate},
+            </if>
+            <if test="status != null">
+                status=#{status},
+            </if>
+            <if test="user != null">
+                user=#{user.id},
+            </if>
+            <if test="actor != null">
+                actor=#{actor.id},
+            </if>
+            <if test="org != null">
+                org=#{org.id},
+            </if>
+            <if test="address != null">
+                address=#{address},
+            </if>
+            <if test="logo != null">
+                logo=#{logo},
+            </if>
+            <if test="postcode != null">
+                postcode=#{postcode},
+            </if>
+            <if test="url != null">
+                url=#{url},
+            </if>
+            <if test="introduce != null">
+                introduce=#{introduce},
+            </if>
+            <if test="charger != null">
+                charger=#{charger},
+            </if>
+        </trim>
+        where id=#{oldId,jdbcType=VARCHAR}
+    </update>
+    <!--对象批量更新-->
+    <update id="batchUpdate" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update educationbase_college set
+            <trim suffix="" suffixOverrides=",">
+                <if test="id != null">
+                    id=#{item.id},
+                </if>
+                <if test="oldId != null">
+                    oldId=#{item.oldId},
+                </if>
+                <if test="name != null">
+                    name=#{item.name},
+                </if>
+                <if test="createDate != null">
+                    createDate=#{item.createDate},
+                </if>
+                <if test="status != null">
+                    status=#{item.status},
+                </if>
+                <if test="description != null">
+                    description=#{item.description},
+                </if>
+                <if test="user != null">
+                    user=#{item.user},
+                </if>
+                <if test="actor != null">
+                    actor=#{item.actor},
+                </if>
+                <if test="org != null">
+                    org=#{item.org},
+                </if>
+                <if test="address != null">
+                    address=#{item.address},
+                </if>
+                <if test="logo != null">
+                    logo=#{item.logo},
+                </if>
+                <if test="postcode != null">
+                    postcode=#{item.postcode},
+                </if>
+                <if test="url != null">
+                    url=#{item.url},
+                </if>
+                <if test="introduce != null">
+                    introduce=#{item.introduce},
+                </if>
+                <if test="charger != null">
+                    charger=#{item.charger},
+                </if>
+            </trim>
+            where id=#{item.oldId,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+    <!--单个对象删除-->
+    <delete id="delete" parameterType="java.lang.String">
+delete from educationbase_college where id = #{id,jdbcType=VARCHAR}
+</delete>
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        delete from educationbase_college
+        <where>
+            id in
+            <foreach collection="list" item="item" separator="," open="(" close=")">#{item,jdbcType=VARCHAR}</foreach>
+        </where>
+
+    </delete>
+    <!--单个对象查找-->
+    <select id="getMe" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        *
+        from i_raiders where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+
+
+    <select id="raidersPage" parameterType="java.util.Map" resultType="java.util.Map">
+
+
+        select i_raiders.*,i_user.nickname from i_raiders left JOIN i_user on i_user.id=i_raiders.u_id where i_raiders.status=#{status} order by i_raiders.likenum desc limit #{start},#{limit}
+
+    </select>
+
+    <select id="raidersCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+
+        select count(1) from i_raiders left JOIN i_user on i_user.id=i_raiders.u_id where i_raiders.status=#{status}
+
+    </select>
+
+
+    <!--查找，以Map返回-->
+    <select id="findForMap" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from educationbase_vw_college
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="name!=null">
+                    name like '%${name}%' or
+                </if>
+            </trim>
+        </where>
+        order by name ASC
+
+    </select>
+    <!--查询，以对象集合返回-->
+    <select id="find" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from educationbase_vw_college
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="name!=null">
+                    name like '%${name}%' or
+                </if>
+            </trim>
+        </where>
+        order by name ASC
+    </select>
+    <!--返回查找条数-->
+    <select id="getRowsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) as total from educationbase_vw_college
+        <where>
+            <if test="name!=null">
+                name like '%${name}%'
+            </if>
+        </where>
+    </select>
+    <!--分页查找-->
+    <select id="findByPage" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from educationbase_vw_college
+        <where>
+            <if test="name!=null">
+                name like '%${name}%'
+            </if>
+        </where>
+        order by name ASC
+        <if test="start !=0 or limit!=0">
+            limit #{start},#{limit}
+        </if>
+
+    </select>
+    <!--判断数据是否在使用中-->
+    <select id="objectInUse" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        <![CDATA[ select count(id) from educationbase_college where name=#{id} ]]>
+    </select>
+</mapper>

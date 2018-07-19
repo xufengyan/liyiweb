@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kesun.dao.liyi.Iyh_Shoppingcart">
+    <resultMap id="BaseResultMap" type="kesun.entity.liyi.yh_shoppingcart">
+        <result column="id" property="id"/>
+        <result column="u_id" property="u_id"/>
+        <result column="c_id" property="c_id"/>
+        <result column="st_id" property="st_id"/>
+        <result column="acount" property="acount"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,u_id,c_id,st_id,acount
+    </sql>
+    <sql id="colums">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id!= null">
+                id,
+            </if>
+            <if test="u_id!= null">
+                u_id,
+            </if>
+            <if test="c_id!= null">
+                c_id,
+            </if>
+
+            <if test="st_id!= null">
+                st_id,
+            </if>
+
+            <if test="acount!= null">
+                acount,
+            </if>
+
+
+
+        </trim>
+    </sql>
+
+    <sql id="columsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id!= null">
+                #{id},
+            </if>
+
+            <if test="u_id!= null">
+                #{u_id},
+            </if>
+            <if test="c_id!= null">
+                #{c_id},
+            </if>
+
+            <if test="st_id!= null">
+                #{st_id},
+            </if>
+            <if test="acount!= null">
+                #{acount},
+            </if>
+
+
+        </trim>
+    </sql>
+
+    <sql id="columsItemsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id!= null">
+                #{item.id},
+            </if>
+            <if test="u_id!= null">
+                #{item.u_id},
+            </if>
+            <if test="c_id!= null">
+                #{item.c_id},
+            </if>
+
+            <if test="st_id!= null">
+                #{item.st_id},
+            </if>
+            <if test="acount!= null">
+                #{item.acount},
+            </if>
+
+
+        </trim>
+    </sql>
+
+    <!--单个对象新增-->
+    <insert id="save" parameterType="kesun.entity.liyi.yh_shoppingcart">
+        insert into i_shoppingcart  (
+        <include refid="colums"/>
+        ) values (
+        <include refid="columsValue"/>)
+    </insert>
+
+
+
+    <!--批量新增-->
+    <insert id="batchSave" parameterType="java.util.List">
+        insert into i_store (
+        <include refid="colums"/>
+        ) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            <include refid="columsItemsValue"/>
+            );
+        </foreach>
+    </insert>
+    <!--单个对象更新-->
+    <update id="update" parameterType="kesun.entity.liyi.sj_store">
+
+    </update>
+    <!--对象批量更新-->
+    <update id="batchUpdate" parameterType="java.util.List">
+
+
+    </update>
+    <!--单个对象删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from i_shoppingcart   where id=#{id,jdbcType=VARCHAR}
+    </delete>
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        delete from i_store
+        <where>
+            id in
+            <foreach collection="list" item="item" separator="," open="(" close=")">#{item.id,jdbcType=VARCHAR}</foreach>
+        </where>
+
+    </delete>
+
+    <!--单个对象查找-->
+    <select id="getMe" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        *
+        from i_address  where user_id= #{user_id}
+    </select>
+
+    <select id="getaddress" parameterType="java.lang.String" resultType="java.util.Map">
+        select
+        *
+        from i_address  where user_id= #{user_id}
+    </select>
+
+    <select id="getusershoopingcart" parameterType="java.util.Map" resultType="java.util.Map">
+
+      select * from shoppingcartview where u_id=#{u_id} and status=#{status}
+
+    </select>
+
+
+
+    <!--查找，以Map返回-->
+    <select id="findForMap" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from  I_user
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="name!=null">
+                    name like '%${name}%' or
+                </if>
+            </trim>
+        </where>
+        order by name ASC
+    </select>
+    <!--查询，以对象集合返回-->
+    <select id="find" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from I_user
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="name!=null">
+                    name like '%${name}%' or
+                </if>
+            </trim>
+        </where>
+        order by name ASC
+    </select>
+    <!--返回查找条数-->
+    <select id="getRowsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) as total from I_user
+        <where>
+            <if test="name!=null">
+                name like '%${name}%'
+            </if>
+        </where>
+    </select>
+    <!--分页查找-->
+    <select id="findByPage" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from I_user
+        <where>
+            <if test="name!=null">
+                name like '%${name}%'
+            </if>
+        </where>
+        order by name ASC
+        <if test="start !=0 or limit!=0">
+            limit #{start},#{limit}
+        </if>
+
+    </select>
+    <!--判断数据是否在使用中-->
+    <select id="objectInUse" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        <![CDATA[ select count(id) from I_user   where name=#{id} ]]>
+    </select>
+
+</mapper>

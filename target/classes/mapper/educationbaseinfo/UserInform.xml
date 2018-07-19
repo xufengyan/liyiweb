@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kesun.dao.educataionbaseinfo.inter.IUserInform2">
+    <resultMap id="BaseResultMap" type="kesun.entity.educationbaseinfo.UserInform">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="sex" property="sex"/>
+        <result column="usertype" property="usertype"/>
+        <result column="userimage" property="userimage"/>
+        <association property="user" javaType="kesun.entity.system.User">
+            <id column="user" property="id"></id>
+            <result column="userName" property="name"/>
+        </association>
+
+        <association property="actor" javaType="kesun.entity.system.Actor">
+            <id column="actor" property="id"></id>
+            <result column="actorName" property="name"/>
+        </association>
+
+        <association property="org" javaType="kesun.entity.system.Organization">
+            <id column="org" property="id"></id>
+            <result column="orgName" property="name"/>
+        </association>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,name,age,sex,usertype,userimage
+    </sql>
+    <sql id="colums">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="age !=null">
+                age,
+            </if>
+            <if test="sex !=null">
+                sex,
+            </if>
+            <if test="usertype !=null">
+                usertype,
+            </if>
+            <if test="userimage !=null">
+                userimage,
+            </if>
+        </trim>
+    </sql>
+
+
+    <sql id="columsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+
+            <if test="name != null">
+                #{name},
+            </if>
+            <if test="age !=null">
+                #{age},
+            </if>
+            <if test="sex !=null">
+                #{sex},
+            </if>
+            <if test="usertype !=null">
+                #{usertype},
+            </if>
+            <if test="userimage !=null">
+                #{userimage}
+            </if>
+        </trim>
+    </sql>
+
+
+    <sql id="columsItemsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="item.id != null">
+                #{item.id},
+            </if>
+            <if test="item.name != null">
+                #{item.name},
+            </if>
+
+            <if test="item.age != null">
+                #{item.age},
+            </if>
+
+            <if test="item.sex != null">
+                #{item.sex},
+            </if>
+            <if test="item.usertype !=null">
+                #{item.usertype},
+            </if>
+            <if test="item.userimage !=null">
+                #{item.userimage}
+            </if>
+        </trim>
+    </sql>
+
+    <!--单个对象新增-->
+    <insert id="save" parameterType="kesun.entity.educationbaseinfo.UserInform">
+        insert into educationbase_user (
+        <include refid="colums"/>
+        ) values (
+        <include refid="columsValue"/>
+        )
+    </insert>
+    <!--批量新增-->
+    <insert id="batchSave" parameterType="kesun.entity.educationbaseinfo.UserInform">
+      INSERT INTO educationbase_user(
+      <include refid="colums"/>
+      )VALUES (
+        <include refid="columsItemsValue"/>
+        )
+
+
+
+    </insert>
+    <!--单个对象更新-->
+    <update id="update" parameterType="kesun.entity.educationbaseinfo.UserInform">
+        update educationbase_user set
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                id=#{id},
+            </if>
+            <if test="name != null">
+                name=#{name},
+            </if>
+           <if test="age !=null">
+               age=#{age},
+           </if>
+            <if test="sex !=null">
+                sex=#{sex},
+            </if>
+            <if test="age !=null">
+                usertype=#{usertype},
+            </if>
+            <if test="userimage !=null">
+                userimage=#{userimage}
+            </if>
+        </trim>
+        where id=#{id}
+    </update>
+    <!--对象批量更新-->
+    <update id="batchUpdate" parameterType="java.util.List">
+
+    </update>
+    <!--单个对象删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from educationbase_user where id = #{id,jdbcType=VARCHAR}
+    </delete>
+
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        delete from educationbase_user
+        <where>
+            id in
+            <foreach collection="list" item="item" separator="," open="(" close=")">#{item,jdbcType=VARCHAR}</foreach>
+        </where>
+
+    </delete>
+    <!--单个对象查找-->
+    <select id="getMe" parameterType="java.lang.String" resultMap="BaseResultMap">
+          SELECT * FROM educationbase_user WHERE id=#{id}
+    </select>
+    <!--查找，以Map返回-->
+    <select id="findForMap" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from educationbase_user
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="name!=null">
+                    name like '%${name}%' or
+                </if>
+            </trim>
+        </where>
+        order by name ASC
+    </select>
+
+    <!--查询，以对象集合返回-->
+
+    <select id="find" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from educationbase_user
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="name!=null">
+                    name like '%${name}%' or
+                </if>
+            </trim>
+        </where>
+        order by name ASC
+    </select>
+
+    <!--返回查找条数-->
+    <select id="getRowsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) as total from educationbase_user
+        <where>
+            <if test="name!=null">
+                name like '%${name}%'
+            </if>
+        </where>
+    </select>
+
+    <!--分页查找-->
+    <select id="findByPage" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from educationbase_user
+        <where>
+            <if test="name!=null">
+                name like '%${name}%'
+            </if>
+        </where>
+        order by name ASC
+        <if test="start !=0 or limit!=0">
+            limit #{start},#{limit}
+        </if>
+    </select>
+    <!--判断数据是否在使用中-->
+    <select id="objectInUse" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        <![CDATA[ select count(id) from educationbase_user where name=#{id} ]]>
+    </select>
+
+
+</mapper>

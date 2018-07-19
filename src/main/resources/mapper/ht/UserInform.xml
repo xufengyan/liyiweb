@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kesun.dao.ht.IUserInform">
+    <resultMap id="BaseResultMap" type="kesun.entity.ht.UserInform">
+        <result column="id" property="id"/>
+        <result column="s_id" property="s_id"/>
+        <result column="nickname" property="nickname"/>
+        <result column="name" property="name"/>
+        <result column="password" property="password"/>
+        <result column="phone" property="phone"/>
+        <result column="address" property="address"/>
+     
+        <result column="email" property="email"/>
+        <result column="birthday" property="birthday"/>
+        <result column="sex" property="sex"/>
+        <result column="integral" property="integral"/>
+        <result column="avatar" property="avatar"/>
+        <result column="status" property="status"/>
+        <result column="time" property="time"/>
+        <association property="store" javaType="kesun.entity.ht.Store">
+            <id property="id" column="sid"/>
+            <result column="storename" property="storename"/>
+            <result column="description" property="description"/>
+            <result column="address2" property="address"/>
+            <result column="storeimage" property="storeimage"/>
+            <result column="sstatus" property="status"/>
+            <result column="number" property="number"/>
+            <result column="idcard" property="idcard"/>
+            <result column="idimage" property="idimage"/>
+            <result column="bcnumber" property="bcnumber"/>
+            <result column="stime" property="time"/>
+            <result column="d_id" property="d_id"/>
+            <result column="credit" property="credit"/>
+            <result column="approval" property="approval"/>
+        </association>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,s_id,name,nickname,password,email,phone,birthday,address,province,city,area,sex,integral,avatar,status,time
+    </sql>
+    <sql id="colums">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id!= null">
+                id,
+            </if>
+            <if test="s_id!= null">
+                s_id,
+            </if>
+
+            <if test="name!= null">
+                name,
+            </if>
+            <if test="email!= null">
+                email,
+            </if>
+            <if test="nickname!= null">
+                nickname,
+            </if>
+
+            <if test="password!= null">
+                password,
+            </if>
+            <if test="phone!= null">
+                phone,
+            </if>
+
+            <if test="address!= null">
+                address,
+            </if>
+           
+            <if test="birthday!= null">
+                birthday,
+            </if>
+
+            <if test="sex!= null">
+                sex,
+            </if>
+            <if test="integral!= null">
+                integral,
+            </if>
+            <if test="avatar!= null">
+                avatar,
+            </if>
+            <if test="status!= null">
+                status,
+            </if>
+            <if test="time!= null">
+                time,
+            </if>
+        </trim>
+    </sql>
+    <sql id="columsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id!= null">
+                #{id},
+            </if>
+            <if test="s_id!= null">
+                #{s_id},
+            </if>
+            <if test="name!= null">
+                #{name},
+            </if>
+            <if test="email!= null">
+                #{email},
+            </if>
+            <if test="nickname!= null">
+                #{nickname},
+            </if>
+
+            <if test="password!= null">
+                #{password},
+            </if>
+            <if test="phone!= null">
+                #{phone},
+            </if>
+
+            <if test="address!= null">
+                #{address},
+            </if>
+
+      
+            <if test="birthday!= null">
+                #{birthday},
+            </if>
+
+            <if test="sex!= null">
+                #{sex},
+            </if>
+            <if test="integral!= null">
+                #{integral},
+            </if>
+            <if test="avatar!= null">
+                #{avatar},
+            </if>
+            <if test="status!= null">
+                #{status},
+            </if>
+            <if test="time!= null">
+                #{time},
+            </if>
+
+        </trim>
+    </sql>
+    <sql id="columsItemsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="item.id != null">
+                #{item.id},
+            </if>
+            <if test="item.s_id != null">
+                #{item.s_id},
+            </if>
+
+            <if test="item.name != null">
+                #{item.name},
+            </if>
+            <if test="item.email != null">
+                #{item.email},
+            </if>
+            <if test="item.nickname!= null">
+                #{item.nickname},
+            </if>
+
+            <if test="item.password!= null">
+                #{item.password},
+            </if>
+            <if test="item.phone!= null">
+                #{item.phone},
+            </if>
+
+            <if test="item.address!= null">
+                #{item.address},
+            </if>
+
+         
+            <if test="item.birthday!= null">
+                #{item.birthday},
+            </if>
+
+            <if test="item.sex!= null">
+                #{item.sex},
+            </if>
+            <if test="item.integral!= null">
+                #{item.integral},
+            </if>
+            <if test="item.avatar!= null">
+                #{item.avatar},
+            </if>
+            <if test="item.status!= null">
+                #{item.status},
+            </if>
+            <if test="item.time!= null">
+                #{item.time},
+            </if>
+
+        </trim>
+    </sql>
+
+    <!--单个对象新增-->
+    <insert id="save" parameterType="kesun.entity.ht.UserInform">
+        insert into I_user  (
+        <include refid="colums"/>
+        ) values (
+        <include refid="columsValue"/>)
+    </insert>
+    <!--批量新增-->
+    <insert id="batchSave" parameterType="java.util.List">
+        insert into I_user (
+        <include refid="colums"/>
+        ) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            <include refid="columsItemsValue"/>
+            );
+        </foreach>
+    </insert>
+    <!--单个对象更新-->
+    <update id="update" parameterType="kesun.entity.ht.UserInform">
+        update I_user  set
+        <trim suffix="" suffixOverrides=",">
+                  <if test="id!= null">
+                id=#{id},
+            </if>
+            <if test="s_id!= null">
+                s_id=#{s_id},
+            </if>
+
+            <if test="name!= null">
+                name=#{name},
+            </if>
+
+            <if test="nickname!= null">
+                nickname=#{nickname},
+            </if>
+
+            <if test="password!= null">
+                password=#{password},
+            </if>
+            <if test="phone!= null">
+                phone=#{phone},
+            </if>
+            <if test="email!= null">
+                email=#{email},
+            </if>
+            <if test="address!= null">
+                address=#{address},
+            </if>
+
+            <if test="birthday!= null">
+                birthday=#{birthday},
+            </if>
+
+            <if test="sex!= null">
+                sex=#{sex},
+            </if>
+            <if test="integral!= null">
+                integral=#{integral},
+            </if>
+            <if test="avatar!= null">
+                avatar=#{avatar},
+            </if>
+            <if test="status!= null">
+                status=#{status},
+            </if>
+            <if test="time!= null">
+                time=#{time},
+            </if>
+        </trim>
+        where id=#{id,jdbcType=VARCHAR}
+    </update>
+    <!--对象批量更新-->
+    <update id="batchUpdate" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update I_user  set
+            <trim suffix="" suffixOverrides=",">
+                <if test="item.id != null">
+                    id=#{item.id},
+                </if>
+                <if test="item.s_id != null">
+                    s_id=#{item.s_id},
+                </if>
+
+                <if test="item.name != null">
+                    name=#{item.name},
+                </if>
+
+                <if test="item.nickname!= null">
+                    nickname=#{item.nickname},
+                </if>
+
+                <if test="item.password!= null">
+                    password=#{item.password},
+                </if>
+                <if test="item.phone!= null">
+                    phone=#{item.phone},
+                </if>
+                <if test="item.email!= null">
+                    email=#{item.email},
+                </if>
+                <if test="item.address!= null">
+                    address=#{item.address},
+                </if>
+               
+                <if test="item.birthday!= null">
+                    birthday=#{item.birthday},
+                </if>
+
+                <if test="item.sex!= null">
+                    sex=#{item.sex},
+                </if>
+                <if test="item.integral!= null">
+                    integral=#{item.integral},
+                </if>
+                <if test="item.avatar!= null">
+                    avatar=#{item.avatar},
+                </if>
+                <if test="item.status!= null">
+                    status=#{item.status},
+                </if>
+                <if test="item.time!= null">
+                    time=#{item.time},
+                </if>
+            </trim>
+            where id=#{item.id,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+    <!--单个对象删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from I_user   where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        delete from I_user
+        <where>
+            id in
+            <foreach collection="list" item="item" separator="," open="(" close=")">#{item.id,jdbcType=VARCHAR}</foreach>
+        </where>
+
+    </delete>
+    <!--单个对象查找-->
+    <select id="getMe" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+      u.id,u.name, u.nickname, u.password, u.email, u.phone, u.birthday,
+       u.address, u.sex, u.integral, u.avatar, u.status, u.time,
+          s.id  sid, s.storename, s.description, s.number, s.address AS address2, s.idcard, s.idimage,
+           s.storeimage, s.bcnumber, s.d_id, s.credit, s.approval, s.time stime, s.status sstatus
+         from i_user u LEFT  JOIN  i_store  s ON u.s_id=s.id
+           WHERE  u.id = #{id,jdbcType=VARCHAR}
+    </select>
+    <!--查找，以Map返回-->
+    <select id="findForMap" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        u.id,u.name, u.nickname, u.password, u.email, u.phone, u.birthday,
+        u.address,u.sex, u.integral, u.avatar, u.status, u.time,
+        s.id  sid, s.storename, s.description, s.number, s.address AS address2, s.idcard, s.idimage,
+        s.storeimage, s.bcnumber, s.d_id, s.credit, s.approval, s.time stime, s.status sstatus
+        from i_user u LEFT  JOIN  i_store  s ON u.s_id=s.id
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="name!=null">
+                    u.name like '%${name}%' or
+                </if>
+            </trim>
+        </where>
+
+    </select>
+    <!--查询，以对象集合返回-->
+    <select id="find" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        u.id,u.name, u.nickname, u.password, u.email, u.phone, u.birthday,
+        u.address, u.sex, u.integral, u.avatar, u.status, u.time,
+        s.id  sid, s.storename, s.description, s.number, s.address address2, s.idcard, s.idimage,
+        s.storeimage, s.bcnumber, s.d_id, s.credit, s.approval, s.time stime, s.status sstatus
+        from i_user u LEFT  JOIN  i_store  s ON u.s_id=s.id
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="name!=null">
+                    u.name like '%${name}%' or
+                </if>
+            </trim>
+        </where>
+    </select>
+    <!--返回查找条数-->
+    <select id="getRowsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) as total from I_user
+        <where>
+            <if test="name!=null">
+                name like '%${name}%'
+            </if>
+        </where>
+    </select>
+    <!--分页查找-->
+    <select id="findByPage" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        u.id,u.name, u.nickname, u.password, u.email, u.phone, u.birthday,
+        u.address, u.sex, u.integral, u.avatar, u.status, u.time,
+        s.id  sid, s.storename, s.description, s.number, s.address address2, s.idcard, s.idimage,
+        s.storeimage, s.bcnumber, s.d_id, s.credit, s.approval, s.time stime, s.status sstatus
+        from i_user u LEFT  JOIN  i_store  s ON u.s_id=s.id
+        <where>
+            <if test="name!=null">
+                u.name like '%${name}%'
+            </if>
+        </where>
+        order by u.id ASC
+        <if test="start!=0 or limit!=0">
+            limit #{start},#{limit}
+        </if>
+
+    </select>
+    <!--判断数据是否在使用中-->
+    <select id="objectInUse" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        <![CDATA[ select count(id) from I_user   where name=#{id} ]]>
+    </select>
+    <!--数据统计-->
+    <select id="find2"   resultType="Map">
+SELECT
+	a.alluser,
+	b.usercount,
+	b.time
+FROM
+	( SELECT count( id ) alluser FROM i_user ) a,
+	( SELECT count( MONTH ( time ) ) AS usercount, MONTH ( time ) AS time FROM i_user GROUP BY MONTH ( time ) ) b    </select>
+</mapper>

@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kesun.dao.sj.inter.jy_IRefund">
+    <resultMap id="OrderResultMap" type="kesun.entity.sj.jy_Order">
+        <result property="id" column="id"/>
+        <result column="oldId" property="oldId"/>
+        <result property="orders_id" column="orders_id"/>
+        <result property="ordertime" column="ordertime"/>
+        <result property="goodsnumber" column="goodsnumber"/>
+        <result property="price" column="price"/>
+        <result property="reality" column="reality"/>
+        <result property="st_id" column="st_id"/>
+        <result property="u_id" column="u_id"/>
+        <result property="note" column="note"/>
+        <result property="status" column="status"/>
+        <result property="logisname" column="logisname"/>
+        <result property="logisticsnumber" column="logisticsnumber"/>
+        <result property="a_receiver" column="a_receiver"/>
+        <result property="a_phone" column="a_phone"/>
+        <result property="a_address" column="a_address"/>
+        <result property="shiptime" column="shiptime"/>
+        <result property="sgintime" column="sgintime"/>
+        <result property="sendername" column="sendername"/>
+        <result property="senderaddress" column="senderaddress"/>
+        <result property="senderphone" column="senderphone"/>
+        <result property="evalustatus" column="evalustatues"/>
+
+        <association property="commodity" javaType="kesun.entity.sj.jy_Commodity">
+            <result property="id" column="id"/>
+            <result property="commname" column="commname"/>
+            <result property="title" column="title"/>
+        </association>
+
+        <association property="userInform" javaType="kesun.entity.sj.jy_UserInform">
+            <result property="id" column="id"/>
+            <result property="name" column="name"/>
+            <result property="address" column="adress"/>
+            <result property="phone" column="phone"/>
+        </association>
+
+        <association property="logistics" javaType="kesun.entity.sj.jy_Logistics">
+            <result property="id" column="id"/>
+            <result property="logisticsname" column="logisticsname"/>
+        </association>
+
+        <association property="style" javaType="kesun.entity.sj.jy_Style">
+            <result property="id" column="id"/>
+            <result property="styleImage" column="styleImage"/>
+            <result property="stylename" column="stylename"/>
+        </association>
+
+    </resultMap>
+
+    <sql id="Base_Column_List">
+      id,orders_id,ordertime,commname,goodsnumber,reality,note,status,shiptime,name,address,phone,logisname,logisticsnumber
+    </sql>
+
+    <sql id="colums">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="orderid != null">
+                orderid,
+            </if>
+
+            <if test="ordertime != null">
+                ordertime,
+            </if>
+
+            <if test="goodsnumber != null">
+                goodsnumber,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+
+            <if test="reality != null">
+                reality,
+            </if>
+
+            <if test="styleid != null">
+                styleid,
+            </if>
+
+            <if test="note != null">
+                note,
+            </if>
+
+            <if test="status != null">
+                status,
+            </if>
+            <if test="shiptime !=null">
+                shiptime,
+            </if>
+            <if test="logisname">
+                logisname,
+            </if>
+            <if test="logisticsnumber !=null">
+                logisticsnumber,
+            </if>
+
+        </trim>
+    </sql>
+
+    <sql id="columsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+
+            <if test="orderid != null">
+                #{orderid},
+            </if>
+
+            <if test="ordertime != null">
+                #{ordertime},
+            </if>
+
+            <if test="goodsnumber != null">
+                #{goodsnumber},
+            </if>
+
+            <if test="price != null">
+                #{price},
+            </if>
+
+            <if test="reality != null">
+                #{reality},
+            </if>
+
+            <if test="note != null">
+                #{note},
+            </if>
+
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="shiptime !=null">
+                #{shiptime},
+            </if>
+            <if test="logisname !=null">
+                #{logisname},
+            </if>
+            <if test="logisticsnumber !=null">
+                #{logisticsnumber},
+            </if>
+
+        </trim>
+    </sql>
+
+
+    <!--单个对象查找-->
+    <select id="getMe" parameterType="java.lang.String" resultMap="OrderResultMap">
+        select
+        *
+        from orders_logistics where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <!--查找，以Map返回-->
+    <select id="findForMap" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from orders_logistics
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="name!=null">
+                    name like '%${name}%' or
+                </if>
+            </trim>
+        </where>
+        order by name ASC
+    </select>
+
+    <!--查询，以对象集合返回-->
+    <select id="find" parameterType="java.util.Map" resultMap="OrderResultMap">
+        select
+        *
+        from orders_logistics
+        <where>
+            <trim prefix="" suffixOverrides="and">
+                <if test="s_id!=null  ">
+                    s_id like '%${s_id}%') and
+                </if>
+                <if test="status!=null  ">
+                    status like '%${status}%') and
+                </if>
+                <if test="id!=null ">
+                    id like '%${id}%') and
+                </if>
+                <if test="ordertime!=null">
+                    ordertime like '%${ordertime}%')
+                </if>
+            </trim>
+        </where>
+        order by ordertime ASC
+    </select>
+
+    <!--返回查找条数-->
+    <select id="getRowsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) as total from orders_logistics
+        <where>
+            <trim prefix="" suffixOverrides="and">
+                <if test="s_id!=null  ">
+                    s_id=#{s_id} and
+                </if>
+                <if test="status!=null  ">
+                    status like '%${status}%'  and
+                </if>
+                <if test="id!=null ">
+                    id like '%${id}%' and
+                </if>
+                <if test="ordertime!=null">
+                    ordertime like '%${ordertime}%'
+                </if>
+            </trim>
+        </where>    </select>
+
+    <!--分页查找-->
+    <select id="findByPage" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        *
+        from orders_logistics
+        <where>
+            <trim prefix="" suffixOverrides="and">
+                <if test="s_id!=null  ">
+                    s_id=#{s_id} and
+                </if>
+                <if test="status!=null  ">
+                    status like '%${status}%'  and
+                </if>
+                <if test="id!=null ">
+                    id like '%${id}%' and
+                </if>
+                <if test="ordertime!=null">
+                     ordertime like '%${ordertime}%'
+                </if>
+
+            </trim>
+        </where>
+        order by s_id ASC
+        <if test="start !=0 or limit!=0">
+            limit #{start},#{limit}
+        </if>
+
+    </select>
+
+
+    <!--单个对象更新-->
+    <update id="update" parameterType="kesun.entity.sj.jy_Order">
+        update i_orders set
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                id=#{id},
+            </if>
+            <if test="orders_id != null">
+                id=#{id},
+            </if>
+            <if test="ordertime != null">
+                ordertime=#{ordertime},
+            </if>
+            <if test="goodsnumber != null">
+                goodsnumber=#{goodsnumber},
+            </if>
+            <if test="a_receiver!=null">
+                a_receiver=#{a_receiver},
+            </if>
+            <if test="a_address!=null">
+                a_address=#{a_address},
+            </if>
+            <if test="a_phone!=null">
+                a_phone=#{a_phone},
+            </if>
+            <if test="price != null">
+                price=#{price},
+            </if>
+            <if test="reality != null">
+                reality=#{reality},
+            </if>
+            <if test="note != null">
+                note=#{note},
+            </if>
+            <if test="status != null">
+                status=#{status},
+            </if>
+            <if test="logisname!=null">
+                logisname=#{logisname},
+            </if>
+            <if test="logisticsnumber!=null">
+                logisticsnumber=#{logisticsnumber},
+            </if>
+            <if test="sendername!=null">
+                sendername=#{sendername},
+            </if>
+            <if test="senderaddress!=null">
+                senderaddress=#{senderaddress},
+            </if>
+            <if test="senderphone!=null">
+                senderphone=#{senderphone},
+            </if>
+            <if test="evalustatus!=null">
+                evalustatus=#{evalustatus},
+            </if>
+        </trim>
+        where id=#{id,jdbcType=VARCHAR}
+    </update>
+
+
+    <!--判断数据是否在使用中-->
+    <select id="objectInUse" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        <![CDATA[ select count(id) from i_orders where name=#{id} ]]>
+    </select>
+
+
+    <select id="getrefund" parameterType="String" resultType="java.util.Map">
+        select
+        *
+        from orders_logistics where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+
+    <update id="modify" parameterType="kesun.entity.sj.jy_Order">
+        update i_orders set status='已退款' where id=#{id,jdbcType=VARCHAR};
+    </update>
+
+    <update id="refuse" parameterType="kesun.entity.sj.jy_Order">
+        update i_orders set status='商家拒收' where id=#{id,jdbcType=VARCHAR};
+    </update>
+
+</mapper>

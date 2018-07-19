@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.storeMapper">
+    <resultMap id="BaseResultMap" type="kesun.entity.ht.Store">
+        <id column="id"  property="id" />
+        <result column="storename" property="storename" />
+        <association property="user" javaType="kesun.entity.system.User">
+            <id column="userID"  property="id" />
+        </association>
+        <association property="org" javaType="kesun.entity.system.Organization">
+            <id column="orgID"  property="id" />
+        </association>
+        <association property="actor" javaType="kesun.entity.system.Actor">
+            <id column="actorID"  property="id" />
+        </association>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,storename
+    </sql>
+
+
+
+    <insert id="insert" parameterType="kesun.entity.web.WebSite">
+        insert into i_store (id,storename,userID,actorID,orgID)
+        values (#{id,jdbcType=VARCHAR},#{storename,jdbcType=VARCHAR},#{user.id,jdbcType=VARCHAR},#{actor.id,jdbcType=VARCHAR},#{org.id,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="kesun.entity.web.WebSite">
+        update i_store set
+        id=#{id,jdbcType=VARCHAR}, storename=#{storename,jdbcType=VARCHAR}
+        where id=#{oldId,jdbcType=VARCHAR}
+    </update>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from i_store
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectForObject" parameterType="java.util.Map"  resultType="java.util.Map">
+        select <include refid="Base_Column_List" />
+        from i_store
+
+        order by credit DESC
+
+        LIMIT 0, 10
+    </select>
+
+    <select id="getRowsCount" parameterType="java.util.Map"  resultType="java.lang.Integer">
+        select count(1) as total from i_store
+        where
+        <trim  suffixOverrides="or">
+            <if test="id!=null">
+                id like '%${id}%' or
+            </if>
+            <if test="storename!=null">
+                storename like '%${storename}%' or
+            </if>
+        </trim>
+
+        order by credit DESC
+
+    </select>
+    <select id="findByPage" parameterType="java.util.Map"  resultType="java.util.Map">
+        select <include refid="Base_Column_List" />
+        from i_store
+        <!--<trim prefix="where" suffixOverrides="or">-->
+            <!--<if test="id!=null">-->
+                <!--id like '%${id}%' or-->
+            <!--</if>-->
+            <if test="storename!=null">
+                storename like '%${storename}%' or
+            </if>
+        <!--</trim>-->
+
+        order by credit DESC
+
+        LIMIT 0, 10
+    </select>
+    <!--判断数据是否在使用中-->
+    <select id="findInUseById" parameterType="java.lang.String" resultType="java.util.Map">
+        select id from i_store where id=#{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete from i_store
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
+</mapper>

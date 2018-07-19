@@ -1,0 +1,43 @@
+.storeshow{
+padding: 0px 0px 0px 0px;
+position:relative;
+margin-top: -20px;
+font-size: 12px;
+text-align: center;
+background:rgba(225,225,225,0.6);
+
+}
+
+#payinfo{
+	width: 60%;
+	margin-left: 30px;
+}
+
+.store-pay{
+	color: red;
+}
+
+.store-pay:hover{
+text-decoration: underline;
+color: red;
+}
+
+#store-thing{
+	color: red;
+}
+
+#store-thing:hover{
+	text-decoration: underline;
+	color: red;
+}
+
+#jian{
+	padding: 0px 5px 1px 5px ;
+}
+
+#add{
+	padding: 5px 5px 1px 5px;
+}
+
+
+

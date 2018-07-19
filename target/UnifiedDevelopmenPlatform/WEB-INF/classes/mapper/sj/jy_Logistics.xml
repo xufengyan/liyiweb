@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kesun.dao.sj.inter.jy_ILogistics">
+    <resultMap id="LogisticsMap" type="kesun.entity.sj.jy_Logistics">
+        <result property="id" column="id"/>
+        <result property="logisticsname" column="logisticsname"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+      id,logisticsname
+    </sql>
+
+
+
+    <!--查找，以Map返回-->
+    <select id="findForMap" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        *
+        from i_logistics
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="id!=null">
+                    id like '%${id}%' or
+                </if>
+            </trim>
+        </where>
+        order by logisticsname ASC
+    </select>
+
+    <!--查询，以对象集合返回-->
+    <select id="find" parameterType="java.util.Map" resultMap="LogisticsMap">
+        select
+        *
+        from i_logistics
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="id!=null">
+                    id like '%${id}%' or
+                </if>
+            </trim>
+        </where>
+        order by logisticsname ASC
+    </select>
+
+
+    <!--返回查找条数-->
+    <select id="getRowsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) as total from i_logistics
+        <where>
+            userid=#{userid}
+        </where>
+    </select>
+
+
+    <!--分页查找-->
+    <select id="findByPage" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        *
+        from i_logistics
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="logisticsname!=null">
+                    logisticsname like '%${logisticsname}%' or
+                </if>
+            </trim>
+        </where>
+        order by logisticsname DESC
+        <if test="start !=0 or limit!=0">
+            limit #{start},#{limit}
+        </if>
+
+    </select>
+
+
+    <!--判断数据是否在使用中-->
+    <select id="objectInUse" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        <![CDATA[ select count(id) from i_orders where logisticsname=#{id} ]]>
+    </select>
+
+</mapper>

@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kesun.dao.ht.p_IIntegda">
+    <resultMap id="BaseResultMap" type="kesun.entity.ht.Commodity">
+        <id column="id"  property="id" />
+        <result column="commname" property="commname" />
+        <result column="sub_id" property="sub_id"/>
+        <result column="title" property="title"/>
+        <result column="image1" property="image1"/>
+        <result column="image2" property="image2"/>
+        <result column="image3" property="image3"/>
+        <result column="image4" property="image4"/>
+        <result column="description" property="description"/>
+        <result column="price" property="price"/>
+        <result column="stock" property="stock"/>
+        <result column="time" property="time"/>
+        <result column="s_id" property="s_id"/>
+        <result column="integral" property="integral"/>
+        <result column="status" property="status"/>
+        <result column="sales" property="sales"/>
+        <result column="sstatus" property="sstatus"/>
+        <result column="reason" property="reason"/>
+        <result column="grade" property="grade"/>
+
+        <association property="store" javaType="kesun.entity.ht.Store">
+            <id property="id"   column="id"/>
+            <result property="storename" column="storename"/>
+        </association>
+
+
+        <association property="actor" javaType="kesun.entity.system.Actor">
+            <id column="actorID"  property="id" />
+        </association>
+        <association property="org" javaType="kesun.entity.system.Organization">
+            <id column="orgID"  property="id" />
+        </association>
+    </resultMap>
+    <sql id="colums">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+
+            <if test="commname != null">
+                commname,
+            </if>
+
+            <if test="sub_id != null">
+                sub_id,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+
+            <if test="image1 != null">
+                image1,
+            </if>
+            <if test="image2 != null">
+                image2,
+            </if>
+            <if test="image3 != null">
+                image3,
+            </if>
+            <if test="image4 != null">
+                image4,
+            </if>
+
+            <if test="description != null">
+                description,
+            </if>
+
+            <if test="stock != null">
+                stock,
+            </if>
+
+            <if test="time != null">
+                time,
+            </if>
+
+            <if test="postcode != null">
+                status,
+            </if>
+
+            <if test="style != null">
+                style,
+            </if>
+
+            <if test="store != null">
+                store,
+            </if>
+
+            <if test="integral != null">
+                integral,
+            </if>
+
+            <if test="sstatus != null">
+                sstatus,
+            </if>
+
+        </trim>
+    </sql>
+
+    <sql id="columsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+
+            <if test="commname != null">
+                #{commname},
+            </if>
+
+            <if test="sub_id != null">
+                #{sub_id},
+            </if>
+            <if test="title != null">
+                #{title},
+            </if>
+
+            <if test="image1 != null">
+                #{image1},
+            </if>
+            <if test="image2 != null">
+                #{image2},
+            </if>
+            <if test="image3 != null">
+                #{image3},
+            </if>
+            <if test="image4 != null">
+                #{image4},
+            </if>
+
+            <if test="description != null">
+                #{description},
+            </if>
+
+            <if test="stock != null">
+                #{stock},
+            </if>
+
+            <if test="time != null">
+                #{time},
+            </if>
+
+            <if test="status != null">
+                #{status},
+            </if>
+
+
+            <if test="style != null">
+                #{style.id},
+            </if>
+
+            <if test="store != null">
+                #{store.id},
+            </if>
+
+            <if test="integral != null">
+                #{integral},
+            </if>
+            <if test="sstatus != null">
+                #{sstatus},
+            </if>
+            <if test="grade != null">
+                #{grade},
+            </if>
+            <if test="sales != null">
+                #{sales},
+            </if>
+            <if test="price != null">
+                #{price},
+            </if>
+
+        </trim>
+    </sql>
+    <!--id, commname, sub_id, title, image1, image2, image3, image4, description, stock, time, status, style, store,integral,sstatus-->
+    <sql id="Base_Column_List">
+        id,
+        commname,
+        sub_id,
+        title,
+        image1,
+        image2,
+        image3,
+        image4,
+        description,
+        stock,
+        time,
+        status,
+        style,
+        store,
+        integral,
+        sstatus,
+        grade,
+        sales,
+        price
+
+    </sql>
+    <!--<insert id="insert" parameterType="kesun.entity.liyi.Commodity">-->
+        <!--insert into i_strategy (id)-->
+        <!--values (1)-->
+    <!--</insert>-->
+    <!--id,time,title,status,sstatus,commname,s_id,-->
+    <!--#{id},#{time},#{title},#{status},#{sstatus},#{commname},#{s_id},-->
+    <!--id, commname, sub_id, title, image1,,#{integral} image2, image3, image4, description, stock, time, status, style, s_id, integral, sstatus-->
+    <insert id="save" parameterType="kesun.entity.ht.Commodity">
+        insert into i_strategy (id,time,title,status,sstatus,commname,s_id,integral,image1,image2,image3,image4,description,stock,sales,reason,grade,sub_id)
+        values (#{id},#{time},#{title},#{status},#{sstatus},#{commname},#{s_id},#{integral},#{image1},#{image2},#{image3},#{image4},#{description},#{stock},#{sales},#{reason},#{grade},#{sub_id})
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.String">
+        delete from i_strategy where id = #{id,jdbcType=VARCHAR}
+    </delete>
+
+    <update id="update" parameterType="kesun.entity.ht.Commodity">
+        update i_commodity set
+        <trim suffix="" suffixOverrides=",">
+
+            <if test="sstatus != null">
+                sstatus=#{sstatus},
+            </if>
+
+        </trim>
+        where id=#{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="kesun.entity.ht.Commodity">
+        update i_commodity set
+        <trim suffix="" suffixOverrides=",">
+
+            <if test="id != null">
+                id=#{id},
+            </if>
+
+            <if test="commname != null">
+                commname=#{commname},
+            </if>
+
+            <if test="sub_id != null">
+                sub_id=#{sub_id},
+            </if>
+
+            <if test="title != null">
+                title=#{title},
+            </if>
+
+            <if test="image1 != null">
+                image1=#{image1},
+            </if>
+            <if test="image2 != null">
+                image2=#{image2},
+            </if>
+            <if test="image3 != null">
+                image3=#{image3},
+            </if>
+            <if test="image4 != null">
+                image4=#{image4},
+            </if>
+
+            <if test="description != null">
+                description=#{description},
+            </if>
+            <if test="stock != null">
+                stock=#{stock},
+            </if>
+            <if test="time != null">
+                time=#{time},
+            </if>
+            <if test="status != null">
+                status=#{status},
+            </if>
+
+            <if test="style != null">
+                style=#{store,style.id},
+            </if>
+
+            <if test="store != null">
+                store=#{store.id},
+            </if>
+
+            <if test="integral != null">
+                integral=#{integral},
+            </if>
+
+            <if test="sstatus != null">
+                sstatus=#{sstatus},
+            </if>
+        </trim>
+        where id=#{id,jdbcType=VARCHAR}
+    </update>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        *
+        from st_dpjf
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectForObject" parameterType="java.util.Map"  resultType="java.util.Map">
+        select *
+        from st_dpjf where
+        where
+
+            <if test="storename!=null">
+                storename like '%${storename}%'
+            </if>
+
+        order by storename ASC
+    </select>
+
+    <select id="getRowsCount" parameterType="java.util.Map"  resultType="java.lang.Integer">
+        select count(1) as total from st_dpjf
+        <where>
+            <if test="storename!=null">
+                storename like '%${storename}%'
+            </if>
+        </where>
+    </select>
+    <select id="findByPagetwo" parameterType="java.lang.String" resultType="java.util.Map">
+        select
+       *
+        from st_dpjf
+        where
+        id like  concat(#{id})
+        order by commname ASC
+
+    </select>
+
+    <select id="findByPage" parameterType="java.util.Map"  resultType="java.util.Map">
+
+        select
+       *
+        from st_dpjf
+        <where>
+            <if test="storename!=null">
+                storename like '%${storename}%'
+            </if>
+        </where>
+
+        <if test="start !=0 or limit!=0">
+            limit #{start},#{limit}
+        </if>
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete from st_dpjf
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <select id="objectInUse" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        <![CDATA[ select count(id) from st_dpjf where storename=#{id} ]]>
+    </select>
+</mapper>

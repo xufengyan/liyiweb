@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>哈哈哈</title>
+<meta name="Description" content="相册书">
+<link rel="stylesheet" href="common/css/reset.css" />
+<link rel="stylesheet" href="product/detail/css/style.css" />
+<!--<link rel="stylesheet" type="text/css" href="common/css/reset.css">-->
+<link rel="stylesheet" href="common/css/reset.css" />
+<!--<link rel="stylesheet" type="text/css" href="common/css/header.css">-->
+<link rel="stylesheet" href="common/css/header.css" />
+<!--<link rel="stylesheet" type="text/css" href="common/css/footer.css">-->
+<link rel="stylesheet" href="common/css/footer.css" />
+<link rel="shortcut icon" href="common/img/favicon.ico">
+<!--<link rel="stylesheet" type="text/css" href="common/widget_comment/widget_comment.css">-->
+<link rel="stylesheet" href="common/widget_comment/widget_comment.css" />
+
+<!--容错，再单独补一个-->
+<!--<script async="" src="js/analytics.js"></script>-->
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+<!--<script type="text/javascript" src="js/analytics.js" ></script>-->
+<script type="text/javascript" src="js/meiqia.js" ></script>
+<!--<script async="" src="js/gtm.js"></script>-->
+<!--<script type="text/javascript" src="js/gtm.js" ></script>-->
+<script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-5L7MW34"></script>
+<!--<script src="js/vue.min.2.2.6.js" type="text/javascript" charset="utf-8"></script>-->
+<script type="text/javascript" src="js/vue.min.2.2.6.js" ></script>
+<!--<script type="text/javascript" src="js/mmping.js"></script>-->
+<script type="text/javascript" src="js/mmping.js" ></script>
+<!--<script src="common/js/superagent.js" type="text/javascript" charset="utf-8"></script>-->
+<script type="text/javascript" src="common/js/superagent.js" ></script>
+<!--<script src="js/vue.min.2.2.6.js" type="text/javascript" charset="utf-8"></script>-->
+<script type="text/javascript" src="product/js/vue.min.js" ></script>
+<script type="text/javascript" src="common/js/jquery-3.2.1.js" ></script>
+<script type="text/javascript" src="js/modernizr-custom-v2.7.1.min.js"></script>
+
+
+<script type="text/javascript">
+	;(function(doc, win) {
+		var docEl = doc.documentElement,
+			resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+			recalc = function() {
+				var clientWidth = window.innerWidth 
+				&& document.documentElement.clientWidth 
+				? Math.min(window.innerWidth, document.documentElement.clientWidth) 
+				: window.innerWidth || document.documentElement.clientWidth 
+				|| document.getElementsByTagName('body')[0].clientWidth;
+				
+				if(!clientWidth) return;
+				docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+				var div = document.createElement('div');
+				div.style.width = '1.4rem';
+				div.style.height = '0';
+				document.body.appendChild(div);
+				var ideal = 140 * clientWidth / 750;
+				var rmd = (div.clientWidth / ideal);
+				if(rmd > 1.2 || rmd < 0.8) {
+					docEl.style.fontSize = 100 * (clientWidth / 750) / rmd + 'px';
+				}
+				document.body.removeChild(div);
+			};
+		if(!doc.addEventListener) return;
+		win.addEventListener(resizeEvt, recalc, false);
+		doc.addEventListener('DOMContentLoaded', recalc, false);
+	})(document, window);
+</script>
+
+<script>
+    ; (function () {
+        var browser = {
+            versions: function () {
+                var u = navigator.userAgent, 
+                	app = navigator.appVersion;
+                return {         //移动终端浏览器版本信息
+                    trident: u.indexOf('Trident') > -1, //IE内核
+                    presto: u.indexOf('Presto') > -1, //opera内核
+                    webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                    mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+                    iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, //是否iPad
+                    webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+                };
+            }(),
+            language: (navigator.browserLanguage || navigator.language).toLowerCase()
+        }
+        window.GTM_Device = browser.versions.mobile ? 'mobile' : 'pc';
+    })();
+    
+    
+    $(document).ready(function(){
+			
+				var that = $(this);
+				var	$imgCon =that.find('.detailImg');//正常图片容器
+		 		var	$Img = $imgCon.find('img');//正常图片，还有放大图片集合
+				var	$ImgList =that.find('.ImgList > li >img');
+			
+				$ImgList.click(function(){
+						var NowSrc = $(this).data('bigimg');
+						$Img.attr('src',NowSrc);
+				});
+				
+				$('li.imlist').click(function(){
+					$(this).siblings().removeClass('active');
+            			$(this).addClass("active");
+				});
+				
+				$('span.sel').click(function(){
+					$(this).siblings().removeClass('active');
+            			$(this).addClass("active");
+				});
+				
+				$('.rightDetail>div').click(function(){
+					$(this).siblings().removeClass('active');
+            			$(this).addClass("active");
+				});
+				
+				$('.rightDetail .pingjia').click(function(){
+					
+				});
+	});
+	
+	function show(){
+		$('.showImg').stop().slideDown('slow');
+				}
+				
+	function hidn(){
+		$('.showImg').stop().slideUp('slow');
+			}
+	
+</script>
+
+<script>
+	(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'
+		});
+		
+		var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),
+		dl=l!='dataLayer'?'&l='+l:'';
+		j.async=true;
+		j.src='js/gtm.js?id='+i+dl;
+		f.parentNode.insertBefore(j,f);
+	})
+	(window,document,'script','dataLayer','GTM-5L7MW34');
+</script>
+
+<style type="text/css" id="MEIQIA-ICON-STYLE">
+	/*.MEIQIA-ICON { background-size: 40px auto !important; background-repeat: no-repeat !important; background-image: url("https://static.meiqia.com/dist/images/icon-mq.png?v=k2p6mnd452xx0f6r") !important; } @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) { .MEIQIA-ICON { background-image: url("https://static.meiqia.com/dist/images/icon-mq@2x.png?v=k2p6mnd452xx0f6r") !important; } } .MEIQIA-ICON-CHAT1 { background-position: 0 0 !important; } .MEIQIA-ICON-CHAT2 { background-position: 0 -20px !important; } .MEIQIA-ICON-CHAT3 { background-position: 0 -40px !important; } .MEIQIA-ICON-CHAT4 { background-position: 0 -60px !important; } .MEIQIA-ICON-CHAT5 { background-position: 0 -80px !important; } .MEIQIA-ICON-CHAT6 { background-position: 0 -100px !important; } .MEIQIA-ICON-CHAT7 { background-position: 0 -120px !important; } .MEIQIA-ICON-CHAT8 { background-position: 0 -140px !important; } .MEIQIA-ICON-CHAT9 { background-position: 0 -160px !important; } .MEIQIA-ICON-CHAT10 { background-position: 0 -180px !important; } .MEIQIA-ICON-CHAT11 { background-position: 0 -200px !important; } .MEIQIA-ICON-CHAT12 { background-position: 0 -220px !important; } .MEIQIA-ICON-TICKET1 { background-position: -20px 0 !important; } .MEIQIA-ICON-TICKET2 { background-position: -20px -20px !important; } .MEIQIA-ICON-TICKET3 { background-position: -20px -40px !important; } .MEIQIA-ICON-TICKET4 { background-position: -20px -60px !important; } .MEIQIA-ICON-TICKET5 { background-position: -20px -80px !important; } .MEIQIA-ICON-TICKET6 { background-position: -20px -100px !important; } .MEIQIA-ICON-TICKET7 { background-position: -20px -120px !important; } .MEIQIA-ICON-TICKET8 { background-position: -20px -140px !important; } .MEIQIA-ICON-TICKET9 { background-position: -20px -160px !important; } .MEIQIA-ICON-TICKET10 { background-position: -20px -180px !important; } .MEIQIA-ICON-TICKET11 { background-position: -20px -200px !important; } .MEIQIA-ICON-TICKET12 { background-position: -20px -220px !important; }*/
+	.MEIQIA-ICON {
+		background-size: 40px auto !important;
+		background-repeat: no-repeat !important;
+		background-image: url("images/icon-mq.png") !important;
+	}
+
+	@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2) {
+		.MEIQIA-ICON {
+			background-image: url("images/icon-mq@2x.png") !important;
+		}
+	}
+
+	.MEIQIA-ICON-CHAT1 {
+		background-position: 0 0 !important;
+	}
+	
+	.MEIQIA-ICON-CHAT2 {
+		background-position: 0 -20px !important;
+	}
+	
+	.MEIQIA-ICON-CHAT3 {
+		background-position: 0 -40px !important;
+	}
+	
+	.MEIQIA-ICON-CHAT4 {
+		background-position: 0 -60px !important;
+	}
+	
+	.MEIQIA-ICON-CHAT5 {
+		background-position: 0 -80px !important;
+	}
+	
+	.MEIQIA-ICON-CHAT6 {
+		background-position: 0 -100px !important;
+	}
+	
+	.MEIQIA-ICON-CHAT7 {
+		background-position: 0 -120px !important;
+	}
+	
+	.MEIQIA-ICON-CHAT8 {
+		background-position: 0 -140px !important;
+	}
+	
+	.MEIQIA-ICON-CHAT9 {
+		background-position: 0 -160px !important;
+	}
+	
+	.MEIQIA-ICON-CHAT10 {
+		background-position: 0 -180px !important;
+	}
+	
+	.MEIQIA-ICON-CHAT11 {
+		background-position: 0 -200px !important;
+	}
+	
+	.MEIQIA-ICON-CHAT12 {
+		background-position: 0 -220px !important;
+	}
+	
+	.MEIQIA-ICON-TICKET1 {
+		background-position: -20px 0 !important;
+	}
+	
+	.MEIQIA-ICON-TICKET2 {
+		background-position: -20px -20px !important;
+	}
+	
+	.MEIQIA-ICON-TICKET3 {
+		background-position: -20px -40px !important;
+	}
+	
+	.MEIQIA-ICON-TICKET4 {
+		background-position: -20px -60px !important;
+	}
+	
+	.MEIQIA-ICON-TICKET5 {
+		background-position: -20px -80px !important;
+	}
+	
+	.MEIQIA-ICON-TICKET6 {
+		background-position: -20px -100px !important;
+	}
+	
+	.MEIQIA-ICON-TICKET7 {
+		background-position: -20px -120px !important;
+	}
+	
+	.MEIQIA-ICON-TICKET8 {
+		background-position: -20px -140px !important;
+	}
+	
+	.MEIQIA-ICON-TICKET9 {
+		background-position: -20px -160px !important;
+	}
+	
+	.MEIQIA-ICON-TICKET10 {
+		background-position: -20px -180px !important;
+	}
+	
+	.MEIQIA-ICON-TICKET11 {
+		background-position: -20px -200px !important;
+	}
+	
+	.MEIQIA-ICON-TICKET12 {
+		background-position: -20px -220px !important;
+	}
+
+</style>
+<style type="text/css" id="MEIQIA-PANEL-STYLE">
+/*#MEIQIA-PANEL-HOLDER { position: fixed;  top: 50%; left: 50%;  z-index: -1; width: 688px; height: 540px; padding: 0;  margin: -270px 0 0 -344px;  overflow: hidden; visibility: hidden; box-shadow: 0 0 20px 0 rgba(0, 0, 0, .15); border: 1px solid #eee\0; *border: 1px solid #eee; } #MEIQIA-IFRAME { display: none; float: none; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 1; width: 100% !important; height: 100% !important; padding: 0; margin: 0; border: 0; background: none; } #MEIQIA-DRAG-HANDLE { float: none; position: absolute; top: 0; left: 0; right: 140px; z-index: 3; width: auto; height: 60px; border: 0; padding: 0; margin: 0; background: none; cursor:move; } #MEIQIA-DRAG-MASK { display: none; float: none; position: absolute; top: 0; left: 0; z-index: 2; width: 100%; height: 100%; padding: 0; margin: 0; border: 0; background: none; }*/
+	#MEIQIA-PANEL-HOLDER {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		z-index: -1;
+		width: 688px;
+		height: 540px;
+		padding: 0;
+		margin: -270px 0 0 -344px;
+		overflow: hidden;
+		visibility: hidden;
+		box-shadow: 0 0 20px 0 rgba(0, 0, 0, .15);
+		border: 1px solid #eee\0;
+		*border: 1px solid #eee;
+	}
+	
+	#MEIQIA-IFRAME {
+		display: none;
+		float: none;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 1;
+		width: 100% !important;
+		height: 100% !important;
+		padding: 0;
+		margin: 0;
+		border: 0;
+		background: none;
+	}
+	
+	#MEIQIA-DRAG-HANDLE {
+		float: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 140px;
+		z-index: 3;
+		width: auto;
+		height: 60px;
+		border: 0;
+		padding: 0;
+		margin: 0;
+		background: none;
+		cursor: move;
+	}
+	
+	#MEIQIA-DRAG-MASK {
+		display: none;
+		float: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 2;
+		width: 100%;
+		height: 100%;
+		padding: 0;
+		margin: 0;
+		border: 0;
+		background: none;
+	}
+</style>
+<style type="text/css" id="MEIQIA-INVITE-STYLE">
+/*#MEIQIA-INVITE, #MEIQIA-INVITE div, #MEIQIA-INVITE span { float: none; width: auto; height: auto; padding: 0; margin: 0; border: 0; background: none; } #MEIQIA-INVITE { position: fixed; z-index: 2147483647; display: none; width: 340px; height: 130px; margin-bottom: 64px; border: 1px solid #f7f7f7; border-radius: 4px; box-shadow: 0 0 14px 0 rgba(0, 0, 0, .16); text-align: left; cursor: pointer; color: #000; line-height: 1.428571429; background-color: #fff; } #MEIQIA-INVITE #MEIQIA-INVITE-ARROW1, #MEIQIA-INVITE #MEIQIA-INVITE-ARROW2 { position: absolute; font-size: 0; line-height: 0; } #MEIQIA-INVITE #MEIQIA-INVITE-ARROW1 { z-index: 2; } #MEIQIA-INVITE #MEIQIA-INVITE-ARROW2 { z-index: 1; }   #MEIQIA-INVITE { right: 60px; bottom: 0; } #MEIQIA-INVITE #MEIQIA-INVITE-ARROW1 { right: 12px; bottom: -8px; border-top: 8px solid #fff; border-right: 7px solid transparent; border-left: 7px solid transparent; } #MEIQIA-INVITE #MEIQIA-INVITE-ARROW2 { right: 11px; bottom: -10px; border-top: 9px solid #f7f7f7; border-right: 8px solid transparent; border-left: 8px solid transparent; }     #MEIQIA-INVITE #MEIQIA-INVITE-CLOSE { position: absolute; right: -20px; top: -20px; width: 40px; height: 40px; cursor: pointer;  background-position: 0 -260px;  } #MEIQIA-INVITE #MEIQIA-INVITE-CLOSE:hover {  background-position: 0 -300px;  } #MEIQIA-INVITE #MEIQIA-INVITE-INSIDE { width: 300px; height: 44px; margin: 46px 20px 0; text-align: left; font-size: 14px; line-height: 22px; overflow: hidden; color: #000; /*word-break: break-all;*/ }*/
+	#MEIQIA-INVITE, #MEIQIA-INVITE div, #MEIQIA-INVITE span {
+		float: none;
+		width: auto;
+		height: auto;
+		padding: 0;
+		margin: 0;
+		border: 0;
+		background: none;
+	}
+	
+	#MEIQIA-INVITE {
+		position: fixed;
+		z-index: 2147483647;
+		display: none;
+		width: 340px;
+		height: 130px;
+		margin-bottom: 64px;
+		border: 1px solid #f7f7f7;
+		border-radius: 4px;
+		box-shadow: 0 0 14px 0 rgba(0, 0, 0, .16);
+		text-align: left;
+		cursor: pointer;
+		color: #000;
+		line-height: 1.428571429;
+		background-color: #fff;
+	}
+	
+	#MEIQIA-INVITE #MEIQIA-INVITE-ARROW1, #MEIQIA-INVITE #MEIQIA-INVITE-ARROW2 {
+		position: absolute;
+		font-size: 0;
+		line-height: 0;
+	}
+	
+	#MEIQIA-INVITE #MEIQIA-INVITE-ARROW1 {
+		z-index: 2;
+	}
+	
+	#MEIQIA-INVITE #MEIQIA-INVITE-ARROW2 {
+		z-index: 1;
+	}
+	
+	#MEIQIA-INVITE {
+		right: 60px;
+		bottom: 0;
+	}
+	
+	#MEIQIA-INVITE #MEIQIA-INVITE-ARROW1 {
+		right: 12px;
+		bottom: -8px;
+		border-top: 8px solid #fff;
+		border-right: 7px solid transparent;
+		border-left: 7px solid transparent;
+	}
+	
+	#MEIQIA-INVITE #MEIQIA-INVITE-ARROW2 {
+		right: 11px;
+		bottom: -10px;
+		border-top: 9px solid #f7f7f7;
+		border-right: 8px solid transparent;
+		border-left: 8px solid transparent;
+	}
+	
+	#MEIQIA-INVITE #MEIQIA-INVITE-CLOSE {
+		position: absolute;
+		right: -20px;
+		top: -20px;
+		width: 40px;
+		height: 40px;
+		cursor: pointer;
+		background-position: 0 -260px;
+	}
+	
+	#MEIQIA-INVITE #MEIQIA-INVITE-CLOSE:hover {
+		background-position: 0 -300px;
+	}
+	
+	#MEIQIA-INVITE #MEIQIA-INVITE-INSIDE {
+		width: 300px;
+		height: 44px;
+		margin: 46px 20px 0;
+		text-align: left;
+		font-size: 14px;
+		line-height: 22px;
+		overflow: hidden;
+		color: #000;
+	 /*word-break: break-all;*/
+	}
+</style>
+</head>
+<body>
+<noscript>
+	<!--<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5L7MW34"height="0" width="0" style="display:none;visibility:hidden"></iframe>-->
+</noscript>
+<div id="app_head">
+	<div class="header">
+		<!--导航开始-->
+		<div class="header_pc">
+			<div class="topBox">
+				<div class="setWidth">
+					<div id="get_send_time" class="topLeft">
+						<span class="widget_getTime_span1">今日下单，预计</span>
+						<span class="widget_getTime_span2">7月4日</span>
+						<span class="widget_getTime_span3">发货</span>
+					</div>
+					<div class="topRight" style="display: none;">
+						<span class="memberName">
+							<a href="">登录</a>
+						</span>|<span class="memberLv"><a href="">注册</a></span>
+					</div>
+					<div class="topRight" style="">
+						<img src="images/nsbg.jpeg" onerror="javascript:this.src='common/img/icon_portrait.png';" class="memberImg">
+						<span class="memberName">南笙北顾</span>|
+						<span class="memberLv">普通会员</span>
+						<em class="aIcon"></em>
+						<div class="exterRight">
+							<div class="list">
+								<a href="">我的作品</a><a href="">我的福利</a>
+							</div>
+							<div class="list">
+								<a href="">我的订单</a><a href="">优惠券</a>
+							</div>
+							<div class="list">
+								<a href="" class="logout">退出</a><a style="visibility: hidden;"></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="navigation">
+				<div class="naviga">
+					<div class="mimoIcon">
+						<a href="/index"><img src="common/img/mimoIcon2.png"></a>
+					</div>
+					<div class="title">
+						<div class="acti">
+							<a href="/product/index">所有产品</a>
+						</div>
+						<div class="acti">
+							<a href="/product/photo-book/index">照片书</a>
+						</div>
+						<div>
+							<a href="/product/timebooks/index">时光书</a>
+						</div>
+						<div class="acti">
+							<a href="/product/prints/index">冲印与相簿</a>
+						</div>
+						<div class="acti">
+							<a href="/product/calendars/index">日历与笔记本</a>
+						</div>
+						<div class="acti">
+							<a href="/product/frames/index">相框摆台</a>
+						</div>
+						<div class="acti">
+							<a href="/product/goods/index">非定制产品</a>
+						</div>
+						<div style="display: none;">
+							<a href="/product/packages/index">套餐产品</a>
+						</div>
+						<div class="rightTit count">
+							<a href="http://shopcar.mimoprint.com/shopcar/shopcar"><img src="common/img/shopcar_pc.jpg"><!----></a>
+						</div>
+						<div class="rightTit acti">
+							<a href="/stage/index">作品展厅</a>
+						</div>
+						<span class="rightTit">|</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--导航结束-->
+		
+		<!--头部开始-->
+		<div class="header_h5">
+			<div class="topBox_h5">
+				<img src="common/img/menu_h5.jpg" class="menu_h5">
+				<img src="common/img/mimoIcon_h5.jpg" class="mimoIcon_h5">
+				<a href="http://shopcar.mimoprint.com/mshopcar/shopcar" class="shopcarHere"><!---->
+					<img src="common/img/shopcar_h5.jpg" class="shopcar_h5">
+				</a>
+			</div>
+			<div class="blackScreen" style="display: none;"></div>
+			<div class="menuCon_h5" style="display: block; left: -6rem;">
+				<div class="menberName_h5">
+					<img src="common/img/headIcon_h5.jpg" class="headImg_h5"> 
+						Hi!
+					<span class="name_h5">南笙北顾</span>
+				</div>
+				<div class="sendTime_h5">
+					<div id="get_send_time2">
+						<img src="common/img/time_h5.jpg" class="time_h5">
+						<span class="widget_getTime_span1">今日下单，预计</span>
+						<span class="widget_getTime_span2">7月4日</span>
+						<span class="widget_getTime_span3">发货</span>
+					</div>
+					<div>
+						<a href="/index">首页</a>
+					</div>
+					<div>
+						下载APP，无须上传照片
+					</div>
+					<div>
+						<div>
+							所有产品<em></em>
+						</div>
+						<ul style="display: none;">
+							<li><span></span><a href="/product/index">产品汇总</a></li>
+							<li><span></span><a href="/product/photo-book/index">照片书</a></li>
+							<li><span></span><a href="/product/prints/index">照片冲印</a></li>
+							<li><span></span><a href="/product/timebooks/index">时光书</a></li>
+							<li><span></span><a href="/product/calendars/index">日历与笔记本</a></li>
+							<li><span></span><a href="/product/frames/index">框画</a></li>
+							<li><span></span><a href="/product/goods/index">非定制产品</a></li>
+						</ul>
+					</div>
+					<div>
+						<div>
+							所有主题<em></em>
+						</div>
+						<ul style="display: none;">
+							<li><span></span><a href="/occasion/index">主题汇总</a></li>
+							<li><span></span><a href="/occasion/baby">宝宝成长</a></li>
+							<li><span></span><a href="/occasion/travel">旅行拍摄</a></li>
+							<li><span></span><a href="/occasion/wedding">完美婚礼</a></li>
+							<li><span></span><a href="/occasion/graduation">毕业专场</a></li>
+						</ul>
+					</div>
+					<div>
+						<a href="/stage/index">作品展厅</a>
+					</div>
+				</div>
+				<div class="sendTime_h5">
+					<div>
+						<a href="http://www.mimoprint.com/help/activity/deposit">
+							<img src="common/img/sale_h5.jpg" class="time_h5">预存优惠，长期折扣
+						</a>
+					</div>
+					<div>
+						<a href="/help/activity/index">所有活动优惠</a>
+					</div>
+				</div>
+				<div class="sendTime_h5">
+					<div>
+						<a href="http://i.mimoprint.com">
+							<img src="common/img/mimo.png" class="time_h5">我的礼意
+						</a>
+					</div>
+					<div>
+						<div>
+							会员中心<em></em>
+						</div>
+						<ul style="display: none;">
+							<li><span></span><a href="http://i.mimoprint.com/member/index">个人中心</a></li>
+							<li><span></span><a href="http://i.mimoprint.com/member/myprojects">我的作品</a></li>
+							<li><span></span><a href="http://i.mimoprint.com/myorder/mindex">我的订单</a></li>
+							<li><span></span><a href="http://i.mimoprint.com/member/mycoupons">优惠券</a></li>
+						</ul>
+					</div>
+					<div>
+						<a href="http://www.v5kf.com/public/help?sid=114994">帮助中心</a>
+					</div>
+					<div>
+						<a href="javascript:" onclick="_MEIQIA('showPanel')">联系客服</a>
+					</div>
+					<div>
+						<a href="/about/aboutmimo">关于礼意</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--头部结束-->
+		
+		<!--右侧悬浮导航-->
+		<div class="rightFrame">
+			<ul>
+				<li><a href="javascript:"><img src="common/img/active.png">
+				<p>
+					优惠活动
+				</p>
+				</a></li>
+				<li><a href="javascript:"><img src="common/img/gift.png">
+				<p>
+					新人有礼
+				</p>
+				</a></li>
+				<!--<li><img src="common/img/app2.png">
+				<p>
+					微信/App
+				</p>
+				<div class="codeImg" style="display: none;">
+					<div>
+						<img src="/common/img/newapp.png">
+						<p>
+							下载App
+						</p>
+					</div>
+					<div>
+						<img src="/common/img/newpublic.png">
+						<p>
+							微信公众号
+						</p>
+					</div>
+				</div>
+				</li>-->
+				<li onclick="_MEIQIA('showPanel')">
+					<a href="javascript:" target="_blank">
+						<img src="common/img/services.png">
+						<p>
+							在线客服
+						</p>
+					</a>
+				</li>
+				<li id="backtop" v-show="iShowGotop" @click="goTop()">
+					<img src="common/img/top.jpg">
+				<p>
+					返回顶部
+				</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<!--<script src="common/js/widget_sendTime.js" type="text/javascript" charset="utf-8"></script>-->
+<script type="text/javascript" src="common/js/widget_sendTime.js" ></script>
+<!--<script src="common/js/header.js" type="text/javascript" charset="utf-8"></script>-->
+<script type="text/javascript" src="common/js/hearder.js" ></script>
+<!--<script src="common/js/ga_common.js" type="text/javascript" charset="utf-8"></script>-->
+<script type="text/javascript" src="common/js/ga_common.js" ></script>
+<script type="text/javascript" src="product/detail/js/main.js" ></script>
+
+
+<div id="app">
+	<!--身体开始-->
+	<div class="content">
+		<div class="pc">
+			<div class="title">
+				<ul>
+					<li><a href="/index">首页</a><em>&gt;</em></li>
+					<li><a href="/product/index">所有产品</a><em>&gt;</em></li>
+					<li><a href="javascript:">时光书</a><em>&gt;</em></li>
+					<li><a class="active">微信书</a></li>
+				</ul>
+			</div>
+			<div class="product">
+				<div class="leftPic">
+					<div class="selImg">
+						<ul class="ImgList" id="imglist">
+							<li class="imlist active">
+								<span class="bs" style="display: none;"><em></em></span>
+								<img src="images/shopping/1c778496-c699-11e7-b140-00163e062ada.jpg" data-bigimg="images/shopping/1c740225-c699-11e7-b140-00163e062ada.jpg">
+							</li>
+							<li class="imlist" >
+								<span class="bs" style="display: none;"><em></em></span>
+								<img src="images/shopping/1c8e67f8-c699-11e7-b140-00163e062ada.jpg" data-bigimg="images/shopping/1c7a1ca7-c699-11e7-b140-00163e062ada.jpg">
+							</li>
+							<li class="imlist">
+								<span class="bs" style="display: none;"><em></em></span>
+								<img src="images/shopping/40e757e0-e0f2-11e7-b1b2-00163e062ada.jpg" data-bigimg="images/shopping/40c047df-e0f2-11e7-b1b2-00163e062ada.jpg">
+							</li>
+							<li class="imlist">
+								<span class="bs" style="display: none;"><em></em></span>
+								<img src="images/shopping/1cea91be-c699-11e7-b140-00163e062ada.jpg" data-bigimg="images/shopping/1ce7365d-c699-11e7-b140-00163e062ada.jpg">
+							</li>
+							<li class="imlist">
+								<span class="bs" style="display: none;"><em></em></span>
+								<img src="images/shopping/11a3d8f5-e0f1-11e7-b1b2-00163e062ada.jpg" data-bigimg="images/shopping/117e9db4-e0f1-11e7-b1b2-00163e062ada.jpg">
+							</li>
+							<li class="imlist">
+								<span class="bs"><em></em></span>
+								<img src="images/shopping/1b8700a2-c9e7-11e7-a32d-00163e062ada.jpg" data-bigimg="http://v.mimoprint.com/bb08b8cce759444c9a01ef0487823b48/a90eb6e08d6c49c3b25b63ad0469efb4-3882303683c2833db642082a311627b6.mp4"
+									 class="active">
+							</li>
+						</ul>
+					</div>
+					<div class="detailImg" id="dataimg">
+						<img src="images/shopping/1c740225-c699-11e7-b140-00163e062ada.jpg" onerror="Javascript:this.src='product/detail/img/default.jpg';" style="">
+						<video id="showVideo" controls="controls" autobuffer="" muted="muted" autoplay="autoplay" style="display: none;">
+							<source src="http://v.mimoprint.com/bb08b8cce759444c9a01ef0487823b48/a90eb6e08d6c49c3b25b63ad0469efb4-3882303683c2833db642082a311627b6.mp4" type="video/mp4">
+							<p>很抱歉，您的浏览器无法查看视频！</p>
+						</video>
+					</div>
+					<div class="detailMsg">
+						<p class="proName">
+							相册书
+						</p>
+						<div class="subtips">
+							<p>
+								朋友圈5分钟自动成书&nbsp;| 0.7元/页起 | 两种尺寸可选| 硬皮亚麻书壳
+							</p>
+						</div>
+						<!--产品不同会导致选项不同,选项不要混合使用-->
+						<div class="selMsg">
+							<!--照片书-->
+							<div class="size" style="">
+								<div class="title">
+									<p class="selTitle">
+										尺寸
+									</p>
+									<div>
+										<a href="javascript:" class="active">厘米</a>|<a href="javascript:">英寸</a>
+									</div>
+								</div>
+								<div class="select">
+									<span data-size="A4（21×28）" class="sel">A4（21×28）</span>
+									<span data-size="A5（21 x 14.5）" class="sel active">A5（21 x 14.5）</span>
+									<em class="active" style="display: none;"></em>
+								</div>
+								<div class="printDetail" style="display: none;">
+									<img align="absmiddle" src="">
+									<p style="display: none;">
+									</p>
+								</div>
+							</div>
+							<div class="print" style="">
+								<div class="title">
+									<p class="selTitle">
+										印刷工艺
+									</p>
+								</div>
+								<div class="select">
+									<span data-print="四色印刷" class="sel active">四色印刷</span>
+									<span data-print="六色印刷" class="sel">六色印刷</span>
+								</div>
+								<div class="printDetail" style="display: none;">
+									<img align="absmiddle" src="product/detail/img/printDetail01.jpg">
+									<p>
+										默认文案
+									</p>
+								</div>
+							</div>
+							<div class="gift" style="display: none;">
+								<div class="title">
+									<p class="selTitle">
+										套餐产品
+									</p>
+								</div>
+								<div class="select">
+								</div>
+								<div class="giftDetail" style="display: none;">
+									<img align="absmiddle" src="product/detail/img/printDetail01.jpg">
+									<p>
+										默认文案
+									</p>
+								</div>
+							</div>
+							<div class="bind" style="">
+								<div class="title">
+									<p class="selTitle">
+										装订工艺
+									</p>
+								</div>
+								<div class="select">
+									<span data-bind="软皮简装" class="sel active">软皮简装</span>
+									<span data-bind="硬皮精装" class="sel">硬皮精装</span>
+								</div>
+								<div class="bindDetail" style="display: none;">
+									<img align="absmiddle">
+									<p>
+										默认文案
+									</p>
+								</div>
+							</div>
+							<div class="frame" style="display: none;">
+								<div class="title">
+									<p class="selTitle">
+										画框
+									</p>
+								</div>
+								<div class="select">
+								</div>
+								<div class="frameDetail" style="display: none;">
+									<img align="absmiddle" src="product/detail/img/printDetail01.jpg">
+									<p>
+										默认文案
+									</p>
+								</div>
+							</div>
+							<div class="paper" style="">
+								<div class="title">
+									<p class="selTitle">
+										纸张
+									</p>
+								</div>
+								<div class="select">
+									<span data-paper="柔软书籍纸" class="sel active">柔软书籍纸</span>
+									<span data-paper="高级哑粉纸" class="sel">高级哑粉纸</span>
+								</div>
+								<div class="paperDetail" style="display: none;">
+									<img align="absmiddle" src="product/detail/img/printDetail01.jpg">
+									<p>
+										默认文案
+									</p>
+								</div>
+							</div>
+							<div class="capacity" style="display: none;">
+								<div class="title">
+									<p class="selTitle">
+										容量
+									</p>
+								</div>
+								<div class="select">
+								</div>
+								<div class="capacityDetail" style="display: none;">
+									<img align="absmiddle" src="product/detail/img/printDetail01.jpg">
+									<p>
+										默认文案
+									</p>
+								</div>
+							</div>
+							<div class="style" style="display: none;">
+								<div class="title">
+									<p class="selTitle">
+										款式
+									</p>
+								</div>
+								<div class="select">
+								</div>
+								<div class="styleDetail" style="display: none;">
+									<img align="absmiddle" src="product/detail/img/printDetail01.jpg">
+									<p>
+										默认文案
+									</p>
+								</div>
+							</div>
+							<div class="cover" style="display: none;">
+								<div class="title">
+									<p class="selTitle">
+										书壳
+									</p>
+								</div>
+								<div class="select">
+								</div>
+								<div class="coverDetail" style="display: none;">
+									<img align="absmiddle" src="product/detail/img/coverDetail01.jpg">
+									<p>
+										默认文案
+									</p>
+								</div>
+							</div>
+							<!---->
+						</div>
+						<div class="message">
+							<div class="leftMess">
+								<div>
+									<span class="messTit" style="margin-top: 11px;">价格</span>
+									<span class="price">￥2</span>
+									<span style="font-size: 12px; color: rgb(129, 63, 68); margin-left: 5px;">/页</span>
+									<span class="priceMo" style="display: none;">起</span>
+									<span class="coverPrice"><em class="coverName">(软皮封面：￥18/本)</em></span>
+									<span class="priceTab" style="margin-left: 15px;">
+										<span class="amz">!</span>了解价格表
+									</span><!----><!---->
+								</div>
+								<div class="action" style="">
+									<div class="messTit linn30 addWidth">
+										领券
+									</div>
+									<div>
+										<div>
+											<span class="megActive newAct">满减券，满200可用</span><a href="javascript:" class="get linn30">领取</a>
+										</div>
+									</div>
+								</div>
+								<div class="action" style="display: none;">
+									<div class="messTit addWidth">
+										活动
+									</div>
+									<div>
+									</div>
+								</div>
+								<div>
+									<span class="messTit addWidth" style="">服务</span>
+									<span class="megActive addLinehei"><em>免费返工重印</em>
+										<span>|</span><em>终身保修</em>
+										<span>|</span><em>免费调色</em>
+										<span>|</span><em>会员制</em>
+										<span style="display: none;">|</span>
+									</span>
+								</div>
+							</div>
+							<div class="rightMess">
+								<ul>
+									<li class="commentNum"><a href="javascript:">429</a></li>
+									<li class="comment">用户评论</li>
+									<li class="commentNum">10787</li>
+									<li class="comment">月销量</li>
+								</ul>
+							</div>
+						</div>
+						<div class="makeIt">
+							<a href="javascript:" class="makeiNow" style="display: none;">立即购买</a>
+							<a href="javascript:" class="makeiNow" style="display: none;">立即购买</a>
+							<a href="javascript:" class="makeiNow" style="display: none;">立即购买</a>
+							<a href="zhizuo.html" class="makeiNow" style="">立即制作</a>
+							<a href="javascript:" class="makeiApp" onmouseover ="show()" onmouseout="hidn()" style="">手机制作</a>
+						</div>
+						<div class="showImg" style="display: none;">
+							<div>
+								<img src="common/img/qrcode.png">
+								<p>
+									IOS
+								</p>
+							</div>
+							<div>
+								<img src="common/img/qrcode_android.jpg">
+								<p>
+									Android
+								</p>
+							</div>
+						</div>
+						<!---->
+					</div>
+				</div>
+			</div>
+			<!---->
+			
+			<div class="pacBg" style="display: none;">
+				<div class="firAlert" style="display: none;">
+					<div class="firCon">
+						<a href="javascript:" class="closeBtn"></a>
+						<p>
+						</p>
+						<p class="tit">
+							套餐优惠券购买须知
+						</p>
+						<p class="con">
+							1.套餐购买优惠券永久有效。
+						</p>
+						<p class="con">
+							2.套餐组合需先购买优惠券再制作。完成印品制作后下单用券抵扣金额。
+						</p>
+						<p class="con">
+							3.所购套餐产品均支持补差升级更多页数或其他工艺，补差部分按产品原价计算，不享受套餐折扣。
+						</p>
+						<p class="con">
+							4.本套餐遵循官网包邮原则：仅含冲印产品满28包邮，不含框画类产品满280元包邮，含框画类产品满380元包邮。
+						</p>
+						<p class="con">
+							5.套餐价超值让利，不可与预存折扣、积分抵现、批量优惠、活动优惠等其他优惠同享，补差部分可参与积分抵现。
+						</p>
+						<p class="con">
+							6.工作室用户不参与套餐优惠。
+						</p>
+					</div>
+				</div>
+				<div class="secAlert" style="display: none;">
+					<div class="secCon">
+						<a href="javascript:" class="closeBtn"></a>
+						<p class="tit">
+							确定套餐优惠券订单
+						</p>
+						<table>
+							<tbody>
+								<tr>
+									<th>商品名称</th>
+									<th>单价</th>
+									<th>数量</th>
+									<th>总计</th>
+								</tr>
+								<tr>
+									<td>微信书</td>
+									<td>￥1</td>
+									<td class="canHover">
+										<div>
+											<em>-</em><input type="text" id="pacNum"><em>+</em>
+										</div>
+									</td>
+									<td>
+										<p class="moreNum">￥1</p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="pacRule">
+							<p class="tit">
+								套餐优惠券购买须知
+							</p>
+							<p class="con">
+								1.套餐购买优惠券永久有效。
+							</p>
+							<p class="con">
+								2.套餐组合需先购买优惠券再制作。完成印品制作后下单用券抵扣金额。
+							</p>
+							<p class="con">
+								3.所购套餐产品均支持补差升级更多页数或其他工艺，补差部分按产品原价计算，不享受套餐折扣。
+							</p>
+							<p class="con">
+								4.本套餐遵循官网包邮原则：仅含冲印产品满28包邮，不含框画类产品满280元包邮，含框画类产品满380元包邮。
+							</p>
+							<p class="con">
+								5.套餐价超值让利，不可与预存折扣、积分抵现、批量优惠、活动优惠等其他优惠同享，补差部分可参与积分抵现。
+							</p>
+						</div>
+						<div class="keepRule">
+							<em>
+								<a class="noSel" style="display: none;"></a>
+								<img src="product/detail/img/selBtn.jpg">
+								<span>我已阅读并同意上述活动规则</span>
+							</em>
+						</div>
+						<div class="payFun">
+							<p class="tit">
+								选择支付方式
+							</p>
+							<div>
+								<div>
+									<a class="paySel" style="display: none;"></a>
+									<img src="product/detail/img/selPay.jpg" class="paySel2">
+									<img src="product/detail/img/aliPay.jpg">
+								</div>
+								<div>
+									<a class="paySel"></a>
+									<img src="product/detail/img/selPay.jpg" class="paySel2" style="display: none;">
+									<img src="product/detail/img/onlinePay.jpg">
+								</div>
+							</div>
+							<a href="javascript:" id="buyCalPac">立即购买</a>
+						</div>
+					</div>
+				</div>
+				<div class="thrAlert" style="display: none;">
+					<div class="thrCon">
+						<a href="javascript:" class="closeBtn"></a>
+						<p class="tit">
+							您已成功购买套餐优惠券！
+						</p>
+						<div>
+							<img src="product/detail/img/paySuc.jpg">
+							<span>优惠券已发送到您的礼意账户中。</span>
+						</div>
+						<a href="http://i.mimoprint.com/mywellfare/coupons" class="goAway">立即查看</a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="rightDetail">
+				<div class="active">
+					产品详情
+				</div>
+				<div class="pingjia ">
+					客户评价（429）
+				</div>
+				<div class="">
+					客户晒单（40）
+				</div>
+			</div>
+			
+			<div class="proDetail">
+				<p>
+					<img src="images/shopping/1529669060168053870.jpg" title="" alt="微信书-改.jpg">
+				</p>
+				<p>
+					<img src="images/shopping/1527143610354015020.jpg" title="" alt="1514545000086045133.jpg">
+				</p>
+				<p>
+					<img src="images/shopping/1527143615096084945.jpg" title="" alt="图层1.jpg">
+				</p>
+				<p>
+					<img src="images/shopping/1527143620516069254.jpg" title="" alt="图层2.jpg">
+				</p>
+				<p>
+					<img src="images/shopping/1527143625450061372.jpg" title="" alt="图层3.jpg">
+				</p>
+				<p>
+					<img src="images/shopping/1527143630147053984.jpg" title="" alt="图层4.jpg">
+				</p>
+				<p>
+					<img src="images/shopping/1527143635746072195.jpg" title="" alt="图层5.jpg">
+				</p>
+				<p>
+					<img src="images/shopping/1527143641544019329.jpg" title="" alt="图层6.jpg">
+				</p>
+				<p>
+					<img src="images/shopping/1527143646257000341.jpg" title="" alt="图层7.jpg">
+				</p>
+				<p>
+					<img src="images/shopping/1527143650896013878.jpg" title="" alt="图层8.jpg">
+				</p>
+				<p>
+					<br>
+				</p>
+				<a href="javascript:" class="createBook2">立即制作</a>
+			</div>
+			<!---->
+			<widget-comment></widget-comment>
+			<div class="morePro">
+				<div class="recomment1">
+					<p>
+						<span class="leftLine"></span>了解更多专题<span class="rightLine"></span>
+					</p>
+					<a href="/occasion/index"><img src="product/detail/img/theme01.jpg?v=1"></a>
+				</div>
+				<div class="recomment2">
+					<p>
+						<span class="leftLine"></span>猜您喜欢<span class="rightLine"></span>
+					</p>
+					<div>
+						<a href="/product/timebooks/weibo">
+							<img src="images/shopping/2eebca2e-ea2a-11e7-b1b2-00163e062ada.jpg">
+						</a>
+						<a href="/product/timebooks/qinbaobao">
+							<img src="images/shopping/2ecf417d-ea2a-11e7-b1b2-00163e062ada.jpg">
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="priceList" style="display: none;">
+				<div class="timeBook" style="display: none;">
+					<div class="title">
+						<p>价格表</p>
+						<a href="javascript:">+</a>
+					</div>
+					<div class="con">
+						<div class="table1">
+							<table>
+								<tbody>
+									<tr>
+										<th>尺寸</th>
+										<th colspan="2">A4(21*28cm)</th>
+										<th colspan="2">A5(21*14.5cm)</th>
+									</tr>
+									<tr>
+										<td>纸张</td>
+										<td>高级哑粉纸</td>
+										<td>柔软书籍纸</td>
+										<td>高级哑粉纸</td>
+										<td>柔软书籍纸</td>
+									</tr>
+									<tr>
+										<td>四色标清</td>
+										<td class="getColor">￥1.5/页</td>
+										<td class="getColor">￥2.0/页</td>
+										<td class="getColor">￥0.7/页</td>
+										<td class="getColor">￥1.0/页</td>
+									</tr>
+									<tr>
+										<td>六色高清</td>
+										<td class="getColor">￥2.0/页</td>
+										<td class="getColor">￥3.0/页</td>
+										<td class="getColor">￥1.2/页</td>
+										<td class="getColor">￥1.5/页</td>
+									</tr>
+									<tr>
+										<td rowspan="2">封面</td>
+										<td rowspan="2" colspan="2" class="getColor">软皮￥38</td>
+										<td colspan="2" class="getColor">硬皮￥48</td>
+									</tr>
+									<tr>
+										<td colspan="2" class="getColor">软皮￥18</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="table2">
+							<table>
+								<tbody>
+								<tr>
+									<th>页数</th>
+									<th>折扣</th>
+								</tr>
+								<tr>
+									<td>81~120</td>
+									<td class="getColor">95折</td>
+								</tr>
+								<tr>
+									<td>121~160P</td>
+									<td class="getColor">92折</td>
+								</tr>
+								<tr>
+									<td>161~200P</td>
+									<td class="getColor">88折</td>
+								</tr>
+								<tr>
+									<td>&gt; 200P</td>
+									<td class="getColor">85折</td>
+								</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="ale">
+						<p>
+							<span style="color: red;">*</span>
+							为避免书本太厚影响阅读体验，时光书内容如超过240页将自动分成均等页数的多册装订，自动分册<br>
+							不影响内页多印优惠。<br>
+							例如: 350页自动分成2册各175页，660页自动分成3册各220页。
+						</p>
+					</div>
+				</div>
+				<!---->
+			</div>
+		</div>
+	</div>
+	<div class="blackBg" style="display: none;">
+		<div>
+			<img><a></a>
+		</div>
+	</div>
+	<div class="blackBgg" style="display: none;">
+		<div class="conn">
+			<span>消息</span><a class="close"></a>
+			<p class="getCouMsg">
+				您已经领过这张优惠券了，请使用完再来领吧。
+			</p>
+			<div>
+				<a href="javascript:" class="quit">取消</a>
+				<a href="http://i.mimoprint.com/mywellfare/coupons" class="goTicket">查看优惠券</a>
+			</div>
+		</div>
+	</div>
+	<div class="blackBgg" style="display: none;">
+		<div class="conn">
+			<span>温馨提示</span><a class="close"></a>
+			<p class="getCouMsg">
+				批量定制纪念册最低30本起购哦~。
+			</p>
+			<div>
+				<a href="javascript:" class="quit">取消</a><a href="javascript:" class="goTicket">我已了解</a>
+			</div>
+		</div>
+	</div>
+	<div class="blackBgg" style="display: none;">
+		<div class="conn">
+			<span>温馨提示</span><a class="close"></a>
+			<p class="getCouMsg">
+				工作室用户不参与套餐优惠。
+			</p>
+			<div>
+				<a href="javascript:" class="goTicket" style="float: right;">我已了解</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!--底部开始-->
+<div class="footer">
+	<!--PC-->
+	<div class="footer_pc">
+		<div class="about">
+			<p>
+				关于礼意
+			</p>
+			<ul>
+				<li><a href="/about/aboutmimo">关于我们</a></li>
+				<li><a href="/about/whymimo">为什么选择礼意印品？</a></li>
+				<li><a href="http://www.mimoprint.com/about/customerwords/evaluateDisplay">客户评价</a></li>
+			</ul>
+		</div>
+		<div class="help">
+			<p>帮助中心</p>
+			<ul>
+				<li><a target="_blank" href="http://www.v5kf.com/public/help?sid=114994">常见问题</a></li>
+				<li><a target="_blank" href="javascript:" onclick="_MEIQIA('showPanel')">点击在线咨询</a></li>
+				<!--<li><a target="_blank" href="https://mimoprint.qiyukf.com/client?k=310c9a9456a04e104a67b444fc0cdcfc&wp=1">点击在线咨询</a></li>
+				-->
+				<li>客服热线：400-665-9395</li>
+				<li>法定工作日 9:30-18:00</li>
+			</ul>
+		</div>
+		<!--<div class="codeImg">
+			<div>
+				<img src="common/img/newpublic.png">
+				<p>
+					微信公众号
+				</p>
+			</div>
+			<div>
+				<img src="common/img/newapp.png">
+				<p>
+					下载App
+				</p>
+			</div>
+		</div>-->
+		<!--<div class="comper">
+			<p style="padding-top:14px;">
+				摄影师合作
+			</p>
+			<a href="http://design.mimoprint.com/workshop">
+			<img src="common/img/footerIcon.jpg">
+			</a>
+		</div>-->
+	</div>
+	<div class="bottomTipss">
+		Copyright 2013-2017<a href="http://www.miitbeian.gov.cn" target="_blank">赣ICP备09190341</a>
+	</div>
+	<!--H5-->
+	<div class="footer_h5">
+		<ul>
+			<li>
+			<div>
+				便
+			</div>
+			<p>
+				手机电脑<br>
+				均可制作
+			</p>
+			</li>
+			<li>
+			<div>
+				退
+			</div>
+			<p>
+				印刷偏色<br>
+				免费重印
+			</p>
+			</li>
+			<li>
+			<div>
+				保
+			</div>
+			<p>
+				质量问题<br>
+				终身保修
+			</p>
+			</li>
+			<li>
+			<div>
+				正
+			</div>
+			<p>
+				真材实料<br>
+				保证品质
+			</p>
+			</li>
+		</ul>
+		<div class="footerMenu">
+			<div onclick="showHelp()">
+		帮助中心
+				<em>+</em>
+				<ul class="helpCenter">
+					<li>
+					<em></em><a href="http://www.v5kf.com/public/help?sid=114994">常见问题</a>
+					</li>
+					<li>
+					<em></em><a href="/help/activity/index">优惠活动</a>
+					</li>
+					<li>
+					<em></em><a href="javascript:" onclick="_MEIQIA('showPanel')">联系客服</a>
+					</li>
+				</ul>
+			</div>
+			<div onclick="showAbout()">
+		关于礼意
+				<em>+</em>
+				<ul class="aboutMimo">
+					<li>
+					<em></em><a href="/about/aboutmimo">关于礼意</a>
+					</li>
+					<li>
+					<em></em><a href="/about/whymimo">为什么选择礼意</a>
+					</li>
+					<li>
+					<em></em><a href="http://www.mimoprint.com/about/customerwords/evaluateDisplay">客户评价</a>
+					</li>
+				</ul>
+			</div>
+			<div onclick="downApp()">
+		获取App
+				<em>+</em>
+			</div>
+			<div class="bottomBtn">
+				Copyright 2013-2017<br>
+				<a href="http://www.miitbeian.gov.cn" target="_blank">赣ICP备09190341</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!--底部结束-->
+<!--<script src="common/js/footer.js" type="text/javascript" charset="utf-8"></script>-->
+<script type="text/javascript" src="common/js/footer.js" ></script>
+<!--<script src="js/jweixin-1.2.0.js" type="text/javascript" charset="utf-8"></script>-->
+<script type="text/javascript" src="js/jweixin-1.2.0.js" ></script>
+
+<script>
+	var _title = '礼意印品',
+		_desc = '',
+		_link = window.location.href,
+		_imgUrl = '';
+		var productKey = 'weixin';
+</script>
+
+<!--<script src="common/js/shareMsg.js" type="text/javascript" charset="utf-8"></script>-->
+<script type="text/javascript" src="common/js/shareMsg.js" ></script>
+<!--<script src="common/js/superagent.js" type="text/javascript" charset="utf-8"></script>-->
+<script type="text/javascript" src="common/js/superagent.js" ></script>
+
+<!--<script src="common/widget_comment/widget_comment.js" type="text/javascript" charset="utf-8"></script>-->
+<script type="text/javascript" src="common/widget_comment/widget_comment.js" ></script>
+<script src="product/detail/js/main.js" type="text/javascript" charset="utf-8"></script>
+
+
+
+<div id="MEIQIA-PANEL-HOLDER">
+	<div id="MEIQIA-DRAG-HANDLE">
+	</div>
+	<div id="MEIQIA-DRAG-MASK">
+	</div>
+	<iframe id="MEIQIA-IFRAME" src="https://eco-api.meiqia.com/dist/desktop-customer.html?k2p6mnd452xx0f6r" frameborder="0" scrolling="no" allowtransparency="true">
+	</iframe>
+</div>
+<div id="MEIQIA-INVITE">
+	<span id="MEIQIA-INVITE-CLOSE" class="MEIQIA-ICON"></span>
+	<div id="MEIQIA-INVITE-INSIDE">
+		您好，当前有专业客服人员在线，让我们来帮助您吧。
+	</div>
+	<span id="MEIQIA-INVITE-ARROW1"></span><span id="MEIQIA-INVITE-ARROW2"></span>
+</div>
+</body>
+</html>

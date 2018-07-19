@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kesun.dao.ht.IStore">
+    <resultMap id="BaseResultMap" type="kesun.entity.ht.Store">
+        <result column="id" property="id"/>
+        <result column="storename" property="storename"/>
+        <result column="description" property="description"/>
+        <result column="address" property="address"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="area" property="area"/>
+        <result column="idimage" property="idimage"/>
+        <result column="number" property="number"/>
+        <result column="idcard" property="idcard"/>
+        <result column="bcnumber" property="bcnumber"/>
+        <result column="storeimage" property="storeimage"/>
+        <result column="d_id" property="d_id"/>
+        <result column="credit" property="credit"/>
+        <result column="approval" property="approval"/>
+        <result column="time" property="time"/>
+        <result column="status" property="status"/>
+        <result column="reason" property="reason"/>
+        <result column="rank" property="rank"/>
+
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,storename,description,number,address,province,city,area,idcard,idimage,storeimage,
+        bcnumber,d_id,credit,approval,time,status,reason,rank
+
+    </sql>
+    <sql id="colums">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id!= null">
+                id,
+            </if>
+            <if test="reason!= null">
+                reason,
+            </if>
+            <if test="rank!= null">
+                rank,
+            </if>
+            <if test="storename!= null">
+                storename,
+            </if>
+            <if test="description!= null">
+                description,
+            </if>
+            <if test="address!= null">
+                address,
+            </if>
+            <if test="province!= null">
+                province,
+            </if>
+            <if test="city!= null">
+                city,
+            </if>
+            <if test="area!= null">
+                area,
+            </if>
+            <if test="number!= null">
+               number,
+            </if>
+            <if test="idcard!= null">
+                idcard,
+            </if>
+            <if test="idimage!= null">
+                idimage,
+            </if>
+            <if test="storeimage!= null">
+                storeimage,
+            </if>
+            <if test="bcnumber!= null">
+                bcnumber,
+            </if>
+            <if test="credit!= null">
+                credit,
+            </if>
+            <if test="approval!= null">
+                approval,
+            </if>
+            <if test="status!= null">
+                 status,
+            </if>
+            <if test="d_id!= null">
+                d_id,
+            </if>
+            <if test="time!= null">
+                time,
+            </if>
+
+        </trim>
+    </sql>
+    <sql id="columsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id!= null">
+               #{id},
+            </if>
+            <if test="reason!= null">
+                #{reason},
+            </if>
+            <if test="rank!= null">
+                #{rank},
+            </if>
+            <if test="storename!= null">
+               #{storename},
+            </if>
+            <if test="description!= null">
+              #{description},
+            </if>
+            <if test="address!= null">
+                #{address},
+            </if>
+            <if test="province!= null">
+                #{province},
+            </if>
+
+            <if test="city!= null">
+                #{city},
+            </if>
+
+            <if test="area!= null">
+                #{area},
+            </if>
+            <if test="number!= null">
+                #{number},
+            </if>
+            <if test="idcard!= null">
+                #{idcard},
+            </if>
+            <if test="idimage!= null">
+                #{idimage},
+            </if>
+            <if test="storeimage!= null">
+                #{storeimage},
+            </if>
+            <if test="bcnumber!= null">
+                #{bcnumber},
+            </if>
+            <if test="credit!= null">
+                #{credit},
+            </if>
+            <if test="approval!= null">
+               #{approval},
+            </if>
+            <if test="status!= null">
+                #{status},
+            </if>
+            <if test="d_id!= null">
+                #{d_id},
+            </if>
+            <if test="time!= null">
+                #{time},
+            </if>
+        </trim>
+    </sql>
+    <sql id="columsItemsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="item.id!= null">
+                #{item.id},
+            </if>
+            <if test="item.reason!= null">
+                #{item.reason},
+            </if>
+            <if test="item.rank!= null">
+                #{rank},
+            </if>
+            <if test="item.storename!= null">
+                #{item.storename},
+            </if>
+            <if test="item.description!= null">
+                #{item.description},
+            </if>
+            <if test="item.address!= null">
+                #{item.address},
+            </if>
+            <if test="item.province!= null">
+                #{item.province},
+            </if>
+
+            <if test="item.city!= null">
+                #{item.city},
+            </if>
+
+            <if test="item.area!= null">
+                #{item.area},
+            </if>
+            <if test="item.number!= null">
+                #{item.number},
+            </if>
+            <if test="item.idcard!= null">
+                #{item.idcard},
+            </if>
+            <if test="item.idimage!= null">
+                #{item.idimage},
+            </if>
+            <if test="item.storeimage!= null">
+                #{item.storeimage},
+            </if>
+            <if test="item.bcnumber!= null">
+                #{item.bcnumber},
+            </if>
+            <if test="item.credit!= null">
+                #{item.credit},
+            </if>
+            <if test="item.approval!= null">
+                #{item.approval},
+            </if>
+            <if test="item.status!= null">
+                #{item.status},
+            </if>
+            <if test="item.d_id!= null">
+                #{item.d_id},
+            </if>
+            <if test="item.time!= null">
+                #{item.time},
+            </if>
+        </trim>
+    </sql>
+    <sql id="partValue">
+        <trim suffix="" suffixOverrides="AND">
+            <if test="approval!=null">
+                approval like '%${approval}%' AND
+            </if>
+            <if test="storename!=null">
+                storename like '%${storename}%' AND
+            </if>
+        </trim>
+    </sql>
+    <!--单个对象新增-->
+    <insert id="save" parameterType="kesun.entity.ht.Store">
+        insert into i_store  (
+        <include refid="colums"/>
+        ) values (
+        <include refid="columsValue"/>)
+    </insert>
+    <!--批量新增-->
+    <insert id="batchSave" parameterType="java.util.List">
+        insert into i_store (
+        <include refid="colums"/>
+        ) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            <include refid="columsItemsValue"/>
+            );
+        </foreach>
+    </insert>
+    <!--单个对象更新-->
+    <update id="update" parameterType="kesun.entity.ht.Store">
+        update i_store  set
+        <trim suffix="" suffixOverrides=",">
+            <if test="id!= ''">
+               id=#{id},
+            </if>
+            <if test="reason!= ''">
+                reason=#{reason},
+            </if>
+            <if test="rank!=''">
+                rank=#{rank},
+            </if>
+            <if test="storename!= ''">
+                storename=#{storename},
+            </if>
+            <if test="description!=''">
+                description=#{description},
+            </if>       
+            <if test="number!= ''">
+               number=#{number},
+            </if>
+            <if test="idcard!=''">
+                idcard=#{idcard},
+            </if>
+            <if test="idimage!=''">
+                idimage=#{idimage},
+            </if>
+            <if test="storeimage!=''">
+               storeimage=#{storeimage},
+            </if>
+            <if test="address!= ''">
+               address=#{address},
+            </if>
+            <if test="province!= ''">
+                province=#{province},
+            </if>
+            <if test="city!= ''">
+                city=#{city},
+            </if>
+            <if test="area!= ''">
+                area=#{area},
+            </if>
+            <if test="bcnumber!= ''">
+                bcnumber=#{bcnumber},
+            </if>
+            <if test="credit!= ''">
+                credit=#{credit},
+            </if>
+            <if test="approval!= ''">
+                approval=#{approval},
+            </if>
+            <if test="status!= ''">
+                status=#{status},
+            </if>
+            <if test="d_id!=''">
+                d_id=#{d_id},
+            </if>
+            <if test="time!=''">
+                time=#{time},
+            </if>
+        </trim>
+        where id=#{id,jdbcType=VARCHAR}
+    </update>
+    <!--对象批量更新-->
+    <update id="batchUpdate" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update i_store  set
+            <trim suffix="" suffixOverrides=",">
+                <if test="item.id!= null">
+                    item.id=#{item.id},
+                </if>
+                <if test="item.reason!= null">
+                    item.reason=#{item.reason},
+                </if>
+                <if test="item.rank!= null">
+                    item.rank=#{item.rank},
+                </if>
+                <if test="item.storename!= null">
+                    item.storename=#{item.storename},
+                </if>
+                <if test="item.description!= null">
+                    item.description=#{item.description},
+                </if>
+                <if test="item.address!= null">
+                    item.address=#{item.address},
+                </if>
+                <if test="item.province!= null">
+                    province=#{item.province},
+                </if>
+                <if test="item.city!= null">
+                    city=#{item.city},
+                </if>
+                <if test="item.area!= null">
+                    area=#{item.area},
+                </if>
+                <if test="item.number!= null">
+                    item.number=#{item.number},
+                </if>
+                <if test="item.idcard!= null">
+                    item.idcard=#{item.idcard},
+                </if>
+                <if test="item.idimage!= null">
+                    item.idimage=#{item.idimage},
+                </if>
+                <if test="item.storeimage!= null">
+                    item.storeimage=#{item.storeimage},
+                </if>
+                <if test="item.status!= null">
+                    item.status=#{item.status},
+                </if>
+                <if test="item.bcnumber!= null">
+                    item.bcnumber=#{item.bcnumber},
+                </if>
+                <if test="item.credit!= null">
+                    item.credit=#{item.credit},
+                </if>
+                <if test="item.approval!= null">
+                    item.approval=#{item.approval},
+                </if>
+                <if test="item.d_id!= null">
+                    item.d_id=#{item.d_id},
+                </if>
+                <if test="item.time!= null">
+                    item.time=#{item.time},
+                </if>
+            </trim>
+            where id=#{item.id,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+    <!--单个对象删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from i_store   where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        delete from i_store
+        <where>
+            id in
+            <foreach collection="list" item="item" separator="," open="(" close=")">#{item.id,jdbcType=VARCHAR}</foreach>
+        </where>
+
+    </delete>
+    <!--单个对象查找-->
+    <select id="getMe" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        *
+        from i_store where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <!--查找，以Map返回-->
+    <select id="findForMap" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from  i_store
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="approval!=null">
+                    approval like '%${approval}%' or
+                </if>
+            </trim>
+        </where>
+        order by approval ASC
+
+    </select>
+    <!--查询，以对象集合返回-->
+    <select id="find" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from i_store
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="storename!=null">
+                    storename like '%${storename}%' or
+                </if>
+            </trim>
+        </where>
+        order by approval ASC
+    </select>
+    <!--返回查找条数-->
+    <select id="getRowsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) as total from i_store
+        <where>
+            <if test="storename!=null">
+                storename like '%${storename}%'
+            </if>
+        </where>
+    </select>
+    <!--分页查找-->
+    <select id="findByPage" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from i_store
+        <where>
+            <include refid="partValue"></include>
+        </where>
+        order by id ASC
+        <if test="start !=0 or limit!=0">
+            limit #{start},#{limit}
+        </if>
+
+    </select>
+    <!--判断数据是否在使用中-->
+    <select id="objectInUse" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        <![CDATA[ select count(id) from i_store   where storename=#{id} ]]>
+    </select>
+    <!--数据统计-->
+    <select id="find2"   resultType="Map">
+SELECT
+	a.allstore,
+	b.storecount,
+	b.time
+FROM
+	( SELECT count( id ) allstore FROM i_store ) a,
+	( SELECT count( MONTH ( time ) ) AS storecount, MONTH ( time ) AS time FROM i_store GROUP BY MONTH ( time ) ) b    </select>
+</mapper>

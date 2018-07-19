@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kesun.dao.liyi.sj_Store">
+    <resultMap id="BaseResultMap" type="kesun.entity.liyi.sj_store">
+        <result column="id" property="id"/>
+        <result column="storename" property="storename"/>
+        <result column="number" property="number"/>
+
+        <result column="province" property="province"/>
+
+        <result column="city" property="city"/>
+
+        <result column="area" property="area"/>
+        <result column="address" property="address"/>
+
+        <result column="idcard" property="idcard"/>
+
+        <result column="idimage" property="idimage"/>
+
+        <result column="storeimage" property="storeimage"/>
+
+        <result column="bcNumber" property="bcNumber"/>
+
+        <result column="d_id" property="d_id"/>
+
+        <result column="time" property="time"/>
+
+        <result column="credit" property="credit"/>
+
+        <result column="approval" property="approval"/>
+
+        <result column="description" property="description"/>
+        <result column="status" property="status"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,address,status,time,storename,number,province,city,area,idcard,
+        idimage,storeimage,bcNumber,d_id,credit,approval,description
+    </sql>
+    <sql id="colums">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id!= null">
+                id,
+            </if>
+            <if test="storename!= null">
+                storename,
+            </if>
+            <if test="number != null">
+                number,
+            </if>
+            <if test="province!= null">
+                province,
+            </if>
+            <if test="city!= null">
+                city,
+            </if>
+
+            <if test="area!= null">
+                area,
+            </if>
+            <if test="idcard!= null">
+                idcard,
+            </if>
+
+            <if test="address!= null">
+                address,
+            </if>
+
+            <if test="idimage!= null">
+                idimage,
+            </if>
+
+            <if test="storeimage!= null">
+                storeimage,
+            </if>
+            <if test="bcNumber!= null">
+                bcNumber,
+            </if>
+            <if test="d_id!= null">
+                d_id,
+            </if>
+            <if test="status!= null">
+                status,
+            </if>
+            <if test="time!= null">
+                time,
+            </if>
+            <if test="credit!= null">
+                credit,
+            </if>
+            <if test="approval!= null">
+                approval,
+            </if>
+            <if test="description!= null">
+                description,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="columsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id!= null">
+                #{id},
+            </if>
+            <if test="storename!= null">
+                #{storename},
+            </if>
+            <if test="number != null">
+                #{number},
+            </if>
+            <if test="province!= null">
+                #{province},
+            </if>
+            <if test="city!= null">
+                #{city},
+            </if>
+
+            <if test="area!= null">
+                #{area},
+            </if>
+            <if test="idcard!= null">
+                #{idcard},
+            </if>
+
+            <if test="address!= null">
+                #{address},
+            </if>
+
+            <if test="idimage!= null">
+                #{idimage},
+            </if>
+
+            <if test="storeimage!= null">
+                #{storeimage},
+            </if>
+            <if test="bcNumber!= null">
+                #{bcNumber},
+            </if>
+            <if test="d_id!= null">
+                #{d_id},
+            </if>
+            <if test="status!= null">
+                #{status},
+            </if>
+            <if test="time!= null">
+                #{time},
+            </if>
+            <if test="credit!= null">
+                #{credit},
+            </if>
+            <if test="approval!= null">
+                #{approval},
+            </if>
+            <if test="description!= null">
+                #{description},
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="columsItemsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id!= null">
+                #{item.id},
+            </if>
+            <if test="storename!= null">
+                #{item.storename},
+            </if>
+            <if test="number != null">
+                #{item.number},
+            </if>
+            <if test="province!= null">
+                #{item.province},
+            </if>
+            <if test="city!= null">
+                #{item.city},
+            </if>
+
+            <if test="area!= null">
+                #{item.area},
+            </if>
+            <if test="idcard!= null">
+                #{item.idcard},
+            </if>
+
+            <if test="address!= null">
+                #{item.address},
+            </if>
+
+            <if test="idimage!= null">
+                #{item.idimage},
+            </if>
+
+            <if test="storeimage!= null">
+                #{item.storeimage},
+            </if>
+            <if test="bcNumber!= null">
+                #{item.bcNumber},
+            </if>
+            <if test="d_id!= null">
+                #{item.d_id},
+            </if>
+            <if test="status!= null">
+                #{item.status},
+            </if>
+            <if test="time!= null">
+                #{item.time},
+            </if>
+            <if test="credit!= null">
+                #{item.credit},
+            </if>
+            <if test="approval!= null">
+                #{item.approval},
+            </if>
+            <if test="description!= null">
+                #{item.description},
+            </if>
+        </trim>
+    </sql>
+
+    <!--单个对象新增-->
+    <insert id="save" parameterType="kesun.entity.liyi.sj_store">
+        insert into i_stroe  (
+        <include refid="colums"/>
+        ) values (
+        <include refid="columsValue"/>)
+    </insert>
+    <!--批量新增-->
+    <insert id="batchSave" parameterType="java.util.List">
+        insert into i_store (
+        <include refid="colums"/>
+        ) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            <include refid="columsItemsValue"/>
+            );
+        </foreach>
+    </insert>
+    <!--单个对象更新-->
+    <update id="update" parameterType="kesun.entity.liyi.sj_store">
+        update i_store  set
+        <trim suffix="" suffixOverrides=",">
+            <if test="id!= null">
+                id=#{id},
+            </if>
+            <if test="storename!= null">
+                storename=#{storename},
+            </if>
+            <if test="number != null">
+                number=#{number},
+            </if>
+            <if test="province!= null">
+                province=#{province},
+            </if>
+            <if test="city!= null">
+                city=#{city},
+            </if>
+
+            <if test="area!= null">
+                area=#{area},
+            </if>
+            <if test="idcard!= null">
+                idcard=#{idcard},
+            </if>
+
+            <if test="address!= null">
+                address= #{address},
+            </if>
+
+            <if test="idimage!= null">
+                idimage=  #{idimage},
+            </if>
+
+            <if test="storeimage!= null">
+                storeimage=#{storeimage},
+            </if>
+            <if test="bcNumber!= null">
+                bcNumber= #{bcNumber},
+            </if>
+            <if test="d_id!= null">
+                d_id= #{d_id},
+            </if>
+            <if test="status!= null">
+                status= #{status},
+            </if>
+            <if test="time!= null">
+                time= #{time},
+            </if>
+            <if test="credit!= null">
+                credit= #{credit},
+            </if>
+            <if test="approval!= null">
+                approval= #{approval},
+            </if>
+            <if test="description!= null">
+                description= #{description},
+            </if>
+        </trim>
+        where id=#{id,jdbcType=VARCHAR}
+    </update>
+    <!--对象批量更新-->
+    <update id="batchUpdate" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update I_user  set
+            <trim suffix="" suffixOverrides=",">
+                <if test="item.id != null">
+                    id=#{item.id},
+                </if>
+                <if test="item.s_id != null">
+                    id=#{item.s_id},
+                </if>
+                <if test="item.oldId != null">
+                    oldId=#{item.oldId},
+                </if>
+                <if test="item.name != null">
+                    name=#{item.name},
+                </if>
+
+                <if test="item.nickname!= null">
+                    nickname=#{item.nickname},
+                </if>
+
+                <if test="item.password!= null">
+                    password=#{item.password},
+                </if>
+                <if test="item.phone!= null">
+                    phone=#{item.phone},
+                </if>
+                <if test="item.email!= null">
+                    email=#{item.email},
+                </if>
+                <if test="address!= null">
+                    address=#{address},
+                </if>
+
+                <if test="item.birthday!= null">
+                    birthday=#{item.birthday},
+                </if>
+
+                <if test="item.sex!= null">
+                    sex=#{item.sex},
+                </if>
+                <if test="item.integral!= null">
+                    integral=#{item.integral},
+                </if>
+                <if test="item.avatar!= null">
+                    avatar=#{item.avatar},
+                </if>
+                <if test="item.status!= null">
+                    status=#{item.status},
+                </if>
+                <if test="item.time!= null">
+                    time=#{item.time},
+                </if>
+            </trim>
+            where id=#{item.oldId,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+    <!--单个对象删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from i_store   where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        delete from i_store
+        <where>
+            id in
+            <foreach collection="list" item="item" separator="," open="(" close=")">#{item.id,jdbcType=VARCHAR}</foreach>
+        </where>
+
+    </delete>
+    <!--单个对象查找-->
+    <select id="getMe" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        *
+        from i_store  where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getstoreview" parameterType="java.lang.String" resultType="Map">
+        SELECT storevxiaoliangiew.storename,storevxiaoliangiew.storeimage,storevxiaoliangiew.id,storeview.storecount
+FROM storevxiaoliangiew   RIGHT JOIN (SELECT id,count(id) as storecount FROM storevxiaoliangiew GROUP BY id) as storeview
+on storevxiaoliangiew.id=storeview.id where storevxiaoliangiew.storename like #{0}
+ GROUP BY storevxiaoliangiew.storename,storevxiaoliangiew.id,storeview.storecount,storevxiaoliangiew.storeimage
+ order by storeview.storecount desc
+    </select>
+
+
+
+    <select id="getmenewstore" parameterType="java.lang.String" resultType="java.util.Map">
+        SELECT storevxiaoliangiew.storename,storevxiaoliangiew.storeimage,storevxiaoliangiew.id,storeview.storecount
+FROM storevxiaoliangiew   RIGHT JOIN (SELECT id,count(id) as storecount FROM storevxiaoliangiew GROUP BY id) as storeview
+on storevxiaoliangiew.id=storeview.id
+ GROUP BY storevxiaoliangiew.storename,storevxiaoliangiew.id,storeview.storecount,storevxiaoliangiew.storeimage
+ order by storeview.storecount desc
+    </select>
+    
+
+    
+    
+    <!--查找，以Map返回-->
+    <select id="findForMap" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from  I_user
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="name!=null">
+                    name like '%${name}%' or
+                </if>
+            </trim>
+        </where>
+        order by name ASC
+    </select>
+    <!--查询，以对象集合返回-->
+    <select id="find" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from I_user
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="name!=null">
+                    name like '%${name}%' or
+                </if>
+            </trim>
+        </where>
+        order by name ASC
+    </select>
+    <!--返回查找条数-->
+    <select id="getRowsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) as total from I_user
+        <where>
+            <if test="name!=null">
+                name like '%${name}%'
+            </if>
+        </where>
+    </select>
+    <!--分页查找-->
+    <select id="findByPage" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from I_user
+        <where>
+            <if test="name!=null">
+                name like '%${name}%'
+            </if>
+        </where>
+        order by name ASC
+        <if test="start !=0 or limit!=0">
+            limit #{start},#{limit}
+        </if>
+
+    </select>
+    <!--判断数据是否在使用中-->
+    <select id="objectInUse" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        <![CDATA[ select count(id) from I_user   where name=#{id} ]]>
+    </select>
+
+</mapper>

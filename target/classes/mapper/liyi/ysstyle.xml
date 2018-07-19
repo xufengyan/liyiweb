@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kesun.dao.liyi.Iys_Style">
+    <resultMap id="BaseResultMap" type="kesun.entity.liyi.ys_Style">
+        <result column="id" property="id"/>
+        <result column="styleImage1" property="styleImage1"/>
+        <result column="style1" property="style1"/>
+        <result column="comm_id" property="comm_id"/>
+
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,styleImage1,style1,comm_id
+    </sql>
+    <sql id="colums">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id!= null">
+                id,
+            </if>
+            <if test="styleImage1!= null">
+                styleImage1,
+            </if>
+
+            <if test="style1!= null">
+                style1,
+            </if>
+
+
+            <if test="comm_id!= null">
+                comm_id,
+            </if>
+
+
+        </trim>
+    </sql>
+
+    <sql id="columsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id!= null">
+                #{id},
+            </if>
+            <if test="styleImage1!= null">
+                #{styleImage1},
+            </if>
+
+            <if test="style1!= null">
+                #{style1},
+            </if>
+            <if test="comm_id!= null">
+                #{comm_id},
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="columsItemsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="item.id!= null">
+                #{item.id},
+            </if>
+            <if test="item.styleImage1!= null">
+                #{item.styleImage1},
+            </if>
+
+
+            <if test="item.style1!= null">
+                #{item.style1},
+            </if>
+
+            <if test="item.comm_id!= null">
+                #{item.comm_id},
+            </if>
+
+        </trim>
+    </sql>
+
+    <!--单个对象新增-->
+    <insert id="save" parameterType="kesun.entity.liyi.ys_Style">
+        insert into i_style  (
+        <include refid="colums"/>
+        ) values (
+        <include refid="columsValue"/>)
+    </insert>
+    <!--单个对象新增-->
+    <insert id="add2" parameterType="kesun.entity.liyi.ys_Style">
+        insert into i_style  (
+        <include refid="colums"/>
+        ) values (
+        <include refid="columsValue"/>)
+    </insert>
+    <!--批量新增-->
+    <insert id="batchSave" parameterType="java.util.List">
+        insert into i_style (
+        <include refid="colums"/>
+        ) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            <include refid="columsItemsValue"/>
+            );
+        </foreach>
+    </insert>
+    <!--单个对象更新-->
+    <update id="update" parameterType="kesun.entity.liyi.ys_Style">
+        update i_style  set
+        <trim suffix="" suffixOverrides=",">
+            <if test="id!= null">
+                id=#{id},
+            </if>
+            <if test="s_id!= null">
+                s_id=#{s_id},
+            </if>
+
+            <if test="name != null">
+                name=#{name},
+            </if>
+
+            <if test="nickname!= null">
+                nickname=#{nickname},
+            </if>
+
+            <if test="password!= null">
+                password=#{password},
+            </if>
+            <if test="phone!= null">
+                phone=#{phone},
+            </if>
+            <if test="email!= null">
+                email=#{email},
+            </if>
+            <if test="address!= null">
+                address=#{address},
+            </if>
+
+            <if test="birthday!= null">
+                birthday=#{birthday},
+            </if>
+
+            <if test="sex!= null">
+                sex=#{sex},
+            </if>
+            <if test="integral!= null">
+                integral=#{integral},
+            </if>
+            <if test="avatar!= null">
+                avatar=#{avatar},
+            </if>
+            <if test="status!= null">
+                status=#{status},
+            </if>
+            <if test="time!= null">
+                time=#{time},
+            </if>
+        </trim>
+        where id=#{oldId,jdbcType=VARCHAR}
+    </update>
+    <!--对象批量更新-->
+    <update id="batchUpdate" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update i_style  set
+            <trim suffix="" suffixOverrides=",">
+                <if test="item.id != null">
+                    id=#{item.id},
+                </if>
+                <if test="item.s_id != null">
+                    id=#{item.s_id},
+                </if>
+                <if test="item.oldId != null">
+                    oldId=#{item.oldId},
+                </if>
+                <if test="item.name != null">
+                    name=#{item.name},
+                </if>
+
+                <if test="item.nickname!= null">
+                    nickname=#{item.nickname},
+                </if>
+
+                <if test="item.password!= null">
+                    password=#{item.password},
+                </if>
+                <if test="item.phone!= null">
+                    phone=#{item.phone},
+                </if>
+                <if test="item.email!= null">
+                    email=#{item.email},
+                </if>
+                <if test="address!= null">
+                    address=#{address},
+                </if>
+
+                <if test="item.birthday!= null">
+                    birthday=#{item.birthday},
+                </if>
+
+                <if test="item.sex!= null">
+                    sex=#{item.sex},
+                </if>
+                <if test="item.integral!= null">
+                    integral=#{item.integral},
+                </if>
+                <if test="item.avatar!= null">
+                    avatar=#{item.avatar},
+                </if>
+                <if test="item.status!= null">
+                    status=#{item.status},
+                </if>
+                <if test="item.time!= null">
+                    time=#{item.time},
+                </if>
+            </trim>
+            where id=#{item.oldId,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+    <!--单个对象删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from i_style   where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        delete from i_style
+        <where>
+            id in
+            <foreach collection="list" item="item" separator="," open="(" close=")">#{item.id,jdbcType=VARCHAR}</foreach>
+        </where>
+
+    </delete>
+    <!--单个对象查找-->
+
+    <select id="getMe" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        *
+        from i_style where = #{id,jdbcType=VARCHAR}
+    </select>
+
+
+    <select id="getstyle" parameterType="java.util.Map" resultType="java.util.Map">
+        select * from i_style where com_id=#{com_id}
+    </select>
+
+
+    <!--查找，以Map返回-->
+    <select id="findForMap" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from  i_style
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="name!=null">
+                    name like '%${name}%' or
+                </if>
+            </trim>
+        </where>
+        order by name ASC
+
+    </select>
+    <!--查询，以对象集合返回-->
+    <select id="find" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from i_style
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="name!=null">
+                    name like '%${name}%' or
+                </if>
+            </trim>
+        </where>
+        order by name ASC
+    </select>
+    <!--返回查找条数-->
+    <select id="getRowsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) as total from i_style
+        <where>
+            <if test="name!=null">
+                name like '%${name}%'
+            </if>
+        </where>
+    </select>
+    <!--分页查找-->
+    <select id="findByPage" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from i_style
+        <where>
+            <if test="name!=null">
+                name like '%${name}%'
+            </if>
+        </where>
+        order by name ASC
+        <if test="start !=0 or limit!=0">
+            limit #{start},#{limit}
+        </if>
+
+    </select>
+    <!--判断数据是否在使用中-->
+    <select id="objectInUse" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        <![CDATA[ select count(id) from i_style   where id=#{id} ]]>
+    </select>
+
+</mapper>

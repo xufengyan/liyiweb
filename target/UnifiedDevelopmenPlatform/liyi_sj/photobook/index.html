@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>米莫印品-照片书，高端影楼相册，韩式相册，日式相册，美式相册，欧式相册个性DIY定制</title>
+		<meta name="Description" content="米莫印品的照片书系列产品包括软皮杂志册，美式硬皮相册，欧式精装摄影集，日式对裱相册，韩式高端影集和皮艺宝宝相册等产品。是制作宝宝成长册，毕业纪念册，婚礼相册的绝佳选择，欢迎团购。"/>
+		<meta name="Keywords" content="照片书、请柬、明信片、婚纱照、儿童摄影" />
+<script type="text/javascript">
+	;(function(doc, win) {
+		var docEl = doc.documentElement,
+			resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+			recalc = function() {
+				var clientWidth = window.innerWidth && document.documentElement.clientWidth ? Math.min(window.innerWidth, document.documentElement.clientWidth) : window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
+				if(!clientWidth) return;
+				docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+				var div = document.createElement('div');
+				div.style.width = '1.4rem';
+				div.style.height = '0';
+				document.body.appendChild(div);
+				var ideal = 140 * clientWidth / 750;
+				var rmd = (div.clientWidth / ideal);
+				if(rmd > 1.2 || rmd < 0.8) {
+					docEl.style.fontSize = 100 * (clientWidth / 750) / rmd + 'px';
+				}
+				document.body.removeChild(div);
+			};
+		if(!doc.addEventListener) return;
+		win.addEventListener(resizeEvt, recalc, false);
+		doc.addEventListener('DOMContentLoaded', recalc, false);
+	})(document, window);
+</script>
+<link rel="stylesheet" type="text/css" href="/common/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/common/css/header.css" />
+<link rel="stylesheet" type="text/css" href="/common/css/footer.css"/>
+<script src="/common/js/superagent.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/vue.min.2.2.6.js" type="text/javascript" charset="utf-8"></script>
+
+<link rel="stylesheet" href="/common/css/swiper-3.4.2.min.css">	
+<link rel="stylesheet" type="text/css" href="/product/common/css/common.css"/>
+<link rel="stylesheet" type="text/css" href="/product/photo-book/css/index.css"/>
+<script>
+    ; (function () {
+        var browser = {
+            versions: function () {
+                var u = navigator.userAgent, app = navigator.appVersion;
+                return {         //移动终端浏览器版本信息
+                    trident: u.indexOf('Trident') > -1, //IE内核
+                    presto: u.indexOf('Presto') > -1, //opera内核
+                    webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                    mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+                    iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, //是否iPad
+                    webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+                };
+            }(),
+            language: (navigator.browserLanguage || navigator.language).toLowerCase()
+        }
+
+        window.GTM_Device = browser.versions.mobile ? 'mobile' : 'pc';
+    })();
+</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+
+})(window,document,'script','dataLayer','GTM-5L7MW34');</script>
+</head>
+<body>
+	<noscript>
+		<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5L7MW34" height="0" width="0" style="display:none;visibility:hidden">
+		</iframe>
+	</noscript>
+		<!--头部开始-->
+<div id="app_head">
+	<!--头部开始-->
+	<div class="header">
+		<!--PC-->
+		<div class="header_pc">
+			<div class="topBox">
+				<div class="setWidth">
+					<div class="topLeft">今日下单，预计<span class="sendTime" v-text="sendTime()"></span>发货</div>
+					<div class="topRight" v-show="!isLogin" style="display: none;">
+						<span class="memberName"><a href="http://passport.mimoprint.com/passport/wlogin">登录</a></span>|<span class="memberLv"><a href="http://passport.mimoprint.com/passport/register">注册</a></span>
+					</div>
+					<div v-show="isLogin" class="topRight" @mouseenter="showPersonal()" @mouseleave="hidePersonal()" style="display: none;">
+						<!--<img class="memberImg" :src="headImg" />-->
+						<img class="memberImg" :src="headImg" onerror="javascript:this.src='/common/img/icon_portrait.png';">
+						<span class="memberName" v-text="name"></span>|
+						<span class="memberLv" v-text="lvName"></span>
+						<em class="aIcon"></em>
+						<div class="exterRight">
+							<template v-if="!isWorkshop">
+								<div class="list">
+									<a href="http://i.mimoprint.com/mycenter/index">我的作品</a>
+									<a href="http://i.mimoprint.com/mywellfare/index">我的福利</a>
+								</div>
+								<div class="list">
+									<a href="http://i.mimoprint.com/myorder/index">我的订单</a>
+									<!--<a href="http://www.mimoprint.com/help/activity/supermember">超级会员</a>-->
+									<a href="http://i.mimoprint.com/mywellfare/coupons">优惠券</a>
+								</div>
+								<div class="list">
+									<a href="http://passport.mimoprint.com/passport/unionlogout" class="logout">退出</a>
+									<a style="visibility: hidden;"></a>
+								</div>
+							</template>
+							<template v-else>
+								<div class="list">
+									<a href="http://i.mimoprint.com">会员中心</a>
+									<a href="http://i.mimoprint.com/mywellfare/prestore">预存账户</a>
+								</div>
+								<div class="list">
+									<a href="http://i.mimoprint.com/myorder/index">我的订单</a>
+									<a href="http://i.mimoprint.com/mycenter/index">我的印品</a>
+								</div>
+								<div class="list">
+									<a href="http://passport.mimoprint.com/passport/unionlogout" class="logout">退出</a>
+									<a style="visibility: hidden;"></a>
+								</div>
+							</template>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="navigation">
+				<div class="naviga">
+					<div class="mimoIcon"><a href="/index"><img src="/common/img/mimoIcon2.png" /></a></div>
+					<div class="title">
+						<div :class="curIndex == '1' || touchIndex == '1' ? 'active' : ''" @mouseenter="getTouchIndex('1')" @mouseleave="resetTouchIndex()">
+							<a href="/product/index">所有产品</a>
+						</div>
+						<div :class="curIndex == '3' || touchIndex == '3' ? 'active' : ''" @mouseenter="getTouchIndex('3')" @mouseleave="resetTouchIndex()">
+							<a href="/product/photo-book/index">照片书</a>
+						</div>
+						<div :class="curIndex == '4' || touchIndex == '4' ? 'active' : ''" @mouseenter="getTouchIndex('4')" @mouseleave="resetTouchIndex()">
+							<a href="/product/timebooks/index">时光书</a>
+						</div>
+						<div :class="curIndex == '5' || touchIndex == '5' ? 'active' : ''" @mouseenter="getTouchIndex('5')" @mouseleave="resetTouchIndex()">
+							<a href="/product/prints/index">冲印与相簿</a>
+						</div>
+						<div :class="curIndex == '2' || touchIndex == '2' ? 'active' : ''" @mouseenter="getTouchIndex('2')" @mouseleave="resetTouchIndex()">
+							<a href="/product/calendars/index">日历与笔记本</a>
+						</div>
+						<div :class="curIndex == '6' || touchIndex == '6' ? 'active' : ''" @mouseenter="getTouchIndex('6')" @mouseleave="resetTouchIndex()">
+							<a href="/product/frames/index">相框摆台</a>
+						</div>
+						<div :class="curIndex == '7' || touchIndex == '7' ? 'active' : ''" @mouseenter="getTouchIndex('7')" @mouseleave="resetTouchIndex()">
+							<a href="/product/goods/index">非定制产品</a>
+						</div>
+						<div :class="curIndex == '9' || touchIndex == '9' ? 'active' : ''" @mouseenter="getTouchIndex('9')" @mouseleave="resetTouchIndex()" style="display:none">
+							<a href="/product/packages/index">套餐产品</a>
+						</div>
+						<div class="rightTit count">
+							<a href="http://shopcar.mimoprint.com/shopcar/shopcar">
+								<img src="/common/img/shopcar_pc.jpg" />
+								<span v-bind:class="shopcarCount >= 10 ? 'shopCountMore shopCount' : 'shopCount'" v-text="shopcarCount" v-if="shopcarCount > 0"></span>
+							</a>
+						</div>
+						<div :class="curIndex == '8' || touchIndex == '8' ? 'active rightTit' : 'rightTit'" @mouseenter="getTouchIndex('8')" @mouseleave="resetTouchIndex()">
+							<a href="/stage/index">作品展厅</a>
+						</div>
+						<span class="rightTit">|</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--PC结束-->
+		<!--H5开始-->
+		<div class="header_h5">
+			<div class="topBox_h5">
+				<img @click="isShow()" class="menu_h5" src="/common/img/menu_h5.jpg" />
+				<img class="mimoIcon_h5" src="/common/img/mimoIcon_h5.jpg" />
+				<a class="shopcarHere" href="http://shopcar.mimoprint.com/mshopcar/shopcar">
+					<span v-bind:class="shopcarCount >= 10 ? 'spanActive' : ''" v-text="shopcarCount" v-if="shopcarCount > 0"></span>
+					<img class="shopcar_h5" src="/common/img/shopcar_h5.jpg" />
+				</a>
+			</div>
+			<div @click="isShow()" class="blackScreen" v-show="showMenu" style="display: none;"></div>
+			<div class="menuCon_h5" :style="{left: showMenu ? '0' : '-6rem'}" style="display: none;">
+				<div class="menberName_h5">
+					<img class="headImg_h5" src="/common/img/headIcon_h5.jpg" />
+					<template v-if="isLogin">
+						Hi!<span class="name_h5" v-text="name"></span>
+					</template>
+					<template v-else>
+						<span class="name_h5"><a href="http://www.mimoprint.com/passport/login">登录</a></span>
+					</template>
+				</div>
+				<div class="sendTime_h5">
+					<div>
+						<img class="time_h5" src="/common/img/time_h5.jpg" />今日下单：预计发货日期<span class="setime_h5" v-text="sendTime()"></span>
+					</div>
+					<div><a href="/index">首页</a></div>
+					<div @click="downApp">下载APP，无须上传照片</div>
+					<div>
+						<div @click="showAllpro ? showAllpro = false : showAllpro = true">所有产品<em :class="showAllpro ? 'active' : ''"></em></div>
+						<ul :style="{display : showAllpro ? 'block' : 'none'}">
+							<li><span></span><a href="/product/index">产品汇总</a></li>
+							<li><span></span><a href="/product/photo-book/index">照片书</a></li>
+							<li><span></span><a href="/product/prints/index">照片冲印</a></li>
+							<li><span></span><a href="/product/timebooks/index">时光书</a></li>
+							<li><span></span><a href="/product/calendars/index">日历与笔记本</a></li>
+							<li><span></span><a href="/product/frames/index">框画</a></li>
+							<li><span></span><a href="/product/goods/index">非定制产品</a></li>
+							<!-- <li><span></span><a href="/product/packages/index">套餐产品</a></li> -->
+						</ul>
+					</div>
+					<div>
+						<div @click="showAlltheme ? showAlltheme = false : showAlltheme = true">所有主题<em :class="showAlltheme ? 'active' : ''"></em></div>
+						<ul :style="{display : showAlltheme ? 'block' : 'none'}">
+							<li><span></span><a href="/occasion/index">主题汇总</a></li>
+							<li><span></span><a href="/occasion/baby">宝宝成长</a></li>
+							<li><span></span><a href="/occasion/travel">旅行拍摄</a></li>
+							<li><span></span><a href="/occasion/wedding">完美婚礼</a></li>
+							<li><span></span><a href="/occasion/graduation">毕业专场</a></li>
+						</ul>
+					</div>
+					<div><a href="/stage/index">作品展厅</a></div>
+				</div>
+				<div class="sendTime_h5">
+					<div>
+						<a href="http://www.mimoprint.com/help/activity/deposit">
+							<img class="time_h5" src="/common/img/sale_h5.jpg" />预存优惠，长期折扣
+						</a>
+					</div>
+					<div><a href="/help/activity/index">所有活动优惠</a></div>
+				</div>
+				<div class="sendTime_h5">
+					<div>
+						<a href="http://i.mimoprint.com">
+							<img class="time_h5" src="/common/img/mimo.png" />我的米莫
+						</a>
+					</div>
+					<div>
+						<div @click="showCenter ? showCenter = false : showCenter = true">会员中心<em :class="showCenter ? 'active' : ''"></em></div>
+						<ul :style="{display : showCenter ? 'block' : 'none'}">
+							<li><span></span><a href="http://i.mimoprint.com/member/index">个人中心</a></li>
+                            <li><span></span><a href="http://i.mimoprint.com/member/myprojects">我的作品</a></li>
+                            <li><span></span><a href="http://i.mimoprint.com/myorder/mindex">我的订单</a></li>
+                            <li><span></span><a href="http://i.mimoprint.com/member/mycoupons">优惠券</a></li>
+						</ul>
+					</div>
+					<div><a href="http://www.v5kf.com/public/help?sid=114994">帮助中心</a></div>
+					<div><a href="javascript:" onclick="_MEIQIA('showPanel')">联系客服</a></div>
+					<div><a href="/about/aboutmimo">关于米莫</a></div>
+				</div>
+			</div>
+		</div>
+		<!--H5开始-->
+		<!--右侧浮动栏-->
+		<div class="rightFrame">
+			<ul>
+				<li @click="function(){window.location.href='/help/activity/index'}">
+					<a href="javascript:">
+		            <img src="common/img/active.png" />
+		            <p>优惠活动</p>
+		          </a>
+				</li>
+				<li @click="function(){window.location.href='/help/activity/newmember'}">
+					<a href="javascript:">
+						<img src="common/img/gift.png" />
+						<p>新人有礼</p>
+					</a>
+				</li>
+				<!--<li @mouseenter="showCode(0)" @mouseleave="showCode(1)">
+					<img src="/common/img/app2.png" />
+					<p>微信/App</p>
+					<div class="codeImg" v-show="ishowCode" style="display: none;">
+						<div>
+							<img src="common/img/newapp.png" />
+							<p>下载App</p>
+						</div>
+						<div>
+							<img src="common/img/newpublic.png" />
+							<p>微信公众号</p>
+						</div>
+					</div>
+				</li>-->
+				<li onclick="_MEIQIA('showPanel')">
+					<a href="javascript:" target="_blank">
+						<img src="common/img/services.png" />
+						<p>在线客服</p>
+					</a>
+				</li>
+				<li>
+					<img src="common/img/app2.png"> 
+						<p>微信/App</p> 
+						<div class="codeImg" style="display: none;">
+							<div>
+								<img src="common/img/newapp.png"> 
+									<p>下载App</p>
+							</div>
+							<div>
+								<img src="common/img/newpublic.png"> 
+									<p>微信公众号</p>
+							</div>
+						</div>
+				</li>
+				<li id="backtop" v-show="iShowGotop" @click="goTop()">
+					<img src="common/img/top.jpg" />
+					<p>返回顶部</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!--头部结束-->
+</div>
+<script src="/common/js/header.js?v=0619" type="text/javascript" charset="utf-8"></script>
+<script src="/common/js/ga_common.js?v=0212" type="text/javascript" charset="utf-8"></script>		<!--头部结束-->
+		<!--主体开始-->
+		<div id="main">
+			<div class="summary-nav">
+				<h1>照片书</h1>
+				<div>
+					<a href="/index">首页</a>
+					>
+					<a href="/product/index">所有产品</a>
+					>
+					<span>照片书</span>
+				</div>
+			</div>
+			<div id="banner-swiper" class="summary-banner swiper-container">
+				<div class="summary-banner-inner swiper-wrapper">
+					<div class="swiper-slide" v-for="banner in banners">
+						<img :src="banner[m ? m+'_src' : 'src']">
+					</div>
+				</div>
+				<div class="swiper-pagination swiper-pagination-bullets"></div>
+			</div>
+
+			<div class="grayline-h5"></div>
+
+			<div class="summary-topdesc underline-brown">
+				为您搜罗了全球顶尖的设计与工艺
+			</div>
+
+			<div class="products-wrapper">
+				<div class="filter-box">
+					<div class="filter-line" v-for="key in filterKeys">
+						<div class="filter-option">
+							<div class="filter-key" v-text="key.name"></div>
+							<div class="filter-values">
+								<div v-for="(item, index) in key.values" @click="filter(key, index, item.value)" v-text="item.name" class="filter-value" :class="{'active': index == key.curIndex}"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="product-list clearfix">
+					<li v-for="item in productList">
+						<a :href="item.href" class="img-wrap common-hover">
+							<img v-show="item.mark == 1" src="/home/img/PCHOT.png" class="hot">
+							<img v-show="item.mark == 2" src="/home/img/PCNEW.png" class="new">
+							<span class="sales pc_hide" v-text="'月销：'+item.sales"></span>
+							<img :src="item.src" alt="">
+						</a> 
+						<p class="name" v-text="item.name"></p> 
+						<p class="price">
+							<span class="pri" v-text="item.price"></span>
+							<span class="sales h5_hide" v-text="'月销：'+item.sales"></span>
+						</p>
+						<div class="dashed-line"></div>
+						<p class="desc" v-text="item.desc"></p>
+					</li>
+				</ul>
+				<div class="all-empty" v-show="productList.length == 0">
+					空空如也
+				</div>
+			</div>
+			<div id="themes"></div>
+			<div class="grayline-h5"></div>
+			<div class="themes">
+				<div class="title-h5 underline-brown">找到属于您的 Style</div>
+				<p class="moretitle">找到属于您的 Style</p>
+				<div class="morebox clearfix">
+					<span>多种主题模板，适应不同场景</span>
+					<a href="/product/photo-book/styles">更多模板</a>
+				</div>
+				<div class="themes-list clearfix">
+					<div class="themes-item-wrap" v-for="themes in themesList">
+						<div class="themes-item">
+							<div class="img-wrap" >
+								<img :src="themes.src" alt="" @click="showTemplate(themes.href)">
+							</div>
+							<div class="box">
+								<p class="name2" v-text="themes.name"></p>
+							</div>
+						</div>
+					</div>
+
+				</div>	
+				<div class="moretheme-wrap-h5">
+					<a href="/product/photo-book/styles" class="moretheme-h5">
+						发现更多模板
+					</a>
+				</div>
+			</div>	
+			<div class="grayline-h5"></div>
+			<div class="showmore">
+				<p class="moretitle">作品展厅</p>
+				<div class="morebox clearfix">
+					<span>看看别人的作品，您就有灵感</span>
+					<a href="/stage/index?productType=book">更多作品</a>
+				</div>	
+				<div class="showcase">
+					<div v-for="items in showcase" class="layer">
+						<div class="items clearfix">
+							<div v-for="item in items"  class="item">
+								<a :href="item.href"> <img :src="item.src" alt=""> </a>
+							</div>
+						</div>
+						<div class="plank"></div>	
+					</div>
+				</div>
+			</div>	
+			<div class="showmore-h5">
+				<a href="/stage/index?productType=book" class="img-wrap">
+					<img src="/product/timebooks/img/mshowmore.jpg" alt="">
+				</a>
+			</div>
+			<div class="whymimo">
+				<a href="/about/whymimo" class="img-wrap">
+					<img :src="whymimo[m+'src']" alt="">
+				</a>
+			</div>			
+		</div>
+		<!--主体结束-->
+		<!--底部开始-->
+<!--底部开始-->
+<div class="footer">
+	<!--PC-->
+	<div class="footer_pc">
+		<div class="about">
+			<p>关于米莫</p>
+			<ul>
+				<li><a href="/about/aboutmimo">关于我们</a></li>
+				<li><a href="/about/whymimo">为什么选择米莫印品？</a></li>
+				<li><a href="http://www.mimoprint.com/about/customerwords/evaluateDisplay">客户评价</a></li>
+			</ul>
+		</div>
+		<div class="help">
+			<p>帮助中心</p>
+			<ul>
+				<li><a target="_blank" href="http://www.v5kf.com/public/help?sid=114994">常见问题</a></li>
+				<li><a target="_blank" href="javascript:" onclick="_MEIQIA('showPanel')">点击在线咨询</a></li>
+				<!--<li><a target="_blank" href="https://mimoprint.qiyukf.com/client?k=310c9a9456a04e104a67b444fc0cdcfc&wp=1">点击在线咨询</a></li>-->
+				<li>客服热线：400-665-9395</li>
+				<li>法定工作日 9:30-18:00</li>
+			</ul>
+		</div>
+		<div class="codeImg">
+			<div>
+				<img src="/common/img/newpublic.png" />
+				<p>微信公众号</p>
+			</div>
+			<div>
+				<img src="/common/img/newapp.png" />
+				<p>下载App</p>
+			</div>
+		</div>
+		<div class="comper">
+			<p style="padding-top:14px;">摄影师合作</p>
+			<a href="http://design.mimoprint.com/workshop">
+				<img src="/common/img/footerIcon.jpg" />
+			</a>
+		</div>
+	</div>
+	<div class="bottomTipss">Copyright 2013-2017，版权所有 广州云乐数码科技有限公司 <a href="http://www.miitbeian.gov.cn" target="_blank">粤ICP备09190341</a></div>
+	<!--H5-->
+	<div class="footer_h5">
+		<ul>
+			<li>
+				<div>便</div>
+				<p>手机电脑<br>均可制作</p>
+			</li>
+			<li>
+				<div>退</div>
+				<p>印刷偏色<br>免费重印</p>
+			</li>
+			<li>
+				<div>保</div>
+				<p>质量问题<br>终身保修</p>
+			</li>
+			<li>
+				<div>正</div>
+				<p>真材实料<br>保证品质</p>
+			</li>
+		</ul>
+		<div class="footerMenu">
+	<div onclick="showHelp()">
+		帮助中心
+		<em>+</em>
+		<ul class="helpCenter">
+			<li>
+				<em></em><a href="http://www.v5kf.com/public/help?sid=114994">常见问题</a>
+			</li>
+			<li>
+				<em></em><a href="/help/activity/index">优惠活动</a>
+			</li>
+			<li>
+				<em></em><a href="javascript:" onclick="_MEIQIA('showPanel')">联系客服</a>
+			</li>
+		</ul>
+	</div>
+	<div onclick="showAbout()">
+		关于米莫
+		<em>+</em>
+		<ul class="aboutMimo">
+			<li>
+				<em></em><a href="/about/aboutmimo">关于米莫</a>
+			</li>
+			<li>
+				<em></em><a href="/about/whymimo">为什么选择米莫</a>
+			</li>
+			<li>
+				<em></em><a href="http://www.mimoprint.com/about/customerwords/evaluateDisplay">客户评价</a>
+			</li>
+		</ul>
+	</div>
+	<div onclick="downApp()">
+		获取App
+		<em>+</em>
+	</div>
+	<div class="bottomBtn">Copyright 2013-2017 版权所有广州云乐数码科技有限公司<br><a href="http://www.miitbeian.gov.cn" target="_blank">粤ICP备09190341</a></div>
+</div>
+	</div>
+</div>
+<!--底部结束-->
+<script src="/common/js/footer.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js" type="text/javascript" charset="utf-8"></script>
+<script>
+	var _title = '米莫印品-所有照片书',
+		_desc = '搜罗全球顶尖设计与工艺，帮您把照片印成书>>',
+		_link = window.location.href,
+		_imgUrl = 'http://cdn-mmportal.mimoprint.com/9420bd6e-4dab-11e8-a38d-00163e062ada.jpg';
+</script>
+<script src="/common/js/shareMsg.js" type="text/javascript" charset="utf-8"></script>		<!--底部结束-->
+		</div>
+		<script type="text/javascript">
+			if(location.hash=="#themes"){
+				setTimeout(
+					function(){
+						$(document).scrollTop($("#themes").position().top);
+					},
+					800);
+			}
+		</script>
+		<script src="/common/js/jquery-3.2.1.js"></script>
+		<script src="/common/js/lib/page-flip/js/modernizr.custom.js"></script>
+		<script src="/common/js/lib/page-flip/js/jquery.bookblock.js"></script>
+		<script src="/common/js/lib/page-flip/js/jquerypp.custom.js"></script>
+		<script src="/common/js/lib/page-flip/js/page-flip.js?v=1"></script>
+		<script src="/common/js/swiper-3.4.2.min.js"></script>
+		<script src="/product/photo-book/js/index.js?v=0517v3"></script>
+	</body>
+</html>

@@ -1,0 +1,193 @@
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden
+}
+
+.bg-gray {
+	background: #f9f8fd
+}
+
+.underline-brown {
+	position: relative
+}
+
+.underline-brown:after {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	background: #caaa9a;
+	height: 4px;
+	width: 30px
+}
+
+.grayline-h5 {
+	display: none
+}
+
+.swiper-pagination {
+	font-size: 12px
+}
+
+.swiper-pagination-bullet-active {
+	background: #f04316
+}
+
+.swiper-pagination-bullet {
+	width: 16px;
+	height: 16px
+}
+
+.all-empty {
+	background: url(/common/img/empty_bg.png?v=2017-11-17) no-repeat 0 0;
+	box-sizing: border-box;
+	width: 410px;
+	height: 369px;
+	padding-top: 288px;
+	margin: 0 auto;
+	margin-top: 50px;
+	color: #999;
+	font-size: 20px;
+	line-height: 30px;
+	text-align: center
+}
+
+@media screen and (min-width:751px) {
+	.common-hover:hover {
+		-webkit-transform: translate3d(0,-2px,0);
+		transform: translate3d(0,-2px,0);
+		box-shadow: 0 10px 50px rgba(0,0,0,.4)
+	}
+
+	.filter-box {
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
+		box-sizing: border-box;
+		background: #fff;
+		padding: 0 20px;
+		border: 1px solid #e1e1e1
+	}
+
+	.filter-box .filter-line {
+		border-top: 1px dashed #e1e1e1
+	}
+
+	.filter-box .filter-line:first-child {
+		border-top: none
+	}
+
+	.filter-box .filter-line:after {
+		content: ".";
+		display: block;
+		height: 0;
+		clear: both;
+		visibility: hidden
+	}
+
+	.filter-box .filter-option {
+		float: left;
+		width: 100%;
+		position: relative;
+		line-height: 24px;
+		padding: 13px 0 15px
+	}
+
+	.filter-box .filter-option .filter-key {
+		float: left;
+		color: #999;
+		font-size: 14px;
+		width: 10%;
+		white-space: nowrap
+	}
+
+	.filter-box .filter-option .filter-values {
+		float: right;
+		width: 90%
+	}
+
+	.filter-box .filter-option .filter-value {
+		float: left;
+		color: #333;
+		font-size: 14px;
+		cursor: pointer;
+		margin-left: 40px
+	}
+
+	.filter-box .filter-option .filter-value.active,.filter-box .filter-option .filter-value:hover {
+		color: #caaa9a
+	}
+
+	.showcase .layer .items {
+		padding: 0 20px 0
+	}
+
+	.showcase .layer .item {
+		width: 1.25rem;
+		max-width: 200px;
+		height: 1.19rem;
+		max-height: 190px;
+		margin: 0 3.8%;
+		position: relative;
+		display: block;
+		float: left;
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center bottom
+	}
+
+	.showcase .layer .item:nth-of-type(4n) {
+		margin-right: 0
+	}
+
+	.showcase .layer .item img {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		max-width: 95%;
+		max-height: 99%;
+		margin: 0 auto;
+		box-shadow: 1px 1px 5px
+	}
+
+	.showcase .layer .item img:hover {
+		opacity: .9
+	}
+
+	.showcase .layer .plank {
+		height: 16px;
+		background: url(/product/common/img/plank.png?v=2017-11-17) no-repeat top center/contain
+	}
+}
+
+@media screen and (max-width:750px) {
+	.filter-box {
+		display: none
+	}
+
+	.underline-brown:after {
+		content: '';
+		display: block;
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+		background: #caaa9a;
+		height: .04rem;
+		width: .3rem
+	}
+
+	.grayline-h5 {
+		display: block;
+		background: #efeff4;
+		height: .2rem
+	}
+}

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kesun.dao.sj.inter.jy2_discount">
+    <resultMap id="BaseResultMap" type="kesun.entity.sj.jy2_discount">
+        <result property="id"     column="id"/>
+        <result property="title"  column="title"/>
+        <result property="begining"  column="begining"/>
+        <result property="ending"    column="ending"/>
+        <result property="ranges"  column="ranges"/>
+        <result property="amount" column="amount"/>
+        <result property="s_id"  column="s_id"/>
+        <result property="require1"  column="require1"/>
+
+      
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id,title,begining,ending,ranges,amount,s_id,require1
+    </sql>
+    <sql id="colums">
+        <trim suffix="" suffixOverrides=",">
+
+            <if test="id != null">
+                id,
+            </if>
+            <if test="require1 != null">
+                require1,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="begining != null">
+                begining,
+            </if>
+            <if test="ending != null">
+                ending,
+            </if>
+
+            <if test="ranges != null">
+                ranges,
+            </if>
+
+            <if test="amount != null">
+                amount,
+            </if>
+
+            <if test="s_id != null">
+                s_id,
+            </if>
+
+        </trim>
+    </sql>
+    <sql id="columsValue">
+        <trim suffix="" suffixOverrides=",">
+
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="require1!= null">
+                #{require1},
+            </if>
+            <if test="title != null">
+                #{title},
+            </if>
+            <if test="begining != null">
+                #{begining},
+            </if>
+            <if test="ending != null">
+                #{ending},
+            </if>
+
+            <if test="ranges != null">
+                #{ranges},
+            </if>
+
+            <if test="amount != null">
+                #{amount},
+            </if>
+
+            <if test="s_id != null">
+                #{s_id},
+            </if>
+
+
+        </trim>
+    </sql>
+    <sql id="columsItemsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="item.id!= null">
+                #{item.id},
+            </if>
+            <if test="item.require1!= null">
+                #{item.require1},
+            </if>
+            <if test="item.title!= null">
+                #{item.title},
+            </if>
+            <if test="item.begining!= null">
+                #{item.begining},
+            </if>
+            <if test="item.ending!= null">
+                #{item.ending},
+            </if>
+
+
+            <if test="item.ranges!= null">
+                #{item.ranges},
+            </if>
+
+            <if test="item.amount!= null">
+                #{item.amount},
+            </if>
+            <if test="item.s_id!= null">
+                #{item.s_id},
+            </if>
+        </trim>
+    </sql>
+
+    <!--单个对象新增-->
+    <insert id="save" parameterType="kesun.entity.sj.jy2_discount">
+        insert into i_discount  (
+        <include refid="colums"/>
+        ) values (
+        <include refid="columsValue"/>)
+    </insert>
+    <!--批量新增-->
+    <insert id="batchSave" parameterType="java.util.List">
+        insert into i_discount (
+        <include refid="colums"/>
+        ) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            <include refid="columsItemsValue"/>
+            );
+        </foreach>
+    </insert>
+    <!--单个对象更新-->
+    <update id="update" parameterType="kesun.entity.sj.jy2_discount">
+        update i_discount  set
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                id=#{id},
+            </if>
+            <if test="require1 != null">
+                require1=#{require1},
+            </if>
+
+            <if test="title != null">
+                title =#{title},
+            </if>
+            <if test="begining != null">
+                begining =#{begining},
+            </if>
+            <if test="ending != null">
+                ending =#{ending},
+            </if>
+
+            <if test="ranges != null">
+                ranges = #{ranges},
+            </if>
+
+            <if test="amount != null">
+                amount=#{amount},
+            </if>
+
+            <if test="s_id != null">
+                s_id =#{s_id},
+            </if>
+
+        </trim>
+        where id=#{id,jdbcType=VARCHAR}
+    </update>
+    <!--对象批量更新-->
+    <update id="batchUpdate" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update i_discount  set
+            <trim suffix="" suffixOverrides=",">
+                <if test="item.id!= null">
+                    item.id=#{item.id},
+                </if>
+
+             
+            </trim>
+            where id=#{item.oldId,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+    <!--单个对象删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from i_discount   where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        delete from i_discount
+        <where>
+            id in
+            <foreach collection="list" item="item" separator="," open="(" close=")">#{item.id,jdbcType=VARCHAR}</foreach>
+        </where>
+
+    </delete>
+    <!--单个对象查找-->
+    <select id="getMe" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        *
+        from i_discount where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <!--查找，以Map返回-->
+    <select id="findForMap" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+         *
+        from  i_discount
+        <where>
+            <trim prefix="" suffixOverrides="and">
+                <if test="s_id!=null">
+                    s_id=#{s_id}   and
+                </if>
+                <if test="title!=null">
+                    title like '%${title}%'  and
+                </if>
+            </trim>
+        </where>
+        order by title ASC
+
+    </select>
+    <!--查询，以对象集合返回-->
+    <select id="find" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+         *
+        from i_discount
+        <where>
+            <trim prefix="" suffixOverrides="and">
+                <if test="s_id!=null">
+                    s_id=#{s_id}   and
+                </if>
+                <if test="title!=null">
+                    title like '%${title}%'  and
+                </if>
+            </trim>
+        </where>
+        order by title ASC
+    </select>
+    <!--返回查找条数-->
+    <select id="getRowsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(id) as total from i_discount
+        <where>
+            <trim prefix="" suffixOverrides="and">
+                <if test="s_id!=null">
+                    s_id=#{s_id}   and
+                </if>
+                <if test="title!=null">
+                    title like '%${title}%'  and
+                </if>
+            </trim>
+        </where>
+    </select>
+    <!--分页查找-->
+    <select id="findByPage" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from i_discount
+        <where>
+            <trim prefix="" suffixOverrides="and">
+            <if test="s_id!=null">
+                s_id=#{s_id}   and
+            </if>
+            <if test="title!=null">
+                title like '%${title}%'  and
+            </if>
+            </trim>
+        </where>
+        order by title ASC
+        <if test="start !=0 or limit!=0">
+            limit #{start},#{limit}
+        </if>
+
+    </select>
+    <!--判断数据是否在使用中-->
+    <select id="objectInUse" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        <![CDATA[ select count(id) from i_discount   where title=#{id} ]]>
+    </select>
+</mapper>
+   

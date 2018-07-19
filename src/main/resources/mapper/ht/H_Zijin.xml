@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kesun.dao.ht.H_IZijin">
+    <resultMap id="BaseResultMap" type="kesun.entity.ht.Orders">
+        <result column="id" property="id"/>
+        <result column="oldId" property="oldId"/>
+        <result column="orders_id" property="orders_id"/>
+        <result column="u_id" property="u_id"/>
+        <result column="c_id" property="c_id"/>
+        <result column="a_receiver" property="a_receiver"/>
+        <result column="a_address"  property="a_address" />
+        <result column="a_phone"  property="a_phone" />
+        <result column="ordertime"  property="ordertime" />
+        <result column="shiptime"  property="shiptime" />
+        <result column="goodsnumber"  property="goodsnumber" />
+        <result column="price"  property="price" />
+        <result column="reality"  property="reality" />
+        <result column="st_id"  property="st_id" />
+        <result column="note"  property="note" />
+        <result column="sendername"  property="sendername" />
+        <result column="senderaddress"  property="senderaddress" />
+        <result column="senderphone"  property="senderphone" />
+        <result column="status" property="status"/>
+        <result column="logisname"  property="logisname" />
+        <result column="logisticsnumber"  property="logisticsnumber" />
+        <result column="evalustatus"  property="evalustatus" />
+        <result column="signtime"  property="signtime" />
+        <result column="deletesign"  property="deletesign" />
+        <association property="commodity" javaType="kesun.entity.ht.Commodity">
+            <id column="commodity" property="id"></id>
+            <result column="commname" property="name"/>
+        </association>
+        <!--<association property="style" javaType="kesun.entity.ht.Style">-->
+            <!--<id column="style" property="id"></id>-->
+            <!--<result column="stylename" property="name"/>-->
+        <!--</association>-->
+        <association property="logistics" javaType="kesun.entity.ht.Logistics">
+            <id column="logistics" property="id"></id>
+            <result column="logisticsname" property="name"/>
+        </association>
+
+
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,orders_id,commname,stylename,price,goodsnumber,reality,ordertime,storename,status
+    </sql>
+    <sql id="colums">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="orders_id != null">
+                orders_id,
+            </if>
+            <if test="u_id != null">
+                u_id,
+            </if>
+
+            <if test="c_id != null">
+                c_id,
+            </if>
+            <if test="a_receiver != null">
+                a_receiver,
+            </if>
+            <if test="a_address != null">
+                a_address,
+            </if>
+            <if test="a_phone != null">
+                a_phone,
+            </if>
+            <if test="ordertime != null">
+                ordertime,
+            </if>
+            <if test="shiptime != null">
+                shiptime,
+            </if>
+            <if test="goodsnumber != null">
+                goodsnumber,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            <if test="reality != null">
+                reality,
+            </if>
+            <if test="st_id != null">
+                st_id,
+            </if>
+
+            <if test="note != null">
+                note,
+            </if>
+
+            <if test="sendername != null">
+                sendername,
+            </if>
+            <if test="senderaddress != null">
+                senderaddress,
+            </if>
+            <if test="senderphone != null">
+                senderphone,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="logisname != null">
+                logisname,
+            </if>
+            <if test="logisticsnumber != null">
+                logisticsnumber,
+            </if>
+
+            <if test="evalustatus != null">
+                evalustatus,
+            </if>
+            <if test="signtime != null">
+                signtime,
+            </if>
+            <if test="deletesign != null">
+                deletesign,
+            </if>
+
+
+        </trim>
+    </sql>
+
+    <sql id="columsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="orders_id != null">
+                #{orders_id},
+            </if>
+            <if test="u_id != null">
+                #{u_id},
+            </if>
+            <if test="c_id != null">
+                #{c_id},
+            </if>
+            <if test="a_receiver != null">
+                #{a_receiver},
+            </if>
+            <if test="a_address != null">
+                #{a_address},
+            </if>
+            <if test="a_phone != null">
+                #{a_phone},
+            </if>
+            <if test="ordertime != null">
+                #{ordertime},
+            </if>
+            <if test="shiptime != null">
+                #{shiptime},
+            </if>
+            <if test="goodsnumber != null">
+                #{goodsnumber},
+            </if>
+            <if test="price != null">
+                #{price},
+            </if>
+            <if test="reality != null">
+                #{reality},
+            </if>
+            <if test="st_id != null">
+                #{st_id},
+            </if>
+
+            <if test="note != null">
+                #{note},
+            </if>
+
+            <if test="sendername != null">
+                #{sendername},
+            </if>
+            <if test="senderaddress != null">
+                #{senderaddress},
+            </if>
+            <if test="senderphone != null">
+                #{senderphone},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="logisname != null">
+                #{logisname},
+            </if>
+            <if test="logisticsnumber != null">
+                #{logisticsnumber},
+            </if>
+
+            <if test="evalustatus != null">
+                #{evalustatus},
+            </if>
+            <if test="signtime != null">
+                #{signtime},
+            </if>
+            <if test="deletesign != null">
+                #{deletesign},
+            </if>
+
+
+
+
+        </trim>
+    </sql>
+
+    <sql id="columsItemsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="item.id != null">
+                #{item.id},
+            </if>
+            <if test="item.orders_id != null">
+                #{item.orders_id},
+            </if>
+            <if test="item.u_id != null">
+                #{item.u_id},
+            </if>
+
+            <if test="item.c_id != null">
+                #{item.c_id},
+            </if>
+            <if test="item.a_receiver != null">
+                #{item.a_receiver},
+            </if>
+            <if test="item.a_address != null">
+                #{item.a_address},
+            </if>
+            <if test="item.a_phone != null">
+                #{item.a_phone},
+            </if>
+            <if test="item.ordertime != null">
+                #{item.ordertime},
+            </if>
+            <if test="item.shiptime != null">
+                #{item.shiptime},
+            </if>
+            <if test="item.goodsnumber != null">
+                #{item.goodsnumber},
+            </if>
+            <if test="item.price != null">
+                #{item.price},
+            </if>
+            <if test="item.reality != null">
+                #{item.reality},
+            </if>
+            <if test="item.st_id != null">
+                #{item.st_id},
+            </if>
+
+            <if test="item.note != null">
+                #{item.note},
+            </if>
+            <if test="item.sendername != null">
+                #{item.sendername},
+            </if>
+            <if test="item.senderaddress != null">
+                #{item.senderaddress},
+            </if>
+            <if test="item.senderphone != null">
+                #{item.senderphone},
+            </if>
+            <if test="item.status != null">
+                #{item.status},
+            </if>
+            <if test="item.logisname != null">
+                #{item.logisname},
+            </if>
+            <if test="item.logisticsnumber != null">
+                #{item.logisticsnumber},
+            </if>
+            <if test="item.evalustatus != null">
+                #{item.evalustatus},
+            </if>
+            <if test="item.signtime != null">
+                #{item.signtime},
+            </if>
+            <if test="item.deletesign != null">
+                #{item.deletesign},
+            </if>
+
+
+
+
+        </trim>
+    </sql>
+
+    <insert id="save" parameterType="kesun.entity.ht.Orders">
+        insert into i_orders(
+        <include refid="colums"/>
+        ) values (
+        <include refid="columsValue"/>)
+    </insert>
+    <!--批量新增-->
+    <insert id="batchSave" parameterType="kesun.entity.ht.Orders">
+        insert into i_orders(
+        <include refid="colums"/>
+        ) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            <include refid="columsItemsValue"/>
+            );
+        </foreach>
+    </insert>
+    <!--单个对象更新-->
+    <update id="update" parameterType="kesun.entity.ht.Orders">
+        update i_orders set
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                id=#{id},
+            </if>
+            <if test="orders_id != null">
+                orders_id=#{orders_id},
+            </if>
+            <if test="u_id != null">
+                u_id=#{u_id},
+            </if>
+
+            <if test="c_id != null">
+                c_id=#{c_id},
+            </if>
+            <if test="a_receiver != null">
+                a_receiver=#{a_receiver},
+            </if>
+            <if test="a_address != null">
+                a_address=#{a_address},
+            </if>
+            <if test="a_phone != null">
+                a_phone=#{a_phone},
+            </if>
+            <if test="ordertime != null">
+                ordertime=#{ordertime},
+            </if>
+            <if test="shiptime != null">
+                shiptime=#{shiptime},
+            </if>
+            <if test="goodsnumber != null">
+                goodsnumber=#{goodsnumber},
+            </if>
+            <if test="price != null">
+                price=#{price},
+            </if>
+            <if test="reality != null">
+                reality=#{reality},
+            </if>
+            <if test="st_id != null">
+                st_id=#{st_id},
+            </if>
+
+            <if test="note != null">
+                note=#{note},
+            </if>
+            <if test="sendername != null">
+                sendername=#{sendername},
+            </if>
+            <if test="senderaddress != null">
+                senderaddress=#{senderaddress},
+            </if>
+            <if test="senderphone != null">
+                senderphone=#{senderphone},
+            </if>
+            <if test="status != null">
+                status=#{status},
+            </if>
+            <if test="logisname != null">
+                logisname=#{logisname},
+            </if>
+            <if test="logisticsnumber != null">
+                logisticsnumber=#{logisticsnumber},
+            </if>
+            <if test="evalustatus != null">
+                evalustatus=#{evalustatus},
+            </if>
+            <if test="signtime != null">
+                signtime=#{signtime},
+            </if>
+            <if test="deletesign != null">
+                deletesign=#{deletesign},
+            </if>
+
+
+        </trim>
+        where id=#{oldId,jdbcType=VARCHAR}
+    </update>
+    <!--对象批量更新-->
+    <update id="batchUpdate" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update i_orders set
+            <trim suffix="" suffixOverrides=",">
+                <if test="id != null">
+                    id=#{item.id},
+                </if>
+                <if test="oldId != null">
+                    oldId=#{item.oldId},
+                </if>
+                <if test="orders_id != null">
+                    orders_id=#{item.orders_id},
+                </if>
+                <if test="u_id != null">
+                    u_id=#{item.u_id},
+                </if>
+
+                <if test="c_id != null">
+                    c_id=#{item.c_id},
+                </if>
+                <if test="a_receiver != null">
+                    a_receiver=#{item.a_receiver},
+                </if>
+                <if test="a_address != null">
+                    a_address=#{item.a_address},
+                </if>
+                <if test="a_phone != null">
+                    a_phone=#{item.a_phone},
+                </if>
+                <if test="ordertime != null">
+                    ordertime=#{item.ordertime},
+                </if>
+                <if test="shiptime != null">
+                    shiptime=#{item.shiptime},
+                </if>
+                <if test="goodsnumber != null">
+                    goodsnumber=#{item.goodsnumber},
+                </if>
+                <if test="price != null">
+                    price=#{item.price},
+                </if>
+                <if test="reality != null">
+                    reality=#{item.reality},
+                </if>
+                <if test="st_id != null">
+                    st_id=#{item.st_id},
+                </if>
+
+                <if test="note != null">
+                    note=#{item.note},
+                </if>
+                <if test="sendername != null">
+                    sendername=#{item.sendername},
+                </if>
+                <if test="senderaddress != null">
+                    senderaddress=#{item.senderaddress},
+                </if>
+                <if test="senderphone != null">
+                    senderphone=#{item.senderphone},
+                </if>
+                <if test="status != null">
+                    status=#{item.status},
+                </if>
+                <if test="logisname != null">
+                    logisname=#{item.logisname},
+                </if>
+                <if test="logisticsnumber != null">
+                    logisticsnumber=#{item.logisticsnumber},
+                </if>
+                <if test="evalustatus != null">
+                    evalustatus=#{item.evalustatus},
+                </if>
+                <if test="signtime != null">
+                    signtime=#{item.signtime},
+                </if>
+                <if test="deletesign != null">
+                    deletesign=#{item.deletesign},
+                </if>
+
+
+
+            </trim>
+            where id=#{item.oldId,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+    <!--单个对象删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from i_orders where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        delete from i_orders
+        <where>
+            id in
+            <foreach collection="list" item="item" separator="," open="(" close=")">#{item,jdbcType=VARCHAR}</foreach>
+        </where>
+
+    </delete>
+    <!--单个对象查找-->
+    <select id="getMe" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        *
+        from i_orders where id= #{id,jdbcType=VARCHAR}
+    </select>
+    <!--<select id="getme2" parameterType="java.lang.String" resultType="java.util.Map">-->
+        <!--select-->
+        <!--*-->
+        <!--from conninection where id= #{id,jdbcType=VARCHAR}-->
+
+    <!--</select>-->
+    <!--查找，以Map返回-->
+    <select id="findForMap" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from conninection
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="storename!=null">
+                    storename like '%${storename}%' or
+                </if>
+            </trim>
+        </where>
+        order by storename ASC
+
+    </select>
+    <!--查询，以对象集合返回-->
+    <select id="find" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from conninection
+        <where>
+
+            <if test="storename!=null">
+                storename like '%${storename}%'
+            </if>
+
+        </where>
+
+    </select>
+    <!--返回查找条数-->
+    <select id="getRowsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) as total from conninection
+        <where>
+            <if test="storename!=null">
+                storename like '%${storename}%'
+            </if>
+        </where>
+    </select>
+    <!--分页查找-->
+    <select id="findByPage" parameterType="java.util.Map" resultType="java.util.Map">
+
+        select
+        <include refid="Base_Column_List"/>
+        from conninection
+        <where>
+            <trim suffix="" suffixOverrides="and">
+                <if test="status!=null">
+                    status like '%${status}%'
+                    AND
+                    <if test="storename!=null">
+                        storename like '%${storename}%'
+                    </if>
+                </if>
+            </trim>
+
+        </where>
+        order by ordertime ASC
+        <if test="start !=0 or limit!=0">
+            limit #{start},#{limit}
+        </if>
+
+
+    </select>
+
+
+    <!--判断数据是否在使用中-->
+    <select id="objectInUse" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        <![CDATA[ select count(id) from i_orders where status=#{id} ]]>
+    </select>
+
+
+
+
+
+
+
+    <select id="getone" parameterType="java.lang.String" resultType="java.util.Map">
+        SELECT sum(reality) as money
+        from conninection WHERE
+            status LIKE concat('%',#{status},'%')
+    </select>
+    <select id="gettwo" parameterType="java.lang.String" resultType="java.util.Map">
+        SELECT
+
+c.storename,
+Sum(c.reality) AS money
+FROM
+conninection AS c
+WHERE c.storename LIKE concat('%',#{storename},'%')
+GROUP BY
+c.storename
+ORDER BY
+money DESC
+    </select>
+    <select id="getthree" parameterType="java.lang.String" resultType="java.util.Map">
+        SELECT
+        c.storename,
+        Sum(c.reality) AS money
+        FROM
+        conninection AS c
+         WHERE c.storename LIKE concat('%',#{storename},'%')
+        GROUP BY
+        c.storename
+        ORDER BY
+      money ASC
+    </select>
+    <!--<select id="cList" parameterType="java.lang.String" resultType="java.util.Map">-->
+         <!--SELECT reality,MONTH(ordertime) AS time,goodsnumber-->
+         <!--from conninection-->
+    <!--</select>-->
+    <select id="getfour" parameterType="java.lang.String" resultType="java.util.Map">
+        SELECT
+         storename
+         from conninection
+         WHERE storename LIKE concat('%',#{storename},'%')
+         GROUP BY storename
+    </select>
+    <select id="findByPagetwo" parameterType="java.lang.String" resultType="java.util.Map">
+    SELECT
+Sum(c.reality) as money,
+month(c.ordertime) AS time
+FROM
+conninection AS c
+WHERE
+c.storename LIKE concat('%',#{storename},'%')
+GROUP BY
+month(c.ordertime)
+
+
+
+    </select>
+
+</mapper>

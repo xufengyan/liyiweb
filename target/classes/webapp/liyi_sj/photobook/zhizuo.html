@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>照片书编辑</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/cropper.css">
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/same-part.css">
+		<link rel="stylesheet" href="css/04.css">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/pc/head.js"></script>
+		<script src="js/pc/emoji_front_pics.js"></script>
+		<script src="js/pc/exif.js"></script>
+		<script src="js/pc/cropper.js"></script>
+		<script src="js/pc/same.js"></script>
+		<script src="js/pc/pics-edit.js"></script>
+		<script src="js/pc/turn.min.js"></script>
+		
+		<script type="text/javascript" src="extras/jquery.min.1.7.js"></script>
+		<!--<script type="text/javascript" src="extras/jquery-ui-1.8.20.custom.min.js"></script>-->
+		<!--<script type="text/javascript" src="extras/jquery.mousewheel.min.js"></script>-->
+		<script type="text/javascript" src="extras/modernizr.2.5.3.min.js"></script>
+		<!--<script type="text/javascript" src="lib/hash.js"></script>-->
+		
+		
+		<link rel="stylesheet" href="css/pc-pics-index.css">
+		<link rel="stylesheet" href="css/index.css">
+		<style>
+			.pics-opp-flag {
+				display: none;
+			}
+			
+			.pics-opp-flag>img {
+				width: 14px;
+				margin-right: 4px;
+			}
+			
+			.pics-opp-flag-saveing,
+			.pics-opp-flag-saveing:visited,
+			.pics-opp-flag-saveing:hover,
+			.pics-opp-flag-saveing:active {
+				color: #727171;
+				font-weight: bolder;
+				text-decoration: none;
+			}
+			
+			.pics-opp-flag-saved,
+			.pics-opp-flag-saved:visited,
+			.pics-opp-flag-saved:hover,
+			.pics-opp-flag-saved:active {
+				color: #727171;
+				font-weight: bolder;
+				text-decoration: none;
+			}
+			
+			.pics-opp-flag-fail,
+			.pics-opp-flag-fail:visited,
+			.pics-opp-flag-fail:hover,
+			.pics-opp-flag-fail:active {
+				color: #727171;
+				font-weight: bolder;
+				text-decoration: none;
+			}
+			
+			.pics-opp-flag-finish,
+			.pics-opp-flag-finish:visited,
+			.pics-opp-flag-finish:hover,
+			.pics-opp-flag-finish:active {
+				color: #7AECE6;
+				font-weight: bolder;
+				text-decoration: none;
+			}
+			
+			.tipContent {
+				color: #635E5E;
+				border: 1px dashed #000;
+				padding: 10px;
+				overflow: visible;
+			}
+			
+			.page {
+				box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.1), -6px 6px 6px rgba(0, 0, 0, 0.1), 6px 6px 6px rgba(0, 0, 0, 0.1), 6px -6px 6px rgba(0, 0, 0, 0.1);
+			}
+			
+			.img-tips {
+				display: none;
+			}
+			
+			.content-page {
+				overflow: visible;
+			}
+			
+			.img-caijian-wrap {
+				position: fixed;
+				top: 30px;
+				width: 36%;
+				margin-left: 32%;
+				margin-right: 32%;
+				padding: 30px 30px;
+				background: #fff;
+				border: 1px solid #7AECE6;
+				display: none;
+			}
+			
+			.caijian-btn-wrap {
+				text-align: center;
+				margin-top: 15px;
+			}
+			
+			.caijian-btn-wrap>span>a {
+				border: 1px solid #7AECE6;
+				padding: 20px 20px;
+				border-radius: 10px;
+				background: #7AECE6;
+				line-height: 30px;
+				color: #fff;
+			}
+			
+			.pics-img-to-big,
+			.pics-img-to-move,
+			.pics-img-to-small {
+				-moz-user-select: none;
+				/*火狐*/
+				-webkit-user-select: none;
+				/*webkit浏览器*/
+				-ms-user-select: none;
+				/*IE10*/
+				-khtml-user-select: none;
+				/*早期浏览器*/
+				user-select: none;
+			}
+			
+			.pics-move-tip-btn {
+				margin-top: 16px;
+				line-height: 50px;
+			}
+			
+			.pics-move-tip-btn-a,
+			.pics-move-tip-btn-a:visited,
+			.pics-move-tip-btn-a:hover,
+			.pics-move-tip-btn-a:active {
+				border: 1px solid #fff;
+				padding: 4px 10px;
+				color: #fff;
+				text-decoration: none;
+			}
+			
+			.vigour_images img,
+			.moveTip>p {
+				-moz-user-select: none;
+				-webkit-user-select: none;
+				-ms-user-select: none;
+				-khtml-user-select: none;
+				user-select: none;
+			}
+			
+			.book-bookTitle-14 {
+				top: 68%;
+			}
+			
+			.lf-img3,
+			.up-back-img {
+				width: 30%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto;
+			}
+			
+			.lf-img3>img,
+			.up-back-img>img {
+				position: absolute;
+				width: 100%;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto;
+				border-radius: 10%;
+			}	
+		</style>
+	</head>
+
+	<body style="overflow: auto;">
+		<!--头部-->
+		<!--头部-->
+		<div class="header">
+			<div class="header-menu-box center">
+				<!--<div class="header-lf"><img src="/images/zhaopianshuPC-img/logo.png"></div>-->
+				<div class="header-mid">
+					<ul>
+						<li class="pc-title-view-index ">首页</li>
+						<li class="pc-title-view-wxbook ">微信书</li>
+						<li class="pc-title-view-sinabook ">微博书</li>
+						<li class="pc-title-view-pics banner-active-title">照片书</li>
+						<li style="display:none;">照片冲印</li>
+						<li class="pc-title-view-books ">我的书架</li>
+						<li style="display:none;">我的订单</li>
+					</ul>
+				</div>
+				<div class="header-rt">
+					<span>
+						<a href="javascript:;" class="user-login-out">
+							<img src="http://thirdwx.qlogo.cn/mmopen/5iaQSIdtB8L4icUjibVCAicWc9wTFuNAtZ8TpBibkNvf8w4oH5NYSLR8YCZVqlaUw3ahwPrFLHKlTadT9fy3usib0DA4sIVk5yoHOK/132">&nbsp;南笙北顾，退出
+						</a>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="pc-loading" style="display: none;">
+			<div class="pc-tip-wrap">
+				<div class="loading-img">
+					<img style="width: 30px;" src="images/pc_loading.gif" class="pc-loading-img">
+				</div>
+				<div class="pc-loading-tip"></div>
+			</div>
+		</div>
+		<input type="hidden" id="lfflag" name="lfflag" value="1">
+		<!---->
+		<div class="creat-zps-name">
+			<span><img src="images/zhizuo/zps19.png"></span> 
+			<span class="pc-book-name-t">南笙</span></div>
+		
+		<!--照片书开始-->
+		<!--
+        	作者：1029776012@qq.com
+        	时间：2018-06-26
+        	描述：
+        
+		<div class="book-view-box" style="">
+			<div id="flipbook" style="position: relative; width: 748px; height: 498px; transform: translate3d(0px, 0px, 0px); margin-left: -187px;">
+			</div>
+			<p class="turn-action" style="display: none;">点击左右翻页</p>
+		</div>
+		-->
+		
+			<!--<div id="canvas">
+				<div id="book-zoom">
+					<div class="sj-book" style="margin-left: -335px;">
+						<div depth="5" class="hard"> <div class="side"></div> </div>
+						<div depth="5" class="hard front-side"> <div class="depth"></div> </div>
+						<div class="own-size"></div>
+						<div class="own-size even"></div>
+						<div class="hard fixed back-side p111"> <div class="depth"></div> </div>
+						<div class="hard p112"></div>
+					</div>
+				</div>
+				<div id="slider-bar" class="turnjs-slider">
+					<div id="slider"></div>
+				</div>
+			</div>-->
+<!--<div class="book-view-box" style="border: 1px solid red;">-->
+	<!--<div class="flipbook-viewport" style="border: 1px solid blueviolet;">-->
+		<div class="container" >
+			<div class="col-lg-offset-1" style="padding-left: 10px;margin-top: 10px;">
+			<!--<center style="padding-right:100px ;">-->
+			<div class="flipbook" style="margin-left: 0px!important;">
+				<div style="background-image:url(photo/img.jpg)"></div>
+				<div >
+					<img src="photo/2.jpg" width="298px" height="446px" />
+					<input type="text" placeholder="请输入"/>
+				</div>
+				<div style="background-image:url(photo/3.jpg)"></div>
+				<div style="background-image:url(photo/4.jpg)"></div>
+				<div style="background-image:url(photo/5.jpg)"></div>
+				<div style="background-image:url(photo/6.jpg)"></div>
+				<div style="background-image:url(photo/7.jpg)"></div>
+				<div style="background-image:url(photo/8.jpg)"></div>
+				<div style="background-image:url(photo/9.jpg)"></div>
+				<div style="background-image:url(photo/10.jpg)"></div>
+				<div style="background-image:url(photo/11.jpg)"></div>
+				<div style="background-image:url(photo/12.jpg)"></div>
+			</div>
+			<!--</center>-->
+		</div>
+		</div>
+	<!--</div>-->
+<!--</div>-->
+		
+		
+		<!--<div class="turn-cicle">
+			<span class="turn-cicle-lf" style="display: inline;">第1页/共21页</span>
+			<span class="turn-cicle-rt" style="display: inline;">
+				<input style="display: inline;" class="range" type="range" name="points" min="1" max="21" value="0">
+			</span>
+		</div>-->
+		<!--照片书结束-->
+		<div class="bianji-box">
+			<ul class="bianji-box-lf">
+				<li class="bianji-box-lf-li-active">封面编辑</li>
+				<li>模板编辑</li>
+				<li>内容编辑</li>
+			</ul>
+			<!--<div class="bianji-box-rt">完成</div>-->
+			<div style="text-align: right;">
+				<a class="pics-opp-flag pics-opp-flag-saveing" href="javascript:;">
+					<img src="images/zhizuo/pics_opp_flag_saveing.png">保存中
+				</a>
+				<a class="pics-opp-flag pics-opp-flag-saved" href="javascript:;">
+					<img src="images/zhizuo/pics_opp_flag_saved.png">已保存
+				</a>
+				<a class="pics-opp-flag pics-opp-flag-fail" href="javascript:;">
+					<img src="images/zhizuo/pics_opp_flag_savefail.png">保存失败
+				</a>
+				<a class="pics-opp-flag pics-opp-flag-finish" href="javascript:;">
+					<img src="images/zhizuo/pics_opp_flag_finish.png">完成
+				</a>
+			</div>
+		</div>
+		<!---->
+		<div class="bianji-box-tab" style="margin-bottom: 40px;">
+			<div class="bianji-box-tab-list" style="display: block;">
+				<div class="bianji-block-line">
+					<div class="bianji-box-tab-list-lf">封面标题</div>
+					<div class="bianji-box-tab-list-rt">
+						<input maxlength="12" class="input-color-active input-color-common pc-book-name" value="南笙" type="text">
+					</div>
+				</div>
+				<div class="bianji-block-line">
+					<div class="bianji-box-tab-list-lf">封面副标题</div>
+					<div class="bianji-box-tab-list-rt">
+						<input maxlength="21" class="input-color-common pc-book-title" value="" type="text">
+					</div>
+				</div>
+				<div class="bianji-block-line">
+					<div class="bianji-box-tab-list-lf">封面作者</div>
+					<div class="bianji-box-tab-list-rt">
+						<input maxlength="10" class="input-color-common pc-book-author" value="南笙北顾" type="text">
+					</div>
+				</div>
+				<div class="bianji-block-line">
+					<div class="bianji-box-tab-list-lf">封面照片</div>
+					<div class="bianji-box-tab-list-rt">
+						<div class="send-front-cover">上传封面照片</div>
+					</div>
+				</div>
+				<div class="bianji-block-line">
+					<div class="front-cover-pic">
+						<ul>
+							<li data-id="13">
+								<img src="images/wxbook/cover_style_13_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>可换图</span></p>
+								</div>
+							</li>
+							<li data-id="14">
+								<img src="images/wxbook/cover_style_14_new_s.jpg">
+								<div class="select-ck" style="display:block;">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>可换图</span></p>
+								</div>
+							</li>
+							<li data-id="15">
+								<img src="images/wxbook/cover_style_15_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>可换图</span></p>
+								</div>
+							</li>
+							<li data-id="16">
+								<img src="images/wxbook/cover_style_16_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>可换图</span></p>
+								</div>
+							</li>
+							<li data-id="17">
+								<img src="images/wxbook/cover_style_17_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>可换图</span></p>
+								</div>
+							</li>
+							<li data-id="18">
+								<img src="images/wxbook/cover_style_18_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+							<li data-id="19">
+								<img src="images/wxbook/cover_style_19_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+							<li data-id="20">
+								<img src="images/wxbook/cover_style_20_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>可换图</span></p>
+								</div>
+							</li>
+							<li data-id="21">
+								<img src="images/wxbook/cover_style_21_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+							<li data-id="22">
+								<img src="images/wxbook/cover_style_22_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+							<li data-id="23">
+								<img src="images/wxbook/cover_style_23_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+							<li data-id="24">
+								<img src="images/wxbook/cover_style_24_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+							<li data-id="25">
+								<img src="images/wxbook/cover_style_25_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+							<li data-id="26">
+								<img src="images/wxbook/cover_style_26_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+							<li data-id="27">
+								<img src="images/wxbook/cover_style_27_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>可换传</span></p>
+								</div>
+							</li>
+							<li data-id="28">
+								<img src="images/wxbook/cover_style_28_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+							<li data-id="29">
+								<img src="images/wxbook/cover_style_29_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+
+							<li data-id="30">
+								<img src="images/wxbook/cover_style_30_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+							<li data-id="31">
+								<img src="images/wxbook/cover_style_31_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+							<li data-id="32">
+								<img src="images/wxbook/cover_style_32_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+							<li data-id="34">
+								<img src="images/wxbook/cover_style_34_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+							<li data-id="35">
+								<img src="images/wxbook/cover_style_35_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+							<li data-id="36">
+								<img src="images/wxbook/cover_style_36_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+
+							<li data-id="33">
+								<img src="images/wxbook/cover_style_33_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+							<li data-id="37">
+								<img src="images/wxbook/cover_style_37_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+							<li data-id="38">
+								<img src="images/wxbook/cover_style_38_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+							<li data-id="39">
+								<img src="images/wxbook/cover_style_39_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+							<li data-id="40">
+								<img src="images/wxbook/cover_style_40_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+							<li data-id="41">
+								<img src="images/wxbook/cover_style_41_new_s.jpg">
+								<div class="select-ck">
+									<p class="can-change-logo"><img src="images/zhaopianshuPC-img/zps25.png"></p>
+									<p class="can-change-pic"><span>图固定</span></p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="bianji-box-tab-list">
+				<!--<div class="pic-book-style-choose-title">
+	    	  	   	    款式选择
+	    	  	   </div>
+	    	  	   <div class="pic-book-style-choose">
+	    	  	   	    <p class="pic-book-style-jian pic-book-style-active">简装</p>
+	    	  	   	    <p class="pic-book-style-jing">精装</p>
+	    	  	   </div>-->
+				<div class="pic-book-style-choose-title">
+					内页风格
+				</div>
+				<div class="pic-book-nei-style-choose">
+					<p class="pic-book-nei-style pic-book-nei-time pic-book-nei-style-active" data-id="1">旧时光</p>
+					<p class="pic-book-nei-style pic-book-nei-love " data-id="2">因为爱情</p>
+					<p class="pic-book-nei-style pic-book-nei-homePart " data-id="3">家庭聚会</p>
+					<p class="pic-book-nei-style pic-book-nei-young " data-id="4">青春毕业</p>
+					<p class="pic-book-nei-style pic-book-nei-young " data-id="5">快乐童年</p>
+					<p class="pic-book-nei-style pic-book-nei-baby " data-id="6">快乐宝贝</p>
+					<p class="pic-book-nei-style pic-book-nei-dongji " data-id="7">雪花冬季</p>
+					<p class="pic-book-nei-style pic-book-nei-qingren " data-id="8">情人节</p>
+					<p class="pic-book-nei-style pic-book-nei-chunjie " data-id="9">春节</p>
+					<p class="pic-book-nei-style pic-book-nei-haibianyou " data-id="10">海边游</p>
+				</div>
+			</div>
+			<div class="bianji-box-tab-list">
+				<div class="pic-book-nei-choose-title">
+					[编辑功能说明]
+				</div>
+				<div class="zps-tips">
+					<span>上方图片中</span>
+					<span style="margin:-2px 4px 0 4px">
+						<img src="images/zhaopianshuPC-img/24.png">
+					</span>
+					<span>可以移动、裁剪图片</span>
+					<span>，当页面多图时图片中</span>
+					<span style="margin:-2px 4px 0 4px">
+						<img src="images/zhaopianshuPC-img/change-sm.png">
+					</span>
+					<span>可调换图片位置</span>
+				</div>
+				<div class="zps-tips" style="margin-top: 15px;">
+					<p>
+						<span>点击</span>
+						<span style="margin: -1px 4px 0 4px;">
+							<img src="images/zhaopianshuPC-img/25.png"></span>
+							<span>添加新照片；</span>
+						<span>点击</span>
+						<span style="margin: -1px 4px 0 4px;">
+							<img src="images/zhaopianshuPC-img/add-logo.png">
+						</span>
+						<span>将照片添加到当前页面或者新页面</span>
+					</p>
+					<p style="margin-top: 5px;">
+						<span>点击</span>
+						<span style="margin: -1px 4px 0 4px;">
+							<img src="images/zhaopianshuPC-img/add-txt.png">
+						</span>
+						<span>添加图片说明；</span>
+						<span>点击</span>
+						<span style="margin: -1px 4px 0 4px;">
+							<img src="images/zhaopianshuPC-img/add-change.png">
+						</span>
+						<span>更换当前页面排版</span>
+					</p>
+				</div>
+				<div class="zps-upload-pic">
+					<div class="zps-upload-btn click-send-pic">
+						<img src="images/zhaopianshuPC-img/28.png">
+					</div>
+					<div class="zps-upload-btn click-send-pic-txt">
+						<img src="images/zhaopianshuPC-img/27.png">
+					</div>
+					<div class="zps-upload-btn click-send-book-pic-style img-after-flag">
+						<img src="images/zhaopianshuPC-img/30.png">
+					</div>
+					<!--
+					<div class="zps-upload-btn zps-upload-img" data-id="325355" data-url="http://pic.wxbook.66in.cn/images/2018/6/25/1529916618176.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/6/25/1529916618176.jpg.jpg); background-size: 100% auto;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="325356" data-url="http://pic.wxbook.66in.cn/images/2018/6/25/1529916618369.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/6/25/1529916618369.jpg.jpg); background-size: auto 100%;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="325352" data-url="http://pic.wxbook.66in.cn/images/2018/6/25/1529916594499.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/6/25/1529916594499.jpg.jpg);background-size: 100% auto;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="325353" data-url="http://pic.wxbook.66in.cn/images/2018/6/25/1529916594590.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/6/25/1529916594590.jpg.jpg);background-size: 100% auto;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="325354" data-url="http://pic.wxbook.66in.cn/images/2018/6/25/1529916594755.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/6/25/1529916594755.jpg.jpg);background-size: 100% auto;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="189774" data-url="http://pic.wxbook.66in.cn/images/2018/4/20/1524182789133.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/20/1524182789133.jpg.jpg);background-size: 100% auto;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="189775" data-url="http://pic.wxbook.66in.cn/images/2018/4/20/1524182789131.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/20/1524182789131.jpg.jpg);background-size: auto 100%;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="189772" data-url="http://pic.wxbook.66in.cn/images/2018/4/20/1524182788144.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/20/1524182788144.jpg.jpg); background-size: auto 100%;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="189773" data-url="http://pic.wxbook.66in.cn/images/2018/4/20/1524182788760.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/20/1524182788760.jpg.jpg);background-size: 100% auto;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="189751" data-url="http://pic.wxbook.66in.cn/images/2018/4/20/1524182499893.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/20/1524182499893.jpg.jpg);background-size: 100% auto;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="189750" data-url="http://pic.wxbook.66in.cn/images/2018/4/20/1524182499372.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/20/1524182499372.jpg.jpg);background-size: auto 100%;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="189747" data-url="http://pic.wxbook.66in.cn/images/2018/4/20/1524182453893.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/20/1524182453893.jpg.jpg);background-size: 100% auto;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="189748" data-url="http://pic.wxbook.66in.cn/images/2018/4/20/1524182453874.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/20/1524182453874.jpg.jpg);background-size: 100% auto;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="189749" data-url="http://pic.wxbook.66in.cn/images/2018/4/20/1524182454313.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/20/1524182454313.jpg.jpg);background-size: 100% auto;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="189746" data-url="http://pic.wxbook.66in.cn/images/2018/4/20/1524182453573.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/20/1524182453573.jpg.jpg);background-size: 100% auto;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="189745" data-url="http://pic.wxbook.66in.cn/images/2018/4/20/1524182452530.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/20/1524182452530.jpg.jpg);background-size: 100% auto;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="189743" data-url="http://pic.wxbook.66in.cn/images/2018/4/20/1524182451106.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/20/1524182451106.jpg.jpg); background-size: 100% auto;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="189744" data-url="http://pic.wxbook.66in.cn/images/2018/4/20/1524182451732.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/20/1524182451732.jpg.jpg);background-size: 100% auto;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="189741" data-url="http://pic.wxbook.66in.cn/images/2018/4/20/1524182449721.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/20/1524182449721.jpg.jpg); background-size: auto 100%;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="189742" data-url="http://pic.wxbook.66in.cn/images/2018/4/20/1524182450053.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/20/1524182450053.jpg.jpg);background-size: 100% auto;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="189737" data-url="http://pic.wxbook.66in.cn/images/2018/4/20/1524182449463.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/20/1524182449463.jpg.jpg);background-size: auto 100%;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="189738" data-url="http://pic.wxbook.66in.cn/images/2018/4/20/1524182449488.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/20/1524182449488.jpg.jpg);background-size: auto 100%;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="189739" data-url="http://pic.wxbook.66in.cn/images/2018/4/20/1524182449491.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/20/1524182449491.jpg.jpg);background-size: auto 100%;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="189740" data-url="http://pic.wxbook.66in.cn/images/2018/4/20/1524182449781.jpg.middle.jpg" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/20/1524182449781.jpg.jpg);background-size: 100% auto;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="187936" data-url="http://pic.wxbook.66in.cn/images/2018/4/19/wx1524116934441.JPEG.middle.JPEG" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/19/wx1524116934441.JPEG.JPEG);background-size: 100% auto;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="187930" data-url="http://pic.wxbook.66in.cn/images/2018/4/19/wx1524116915501.JPEG.middle.JPEG" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/19/wx1524116915501.JPEG.JPEG);background-size: 100% auto;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="187929" data-url="http://pic.wxbook.66in.cn/images/2018/4/19/wx1524116914185.JPEG.middle.JPEG" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/19/wx1524116914185.JPEG.JPEG);background-size: 100% auto;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="187927" data-url="http://pic.wxbook.66in.cn/images/2018/4/19/wx1524116912210.JPEG.middle.JPEG" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/19/wx1524116912210.JPEG.JPEG);background-size: auto 100%;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+					<div class="zps-upload-btn zps-upload-img" data-id="187925" data-url="http://pic.wxbook.66in.cn/images/2018/4/19/wx1524116910232.JPEG.middle.JPEG" 
+						style="background-image: url(http://pic.wxbook.66in.cn/images/2018/4/19/wx1524116910232.JPEG.JPEG);background-size: auto 100%;">
+						<div class="cover-gray">
+							<img src="images/zhaopianshuPC-img/29.png">
+						</div>
+						<p class="zps-add-new-img-now">添加到当前页</p>
+						<p class="zps-add-new-img-new">添加到新页</p>
+					</div>
+				-->
+				</div>
+				
+			</div>
+		</div>
+		<input class="photo-imgs-u" id="file_input2" type="file" style="display:none;" accept="image/jpeg,image/jpg,image/png" multiple="multiple">
+		<input type="hidden" id="c" name="c" value="12">
+		<input type="hidden" id="bookId" name="bookId" value="64688">
+		<input class="photo-imgs-cover" id="file_input" type="file" style="display:none;" accept="image/jpeg,image/jpg,image/png" multiple="multiple">
+		<input type="hidden" id="bookCoverStyle" name="bookCoverStyle" value="14">
+		<input type="hidden" id="bookCoverImg" name="bookCoverImg" value="">
+		<input type="hidden" id="bookCoverEdit" name="bookCoverEdit" value="">
+		<input class="img-back-input" id="file_input3" type="file" style="display:none;" accept="image/jpeg,image/jpg">
+		<input type="hidden" id="backImg" name="backImg" value="">
+		<!-- 模态框-提示框（Modal） -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							×
+						</button>
+						<h4 class="modal-title my-alert-title" id="myModalLabel">
+							模态框（Modal）标题
+						</h4>
+					</div>
+					<div class="modal-body my-alert-body">
+						在这里添加一些文本
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary my-alert-btn" data-dismiss="modal">关闭
+						</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+		</div>
+		<!-- /.modal -->
+
+		<!-- 模态框-输入框（Modal） -->
+		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							×
+						</button>
+						<h4 class="modal-title my-input-title" id="myModalLabel">
+							模态框（Modal）标题
+						</h4>
+					</div>
+					<div class="modal-body">
+						<textarea rows="3" style="width: 100%;resize: none;" class="my-input-body" maxlength="36" placeholder="不能超过36个字哟"></textarea>
+					</div>
+					<div class="modal-footer">
+						<button type="button" data-id="" class="btn btn-primary my-input-btn" data-dismiss="modal">关闭
+						</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+		</div>
+		<!-- /.modal -->
+
+		<!-- 模态框-图文输入框（Modal） -->
+		<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							×
+						</button>
+						<h4 class="modal-title my-pic-input-title" id="myModalLabel">
+							添加图片描述
+						</h4>
+					</div>
+					<div class="modal-body">
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" data-id="" class="btn btn-default" data-dismiss="modal">关闭
+						</button>
+						<button type="button" data-id="" class="btn btn-primary my-pic-input-btn">保存
+						</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+		</div>
+		<!-- /.modal -->
+
+		<div class="img-caijian-wrap">
+
+			<div style="width:300px;height:300px;" class="container">
+				<img id="element_id" style="height:100%;" src="" data-id="" data-is="" alt="Picture">
+			</div>
+
+			<div id="warningimg" style="display:none;position: absolute;top: 77%;left: 78%;width: 50px;height: 50px;">
+				    <img style="width: 100%;height: 100%;" src="images/warning.jpg">
+			</div>
+			<div class="caijian-btn-wrap">
+				<span><a class="caijian-ok" href="javascript:;">裁剪</a></span>
+			</div>
+		</div>
+		<div class="totop" style="position: fixed; right: 50px; bottom: 50px; cursor: pointer; display: none;">
+			<img style="width:120px;" src="images/blog7year_gotop.png">
+		</div>
+		
+<script>
+			$(function() {
+				$(".bianji-box-lf li").click(function() {
+					$(this).addClass("bianji-box-lf-li-active").siblings().removeClass("bianji-box-lf-li-active")
+					$(".bianji-box-tab-list").eq($(this).index()).show().siblings().hide()
+				})
+				$(".input-color-common").focus(function() {
+					$(".input-color-common").removeClass("input-color-active")
+					$(this).addClass("input-color-active")
+				})
+				$(".pic-book-style-choose p").click(function() {
+					$(".pic-book-style-choose p").removeClass("pic-book-style-active")
+					$(this).addClass("pic-book-style-active")
+				})
+				$(".pic-book-nei-style-choose p").click(function() {
+					$(".pic-book-nei-style-choose p").removeClass("pic-book-nei-style-active");
+					$(this).addClass("pic-book-nei-style-active")
+				})
+				$(".cover-gray").click(function() {
+					$(".zps-add-new-img-now,.zps-add-new-img-new").hide()
+					$(this).parent().find(".zps-add-new-img-now,.zps-add-new-img-new").toggle()
+				})
+
+				$(window).scroll(function() {
+					if($(window).scrollTop() >= 500) {
+						$('.totop').fadeIn(300);
+					} else {
+						$('.totop').fadeOut(300);
+					}
+				});
+				$('.totop').click(function() {
+					$('html,body').animate({
+						scrollTop: '0px'
+					}, 400);
+				});
+			})
+</script>
+<!--
+<script type="text/javascript">
+
+function loadApp() {
+	
+	var flipbook = $('.sj-book');
+
+	// Check if the CSS was already loaded
+	
+	if (flipbook.width()==0 || flipbook.height()==0) {
+		setTimeout(loadApp, 10);
+		return;
+	}
+
+	// Mousewheel
+
+	$('#book-zoom').mousewheel(function(event, delta, deltaX, deltaY) {
+
+		var data = $(this).data(),
+			step = 30,
+			flipbook = $('.sj-book'),
+			actualPos = $('#slider').slider('value')*step;
+
+		if (typeof(data.scrollX)==='undefined') {
+			data.scrollX = actualPos;
+			data.scrollPage = flipbook.turn('page');
+		}
+
+		data.scrollX = Math.min($( "#slider" ).slider('option', 'max')*step,
+			Math.max(0, data.scrollX + deltaX));
+
+		var actualView = Math.round(data.scrollX/step),
+			page = Math.min(flipbook.turn('pages'), Math.max(1, actualView*2 - 2));
+
+		if ($.inArray(data.scrollPage, flipbook.turn('view', page))==-1) {
+			data.scrollPage = page;
+			flipbook.turn('page', page);
+		}
+
+		if (data.scrollTimer)
+			clearInterval(data.scrollTimer);
+		
+		data.scrollTimer = setTimeout(function(){
+			data.scrollX = undefined;
+			data.scrollPage = undefined;
+			data.scrollTimer = undefined;
+		}, 1000);
+
+	});
+
+	// Slider
+
+	$( "#slider" ).slider({
+		min: 1,
+		max: 100,
+
+		start: function(event, ui) {
+
+			if (!window._thumbPreview) {
+				_thumbPreview = $('<div />', {'class': 'thumbnail'}).html('<div></div>');
+				setPreview(ui.value);
+				_thumbPreview.appendTo($(ui.handle));
+			} else
+				setPreview(ui.value);
+
+			moveBar(false);
+
+		},
+
+		slide: function(event, ui) {
+
+			setPreview(ui.value);
+
+		},
+
+		stop: function() {
+
+			if (window._thumbPreview)
+				_thumbPreview.removeClass('show');
+			
+			$('.sj-book').turn('page', Math.max(1, $(this).slider('value')*2 - 2));
+
+		}
+	});
+
+
+	// URIs
+	
+	Hash.on('^page\/([0-9]*)$', {
+		yep: function(path, parts) {
+
+			var page = parts[1];
+
+			if (page!==undefined) {
+				if ($('.sj-book').turn('is'))
+					$('.sj-book').turn('page', page);
+			}
+
+		},
+		nop: function(path) {
+
+			if ($('.sj-book').turn('is'))
+				$('.sj-book').turn('page', 1);
+		}
+	});
+
+	// Arrows
+
+	$(document).keydown(function(e){
+
+		var previous = 37, next = 39;
+
+		switch (e.keyCode) {
+			case previous:
+
+				$('.sj-book').turn('previous');
+
+			break;
+			case next:
+				
+				$('.sj-book').turn('next');
+
+			break;
+		}
+
+	});
+
+
+	// Flipbook
+
+	flipbook.bind(($.isTouch) ? 'touchend' : 'click', zoomHandle);
+
+	flipbook.turn({
+		elevation: 50,
+		acceleration: !isChrome(),
+		autoCenter: true,
+		gradients: true,
+		duration: 1000,
+		pages: 112,
+		when: {
+			turning: function(e, page, view) {
+				
+				var book = $(this),
+					currentPage = book.turn('page'),
+					pages = book.turn('pages');
+
+				if (currentPage>3 && currentPage<pages-3) {
+				
+					if (page==1) {
+						book.turn('page', 2).turn('stop').turn('page', page);
+						e.preventDefault();
+						return;
+					} else if (page==pages) {
+						book.turn('page', pages-1).turn('stop').turn('page', page);
+						e.preventDefault();
+						return;
+					}
+				} else if (page>3 && page<pages-3) {
+					if (currentPage==1) {
+						book.turn('page', 2).turn('stop').turn('page', page);
+						e.preventDefault();
+						return;
+					} else if (currentPage==pages) {
+						book.turn('page', pages-1).turn('stop').turn('page', page);
+						e.preventDefault();
+						return;
+					}
+				}
+
+				updateDepth(book, page);
+				
+				if (page>=2)
+					$('.sj-book .p2').addClass('fixed');
+				else
+					$('.sj-book .p2').removeClass('fixed');
+
+				if (page<book.turn('pages'))
+					$('.sj-book .p111').addClass('fixed');
+				else
+					$('.sj-book .p111').removeClass('fixed');
+
+				Hash.go('page/'+page).update();
+					
+			},
+
+			turned: function(e, page, view) {
+
+				var book = $(this);
+
+				if (page==2 || page==3) {
+					book.turn('peel', 'br');
+				}
+
+				updateDepth(book);
+				
+				$('#slider').slider('value', getViewNumber(book, page));
+
+				book.turn('center');
+
+			},
+
+			start: function(e, pageObj) {
+		
+				moveBar(true);
+
+			},
+
+			end: function(e, pageObj) {
+			
+				var book = $(this);
+
+				updateDepth(book);
+
+				setTimeout(function() {
+					
+					$('#slider').slider('value', getViewNumber(book));
+
+				}, 1);
+
+				moveBar(false);
+
+			},
+
+			missing: function (e, pages) {
+
+				for (var i = 0; i < pages.length; i++) {
+					addPage(pages[i], $(this));
+				}
+
+			}
+		}
+	});
+
+
+	$('#slider').slider('option', 'max', numberOfViews(flipbook));
+
+	flipbook.addClass('animated');
+
+	// Show canvas
+
+	$('#canvas').css({visibility: ''});
+}
+
+// Hide canvas
+
+$('#canvas').css({visibility: 'hidden'});
+
+// Load turn.js
+
+yepnope({
+	test : Modernizr.csstransforms,
+	yep: ['lib/turn.min.js'],
+	nope: ['lib/turn.html4.min.js', 'css/jquery.ui.html4.css', 'css/steve-jobs-html4.css'],
+	both: ['js/steve-jobs.js', 'css/jquery.ui.css', 'css/steve-jobs.css'],
+	complete: loadApp
+});
+
+</script>
+-->
+
+<script type="text/javascript">
+
+function loadApp() {
+
+	// Create the flipbook
+
+	$('.flipbook').turn({
+			// Width
+
+			width:922,//设置书本的宽
+			
+			// Height
+
+			height:600,//书本高度
+
+			// Elevation
+
+			elevation: 50,//翻页速度
+			
+			// Enable gradients
+
+			gradients: true,
+			
+			// Auto center this flipbook
+
+			autoCenter: true
+
+	});
+}
+
+// Load the HTML4 version if there's not CSS transform
+
+yepnope({
+	test : Modernizr.csstransforms,
+	yep: ['lib/turn.js'],
+	nope: ['lib/turn.html4.min.js'],
+	both: ['css/basic.css'],
+	complete: loadApp
+});
+
+</script>
+
+</body>
+
+</html>

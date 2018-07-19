@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kesun.dao.ht.IRaiders">
+    <resultMap id="BaseResultMap" type="kesun.entity.ht.Raiders">
+        <result column="id" property="id"/>
+        <result column="time" property="time"/>
+        <result column="status" property="status"/>
+        <result column="content" property="content"/>
+        <result column="likenum" property="likenum"/>
+        <result column="reason" property="reason"/>
+        <result column="u_id" property="u_id"/>
+        <result column="sub_id" property="sub_id"/>
+
+        <association property="userInform" javaType="kesun.entity.ht.UserInform">
+            <id property="id"   column="uid"/>
+            <result property="name" column="name"/>
+        </association>
+        <association property="category" javaType="kesun.entity.ht.Category">
+            <id property="id"   column="sub_id"/>
+            <result property="category" column="category"/>
+        </association>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,name,time,content,likenum,status,reason,sub_id,u_id
+    </sql>
+    <sql id="colums">
+        <trim suffix="" suffixOverrides=",">
+
+            <if test="id != null">
+                id,
+            </if>
+            <if test="reason!= null">
+                reason,
+            </if>
+            <if test="time != null">
+                time,
+            </if>
+
+            <if test="content != null">
+            content,
+        </if>
+
+            <if test="likenum != null">
+                likenum,
+            </if>
+
+            <if test="status != null">
+                status,
+            </if>
+            <if test="u_id != null">
+                u_id ,
+            </if>
+            <if test="sub_id != null">
+                sub_id ,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="columsValue">
+        <trim suffix="" suffixOverrides=",">
+
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="reason!= null">
+                #{reason},
+            </if>
+            <if test="time != null">
+                #{time},
+            </if>
+
+
+
+            <if test="content != null">
+                #{content},
+            </if>
+
+            <if test="likenum != null">
+                #{likenum},
+            </if>
+
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="sub_id != null">
+                #{sub_id},
+            </if>
+            <if test="u_id != null">
+                #{u_id},
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="columsItemsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="item.id != null">
+                #{item.id},
+            </if>
+            <if test="item.reason!= null">
+                #{item.reason},
+            </if>
+            <if test="item.time != null">
+                #{item.time},
+            </if>
+
+            <if test="item.content != null">
+                #{item.content},
+            </if>
+            <if test="item.likenum != null">
+                #{item.likenum},
+            </if>
+
+            <if test="item.status != null">
+                #{item.status},
+            </if>
+            <if test="item.sub_id != null">
+                #{item.sub_id},
+            </if>
+            <if test="item.u_id != null">
+                #{item.u_id},
+            </if>
+        </trim>
+    </sql>
+
+    <!--单个对象新增-->
+    <insert id="save" parameterType="kesun.entity.ht.Raiders">
+        insert into i_raiders (
+        <include refid="colums"/>
+        ) values (
+        <include refid="columsValue"/>)
+    </insert>
+    <!--批量新增-->
+    <insert id="batchSave" parameterType="kesun.entity.ht.Raiders">
+        insert into i_raiders (
+        <include refid="colums"/>
+        ) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            <include refid="columsItemsValue"/>
+            );
+        </foreach>
+    </insert>
+    <!--单个对象更新-->
+    <update id="update" parameterType="kesun.entity.ht.Raiders">
+        update i_raiders set
+        <trim suffix="" suffixOverrides=",">
+
+            <if test="id != null">
+                id=#{id},
+            </if>
+            <if test="reason!= null">
+                reason=#{reason},
+            </if>
+            <if test="time != null">
+                time=#{time},
+            </if>
+
+            <if test="content!= null">
+                content=#{content},
+            </if>
+            <if test="likenum != null">
+                likenum=#{likenum},
+            </if>
+            <if test="status != null">
+                status=#{status},
+            </if>
+            <if test="sub_id != null">
+                sub_id=#{sub_id},
+            </if>
+            <if test="u_id != null">
+                u_id=#{u_id},
+            </if>
+        </trim>
+        where id=#{id,jdbcType=VARCHAR}
+    </update>
+    <!--对象批量更新-->
+    <update id="batchUpdate" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update i_raiders set
+            <trim suffix="" suffixOverrides=",">
+
+
+                <if test="id != null">
+                    id=#{item.id},
+                </if>
+                <if test="item.reason!= null">
+                    item.reason=#{item.reason},
+                </if>
+                <if test="time != null">
+                    time=#{item.time},
+                </if>
+
+                <if test="content != null">
+                    content=#{item.content},
+                </if>
+                <if test="likenum != null">
+                    likenum=#{item.likenum},
+                </if>
+                <if test="status != null">
+                    status=#{item.status},
+                </if>
+                <if test="sub_id != null">
+                    sub_id=#{item.sub_id},
+                </if>
+                <if test="u_id != null">
+                    u_id=#{item.u_id},
+                </if>
+            </trim>
+            where id=#{item.oldId,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+    <!--单个对象删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from i_raiders where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        delete from i_raiders
+        <where>
+            id in
+            <foreach collection="list" item="item" separator="," open="(" close=")">#{item,jdbcType=VARCHAR}</foreach>
+        </where>
+
+    </delete>
+    <!--单个对象查找-->
+    <select id="getMe" parameterType="java.lang.String" resultMap="BaseResultMap">
+       SELECT
+r.id AS id,
+u.id AS  uid,
+u.name AS  name,
+r.time AS time,
+r.reason as reason,
+r.content AS content,
+r.status AS status,
+c.id AS cid,
+c.category AS category,
+r.likenum AS likenum
+FROM
+i_raiders AS  r,
+i_user as  u,
+i_category  AS c
+WHERE  r.u_id=u.id and r.sub_id=c.id
+HAVING  r.id = #{id,jdbcType=VARCHAR}
+    </select>
+    <!--查找，以Map返回-->
+    <select id="findForMap" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT
+        r.id AS id,
+        u.id AS  uid,
+        u.name AS  name,
+        r.time AS time,
+        r.reason as reason,
+        r.content AS content,
+        r.status AS status,
+        c.id AS cid,
+        c.category AS category,
+        r.likenum AS likenum
+        FROM
+        i_raiders AS  r,
+        i_user as  u,
+        i_category  AS c
+        WHERE  r.u_id=u.id and r.sub_id=c.id
+        having  <include refid="partValue"></include>
+        order by content ASC
+
+    </select>
+    <!--查询，以对象集合返回-->
+    <select id="find" parameterType="java.util.Map" resultMap="BaseResultMap">
+        SELECT
+        r.id AS id,
+        u.id AS  uid,
+        u.name AS  name,
+        r.time AS time,
+        r.content AS content,
+        r.status AS status,
+        r.reason as reason,
+        c.id AS cid,
+        c.category AS category,
+        r.likenum AS likenum
+        FROM
+        i_raiders AS  r,
+        i_user as  u,
+        i_category  AS c
+        WHERE  r.u_id=u.id and r.sub_id=c.id
+        having  <include refid="partValue"></include>
+        order by content ASC
+    </select>
+    <!--返回查找条数-->
+    <select id="getRowsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) as total from  FROM
+        i_raiders AS  r,
+        i_user as  u,
+        i_category  AS c
+        WHERE  r.u_id=u.id and r.sub_id=c.subid
+        having  <include refid="partValue"></include>
+
+    </select>
+    <sql id="partValue">
+        <trim suffix="" suffixOverrides="and">
+            <if test="status!=null">
+                status like '%${status}%' and
+            </if>
+            <if test="name!=null">
+                name like '%${name}%' and
+            </if>
+        </trim>
+    </sql>
+
+    <!--分页查找-->
+    <select id="findByPage" parameterType="java.util.Map" resultType="java.util.Map">
+               SELECT
+        r.id AS id,
+        u.id AS  uid,
+        u.name AS  name,
+        r.time AS time,
+        r.content AS content,
+        r.status AS status,
+        r.reason as reason,
+        c.id AS cid,
+        c.category AS category,
+        r.likenum AS likenum
+        FROM
+        i_raiders AS  r,
+        i_user as  u,
+        i_category  AS c
+        WHERE  r.u_id=u.id and r.sub_id=c.subid
+        having  <include refid="partValue"></include>
+        order by r.time desc
+        <if test="start !=0 or limit!=0">
+            limit #{start},#{limit}
+        </if>
+
+    </select>
+    <!--判断数据是否在使用中-->
+    <select id="objectInUse" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        <![CDATA[ select count(id) from i_raiders where content=#{id} ]]>
+    </select>
+</mapper>

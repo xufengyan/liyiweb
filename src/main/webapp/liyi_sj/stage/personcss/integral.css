@@ -1,0 +1,82 @@
+.integral-tableone,.integral-tabletow,.tablethree{
+	margin-left: 4%;
+	width: 92%;	
+}
+
+
+.integral-tableone table tr td{
+	padding: 40px 20px 20px 20px;
+	text-align: center;
+}
+
+.integral-tableone button{
+	font-size: 20px;
+	width: 90%;
+}
+
+.integral-tableone p{
+	font-size:18px;
+}
+
+.integral-tableone h2{
+	font-size: 27px;
+	color: darkred;
+}
+
+
+@media only screen and (max-width:768px) {
+
+.integral-table p{
+	font-size:14px;
+}
+
+.integral-tableone h2{
+	font-size: 17px;
+	color: darkred;
+}	
+
+
+.integral-tableone button{
+	font-size: 12px;
+}
+
+.tablethree .one-td img{
+	margin: 10px 20px 10px 20px;
+	
+}
+
+}
+
+
+.integral-tabletow table tr td{
+	padding: 5px 20px 10px 5px;
+	text-align: center;
+    font-size: 14px;
+}
+
+.tablethree .one-td{
+	width: 32%;
+}
+.tablethree .tow-td{
+	width: 28%;
+}
+.tablethree .three-td{
+	width: 22%;
+}
+.tablethree .four-td{
+	width: 18%;
+}
+
+.tablethree .tow-td p{
+	color: darkred;
+	font-size: 32px;
+	line-height: 110px;
+	text-align: center;
+}
+
+.tablethree .three-td p,.tablethree .four-td p{
+	color:gray;
+	font-size: 13px;
+	line-height: 110px;
+	text-align: center;
+}

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kesun.dao.ht.H_ICompaints">
+    <resultMap id="BaseResultMap" type="kesun.entity.ht.Compaints">
+        <result column="id" property="id"/>
+        <result column="oldId" property="oldId"/>
+        <result column="u_id" property="u_id"/>
+        <result column="c_id" property="c_id"/>
+        <result column="content" property="content"/>
+        <result column="complaintstime"  property="complaintstime" />
+        <result column="status" property="status"/>
+        <result column="processed" property="processed"/>
+        <association property="usere" javaType="kesun.entity.ht.User">
+            <id column="usere" property="id"></id>
+            <result column="name" property="name"/>
+        </association>
+        <association property="commodity" javaType="kesun.entity.ht.Commodity">
+            <id column="commodity" property="id"></id>
+            <result column="commname" property="name"/>
+        </association>
+
+
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,name,phone,storename,content,complaintstime,status,processed
+    </sql>
+    <sql id="colums">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="u_id != null">
+                u_id,
+            </if>
+
+            <if test="c_id != null">
+                c_id,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="complaintstime != null">
+                complaintstime,
+            </if>
+
+            <if test="status != null">
+                status,
+            </if>
+            <if test="processed != null">
+                processed,
+            </if>
+            <if test="usere != null">
+                usere,
+            </if>
+            <if test="commodity != null">
+                commodity,
+            </if>
+
+
+
+
+
+
+        </trim>
+    </sql>
+
+    <sql id="columsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="u_id != null">
+                #{u_id},
+            </if>
+
+            <if test="c_id != null">
+                #{c_id},
+            </if>
+            <if test="content != null">
+                #{content},
+            </if>
+            <if test="complaintstime != null">
+                #{complaintstime},
+            </if>
+
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="processed != null">
+                #{processed},
+            </if>
+            <if test="usere != null">
+                #{usere.id},
+            </if>
+            <if test="commodity != null">
+                #{commodity.id},
+            </if>
+
+
+
+
+        </trim>
+    </sql>
+
+    <sql id="columsItemsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="item.id != null">
+                #{item.id},
+            </if>
+            <if test="item.u_id != null">
+                #{item.u_id},
+            </if>
+
+
+            <if test="item.c_id != null">
+                #{item.c_id},
+            </if>
+            <if test="item.content != null">
+                #{item.content},
+            </if>
+            <if test="item.complaintstime != null">
+                #{item.complaintstime},
+            </if>
+
+            <if test="item.status != null">
+                #{item.status},
+            </if>
+            <if test="item.processed != null">
+                #{item.processed},
+            </if>
+            <if test="item.usere != null">
+                #{item.usere.id},
+            </if>
+            <if test="item.commodity != null">
+                #{item.commodity.id},
+            </if>
+
+
+
+        </trim>
+    </sql>
+
+    <!--单个对象新增-->
+    <insert id="save" parameterType="kesun.entity.ht.Compaints">
+        insert into I_complaints(
+        <include refid="colums"/>
+        ) values (
+        <include refid="columsValue"/>)
+    </insert>
+    <!--批量新增-->
+    <insert id="batchSave" parameterType="kesun.entity.ht.Compaints">
+        insert into I_complaints(
+        <include refid="colums"/>
+        ) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            <include refid="columsItemsValue"/>
+            );
+        </foreach>
+    </insert>
+    <!--单个对象更新-->
+    <update id="update" parameterType="kesun.entity.ht.Compaints">
+        update i_complaints set
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                id=#{id},
+            </if>
+
+            <if test="u_id != null">
+                u_id=#{u_id},
+            </if>
+
+            <if test="c_id != null">
+                c_id=#{c_id},
+            </if>
+            <if test="content!= null">
+                content=#{content},
+            </if>
+            <if test="complaintstime != null">
+                complaintstime=#{complaintstime},
+            </if>
+            <if test="status != null">
+                status=#{status},
+            </if>
+            <if test="processed != null">
+                processed=#{processed},
+            </if>
+            <if test="usere != null">
+                usere=#{usere.id},
+            </if>
+            <if test="commodity != null">
+                commodity=#{commodity.id},
+            </if>
+
+        </trim>
+        where id=#{id,jdbcType=VARCHAR}
+    </update>
+    <!--对象批量更新-->
+    <update id="batchUpdate" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update I_complaints set
+            <trim suffix="" suffixOverrides=",">
+                <if test="id != null">
+                    id=#{item.id},
+                </if>
+                <if test="oldId != null">
+                    oldId=#{item.oldId},
+                </if>
+                <if test="u_id != null">
+                    u_id=#{item.u_id},
+                </if>
+
+                <if test="c_id != null">
+                    c_id=#{item.c_id},
+                </if>
+                <if test="content != null">
+                    content=#{item.content},
+                </if>
+                <if test="complaintstime != null">
+                    complaintstime=#{item.complaintstime},
+                </if>
+                <if test="status != null">
+                    status=#{item.status},
+                </if>
+                <if test="processed != null">
+                    processed=#{item.processed},
+                </if>
+                <if test="processed != null">
+                    processed=#{item.processed},
+                </if>
+                <if test="usere != null">
+                    usere=#{item.usere},
+                </if>
+                <if test="commodity != null">
+                    commodity=#{item.commodity},
+                </if>
+
+
+            </trim>
+            where id=#{item.oldId,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+    <!--单个对象删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from I_complaints where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        delete from I_complaints
+        <where>
+            id in
+            <foreach collection="list" item="item" separator="," open="(" close=")">#{item,jdbcType=VARCHAR}</foreach>
+        </where>
+
+    </delete>
+    <!--单个对象查找-->
+    <select id="getMe" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        *
+        from i_complaints where id= #{id,jdbcType=VARCHAR}
+
+    </select>
+
+    <select id="getme2" parameterType="java.lang.String" resultType="java.util.Map">
+        select
+        *
+        from c_u_gview where id= #{id,jdbcType=VARCHAR}
+
+    </select>
+    <!--查找，以Map返回-->
+    <select id="findForMap" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from c_u_gview
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="name!=null">
+                    name like '%${name}%' or
+                </if>
+            </trim>
+        </where>
+        order by name ASC
+
+    </select>
+    <!--查询，以对象集合返回-->
+    <select id="find" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from c_u_gview
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="name!=null">
+                    name like '%${name}%' or
+                </if>
+            </trim>
+        </where>
+        order by name ASC
+    </select>
+    <!--返回查找条数-->
+    <select id="getRowsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) as total from c_u_gview
+        <where>
+
+            <if test="name!=null">
+                name like '%${name}%'
+            </if>
+
+        </where>
+    </select>
+    <!--分页查找-->
+    <select id="findByPage" parameterType="java.util.Map" resultType="java.util.Map">
+
+        select
+        <include refid="Base_Column_List"/>
+        from c_u_gview
+        <where>
+            <trim suffix="" suffixOverrides="and">
+                <if test="name!=null">
+                    name like '%${name}%'AND
+                    <if test="processed!=null">
+                        processed like '%${processed}%'
+                    </if>
+                </if>
+            </trim>
+
+        </where>
+
+        order by name ASC
+        <if test="start !=0 or limit!=0">
+            limit #{start},#{limit}
+        </if>
+    </select>
+    <!--判断数据是否在使用中-->
+    <select id="objectInUse" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        <![CDATA[ select count(id) from I_complaints where status=#{id} ]]>
+    </select>
+</mapper>

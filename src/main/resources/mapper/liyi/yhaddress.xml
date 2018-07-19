@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kesun.dao.liyi.Iyh_address">
+    <resultMap id="BaseResultMap" type="kesun.entity.liyi.yh_address">
+        <result column="id" property="id"/>
+        <result column="user_id" property="user_id"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="area" property="area"/>
+        <result column="address" property="address"/>
+        <result column="receiver" property="receiver"/>
+        <result column="phone" property="phone"/>
+        <result column="tacitly" property="tacitly"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,province,city,area,address,user_id,phone,receiver,tacitly
+    </sql>
+    <sql id="colums">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id!= null">
+                id,
+            </if>
+            <if test="province!= null">
+                province,
+            </if>
+            <if test="city!= null">
+                city,
+            </if>
+
+            <if test="area!= null">
+                area,
+            </if>
+
+            <if test="address!= null">
+                address,
+            </if>
+
+            <if test="user_id !=null">
+                user_id,
+            </if>
+
+            <if test="phone!= null">
+                phone,
+            </if>
+            <if test="receiver!= null">
+                receiver,
+            </if>
+            <if test="tacitly!= null">
+                tacitly,
+            </if>
+
+        </trim>
+    </sql>
+
+    <sql id="columsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id!= null">
+              #{id},
+            </if>
+
+            <if test="province!= null">
+               #{province},
+            </if>
+            <if test="city!= null">
+               #{city},
+            </if>
+
+            <if test="area!= null">
+               #{area},
+            </if>
+
+
+            <if test="address!= null">
+               #{address},
+            </if>
+
+            <if test="user_id !=null">
+                #{user_id},
+            </if>
+            <if test="phone!= null">
+                #{phone},
+            </if>
+            <if test="receiver!= null">
+               #{receiver},
+            </if>
+            <if test="tacitly!= null">
+            #{tacitly},
+            </if>
+
+        </trim>
+    </sql>
+
+    <sql id="columsItemsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id!= null">
+                #{item.id},
+            </if>
+            <if test="province!= null">
+               #{item.province},
+            </if>
+            <if test="city!= null">
+               #{item.city},
+            </if>
+
+            <if test="area!= null">
+                #{item.area},
+            </if>
+            <if test="phone!= null">
+                #{item.phone},
+            </if>
+
+            <if test="address!= null">
+               #{item.address},
+            </if>
+
+            <if test="user_id!=null">
+                #{item.user_id},
+            </if>
+            <if test="receiver!= null">
+                #{item.receiver},
+            </if>
+
+            <if test="tacitly!= null">
+                #{item.tacitly},
+            </if>
+        </trim>
+    </sql>
+
+    <!--单个对象新增-->
+    <insert id="save" parameterType="kesun.entity.liyi.sj_store">
+        insert into i_stroe  (
+        <include refid="colums"/>
+        ) values (
+        <include refid="columsValue"/>)
+    </insert>
+    <!--批量新增-->
+    <insert id="batchSave" parameterType="java.util.List">
+        insert into i_store (
+        <include refid="colums"/>
+        ) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            <include refid="columsItemsValue"/>
+            );
+        </foreach>
+    </insert>
+    <!--单个对象更新-->
+    <update id="update" parameterType="kesun.entity.liyi.yh_address">
+        update i_address  set
+        <trim suffix="" suffixOverrides=",">
+            <if test="id!= null">
+                id=#{id},
+            </if>
+            <if test="province!= null">
+                province=#{province},
+            </if>
+            <if test="city!= null">
+                city=#{city},
+            </if>
+            <if test="area!= null">
+                area=#{area},
+            </if>
+            <if test="address!= null">
+                address=#{address},
+            </if>
+            <if test="user_id !=null">
+                user_id=#{user_id},
+            </if>
+            <if test="phone!= null">
+                phone=#{phone},
+            </if>
+            <if test="receiver!= null">
+                receiver=#{receiver},
+            </if>
+            <if test="tacitly!= null">
+                tacitly=#{tacitly},
+            </if>
+
+        </trim>
+        where id=#{id,jdbcType=VARCHAR}
+    </update>
+    <!--对象批量更新-->
+    <update id="batchUpdate" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update i_address  set
+            <trim suffix="" suffixOverrides=",">
+                <if test="item.id != null">
+                    id=#{item.id},
+                </if>
+                <if test="item.s_id != null">
+                    id=#{item.s_id},
+                </if>
+                <if test="item.oldId != null">
+                    oldId=#{item.oldId},
+                </if>
+                <if test="item.name != null">
+                    name=#{item.name},
+                </if>
+
+                <if test="item.nickname!= null">
+                    nickname=#{item.nickname},
+                </if>
+
+                <if test="item.password!= null">
+                    password=#{item.password},
+                </if>
+                <if test="item.phone!= null">
+                    phone=#{item.phone},
+                </if>
+                <if test="item.email!= null">
+                    email=#{item.email},
+                </if>
+                <if test="address!= null">
+                    address=#{address},
+                </if>
+
+                <if test="item.birthday!= null">
+                    birthday=#{item.birthday},
+                </if>
+
+                <if test="item.sex!= null">
+                    sex=#{item.sex},
+                </if>
+                <if test="item.integral!= null">
+                    integral=#{item.integral},
+                </if>
+                <if test="item.avatar!= null">
+                    avatar=#{item.avatar},
+                </if>
+                <if test="item.status!= null">
+                    status=#{item.status},
+                </if>
+                <if test="item.time!= null">
+                    time=#{item.time},
+                </if>
+            </trim>
+            where id=#{item.oldId,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+    <!--单个对象删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from i_address   where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        delete from i_store
+        <where>
+            id in
+            <foreach collection="list" item="item" separator="," open="(" close=")">#{item.id,jdbcType=VARCHAR}</foreach>
+        </where>
+
+    </delete>
+
+    <!--单个对象查找-->
+    <select id="getMe" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        *
+        from i_address  where id= #{id}
+    </select>
+
+    <select id="getaddress" parameterType="java.lang.String" resultType="java.util.Map">
+        select
+        *
+        from i_address  where user_id= #{user_id} and id like concat('%',#{id},'%')
+    </select>
+
+
+    <insert id="addaddress" parameterType="kesun.entity.liyi.yh_address" >
+
+        insert into i_address (<include refid="colums"/> )
+
+        values
+
+        (<include refid="columsValue"/>)
+    </insert>
+
+    <update id="updateaddress" parameterType="java.lang.String">
+
+        update i_address set tacitly='0' where id !=#{0}
+
+    </update>
+    <update id="updateaddress2" parameterType="java.lang.String">
+
+        update i_address set tacitly='1' where id =#{0}
+
+    </update>
+
+
+
+    <!--查找，以Map返回-->
+    <select id="findForMap" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from  I_user
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="name!=null">
+                    name like '%${name}%' or
+                </if>
+            </trim>
+        </where>
+        order by name ASC
+    </select>
+    <!--查询，以对象集合返回-->
+    <select id="find" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from I_user
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="name!=null">
+                    name like '%${name}%' or
+                </if>
+            </trim>
+        </where>
+        order by name ASC
+    </select>
+    <!--返回查找条数-->
+    <select id="getRowsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) as total from I_user
+        <where>
+            <if test="name!=null">
+                name like '%${name}%'
+            </if>
+        </where>
+    </select>
+    <!--分页查找-->
+    <select id="findByPage" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from I_user
+        <where>
+            <if test="name!=null">
+                name like '%${name}%'
+            </if>
+        </where>
+        order by name ASC
+        <if test="start !=0 or limit!=0">
+            limit #{start},#{limit}
+        </if>
+
+    </select>
+    <!--判断数据是否在使用中-->
+    <select id="objectInUse" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        <![CDATA[ select count(id) from I_user   where name=#{id} ]]>
+    </select>
+
+</mapper>

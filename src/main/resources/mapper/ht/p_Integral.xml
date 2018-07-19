@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kesun.dao.ht.p_IIntegral">
+    <resultMap id="BaseResultMap" type="kesun.entity.ht.Integral">
+        <id column="id"  property="id" />
+        <result column="commname" property="commname" />
+        <result column="sub_id" property="sub_id"/>
+        <result column="title" property="title"/>
+        <result column="image1" property="image1"/>
+        <result column="image2" property="image2"/>
+        <result column="image3" property="image3"/>
+        <result column="image4" property="image4"/>
+        <result column="description" property="description"/>
+        <result column="price" property="price"/>
+        <result column="stock" property="stock"/>
+        <result column="time" property="time"/>
+        <result column="s_id" property="s_id"/>
+        <result column="integral" property="integral"/>
+        <result column="status" property="status"/>
+        <result column="sales" property="sales"/>
+        <result column="sstatus" property="sstatus"/>
+        <result column="reason" property="reason"/>
+        <result column="grade" property="grade"/>
+        <association property="i_integralgoods" javaType="kesun.entity.ht.i_integralgoods">
+            <id column="id" property="id"></id>
+            <result column="str_id" property="str_id"/>
+            <result column="dis_id" property="dis_id"/>
+        </association>
+        <association property="store" javaType="kesun.entity.ht.Store">
+            <id column="store" property="id"></id>
+            <result column="storename" property="storename"/>
+        </association>
+        <association property="style" javaType="kesun.entity.ht.Style">
+            <id column="style" property="id"></id>
+            <result column="styleImage" property="styleImage"/>
+            <result column="stylename" property="stylename"/>
+        </association>
+
+
+        <association property="user" javaType="kesun.entity.system.User">
+            <id column="user" property="id"></id>
+            <result column="userName" property="name"/>
+        </association>
+
+        <association property="actor" javaType="kesun.entity.system.Actor">
+            <id column="actor" property="id"></id>
+            <result column="actorName" property="name"/>
+        </association>
+
+        <association property="org" javaType="kesun.entity.system.Organization">
+            <id column="org" property="id"></id>
+            <result column="orgName" property="name"/>
+        </association>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,
+        commname,
+        sub_id,
+        title,
+        image1,
+        image2,
+        image3,
+        image4,
+        description,
+        stock,
+        time,
+        status,
+        style,
+        store,
+        integral,
+        sstatus
+
+    </sql>
+    <sql id="colums">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+
+
+            <if test="commname != null">
+                commname,
+            </if>
+
+            <if test="sub_id != null">
+                sub_id,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+
+            <if test="image1 != null">
+                image1,
+            </if>
+            <if test="image2 != null">
+                image2,
+            </if>
+            <if test="image3 != null">
+                image3,
+            </if>
+            <if test="image4 != null">
+                image4,
+            </if>
+
+            <if test="description != null">
+                description,
+            </if>
+
+            <if test="stock != null">
+                stock,
+            </if>
+
+            <if test="time != null">
+                time,
+            </if>
+
+            <if test="postcode != null">
+                status,
+            </if>
+
+            <if test="style != null">
+                style,
+            </if>
+
+            <if test="store != null">
+                store,
+            </if>
+
+            <if test="integral != null">
+                integral,
+            </if>
+
+            <if test="sstatus != null">
+                sstatus,
+            </if>
+
+        </trim>
+    </sql>
+
+    <sql id="columsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+
+            <if test="commname != null">
+                #{commname},
+            </if>
+
+            <if test="sub_id != null">
+                #{sub_id},
+            </if>
+            <if test="title != null">
+                #{title},
+            </if>
+
+            <if test="image1 != null">
+                #{image1},
+            </if>
+            <if test="image2 != null">
+                #{image2},
+            </if>
+            <if test="image3 != null">
+                #{image3},
+            </if>
+            <if test="image4 != null">
+                #{image4},
+            </if>
+
+            <if test="description != null">
+                #{description},
+            </if>
+
+            <if test="stock != null">
+                #{stock},
+            </if>
+
+            <if test="time != null">
+                #{time},
+            </if>
+
+            <if test="status != null">
+                #{status},
+            </if>
+
+
+            <if test="style != null">
+                #{style.id},
+            </if>
+
+            <if test="store != null">
+                #{store.id},
+            </if>
+
+            <if test="integral != null">
+                #{integral},
+            </if>
+            <if test="sstatus != null">
+                #{sstatus},
+            </if>
+
+        </trim>
+    </sql>
+
+    <sql id="columsItemsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="item.id != null">
+                #{item.id},
+            </if>
+
+            <if test="item.commname != null">
+                #{item.commname},
+            </if>
+
+            <if test="item.sub_id   != null">
+                #{item.sub_id},
+            </if>
+            <if test="item.title != null">
+                #{item.title},
+            </if>
+
+            <if test="item.image1 != null">
+                #{item.image1},
+            </if>
+
+            <if test="item.image2 != null">
+                #{item.image2},
+            </if>
+
+            <if test="item.image3 != null">
+                #{item.image3},
+            </if>
+
+            <if test="item.image4 != null">
+                #{item.image4},
+            </if>
+
+            <if test="item.description != null">
+                #{item.description},
+            </if>
+
+            <if test="item.stock != null">
+                #{item.stock},
+            </if>
+
+            <if test="item.time != null">
+                #{item.time},
+            </if>
+
+            <if test="item.status != null">
+                #{item.status},
+            </if>
+
+            <if test="item.style != null">
+                #{item.style.id},
+            </if>
+
+            <if test="item.store != null">
+                #{item.store.id},
+            </if>
+
+            <if test="item.integral != null">
+                #{item.integral},
+            </if>
+
+            <if test="item.sstatus != null">
+                #{item.sstatus},
+            </if>
+
+
+        </trim>
+    </sql>
+
+    <!--&lt;!&ndash;单个对象新增&ndash;&gt;-->
+    <!--<insert id="save" parameterType="kesun.entity.liyi.Integral">-->
+    <!--insert into i_commodity (-->
+    <!--<include refid="colums"/>-->
+    <!--) values (-->
+    <!--<include refid="columsValue"/>)-->
+    <!--</insert>-->
+    <!--&lt;!&ndash;批量新增&ndash;&gt;-->
+    <!--<insert id="batchSave" parameterType="kesun.entity.liyi.Integral">-->
+    <!--insert into i_commodity (-->
+    <!--<include refid="colums"/>-->
+    <!--) values-->
+    <!--<foreach collection="list" item="item" index="index" separator=",">-->
+    <!--(-->
+    <!--<include refid="columsItemsValue"/>-->
+    <!--);-->
+    <!--</foreach>-->
+    <!--</insert>-->
+    <!--单个对象更新-->
+    <update id="update" parameterType="kesun.entity.ht.Integral">
+        update i_commodity set
+        <trim suffix="" suffixOverrides=",">
+
+            <if test="id != null">
+                id=#{id},
+            </if>
+
+            <if test="commname != null">
+                commname=#{commname},
+            </if>
+
+            <if test="sub_id != null">
+                sub_id=#{sub_id},
+            </if>
+
+            <if test="title != null">
+                title=#{title},
+            </if>
+
+            <if test="image1 != null">
+                image1=#{image1},
+            </if>
+            <if test="image2 != null">
+                image2=#{image2},
+            </if>
+            <if test="image3 != null">
+                image3=#{image3},
+            </if>
+            <if test="image4 != null">
+                image4=#{image4},
+            </if>
+
+            <if test="description != null">
+                description=#{description},
+            </if>
+            <if test="stock != null">
+                stock=#{stock},
+            </if>
+            <if test="time != null">
+                time=#{time},
+            </if>
+            <!--<if test="status != null">-->
+                <!--status=#{status},-->
+            <!--</if>-->
+
+            <if test="style != null">
+                style=#{store,style.id},
+            </if>
+
+            <if test="store != null">
+                store=#{store.id},
+            </if>
+
+            <if test="integral != null">
+                integral=#{integral},
+            </if>
+
+            <if test="sstatus != null">
+                sstatus=#{sstatus},
+            </if>
+
+            <if test="reason != null">
+                reason=#{reason}
+            </if>
+
+        </trim>
+        where id=#{id,jdbcType=VARCHAR}
+    </update>
+    <!--对象批量更新-->
+    <update id="batchUpdate" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update i_commodity set
+            <trim suffix="" suffixOverrides=",">
+                <if test="id != null">
+                    id=#{item.id},
+                </if>
+                <if test="oldId != null">
+                    oldId=#{item.oldId},
+                </if>
+
+                <if test="commname != null">
+                    commname=#{item.commname},
+                </if>
+
+                <if test="sub_id != null">
+                    sub_id=#{item.sub_id},
+                </if>
+
+                <if test="title != null">
+                    title=#{item.title},
+                </if>
+
+                <if test="image1 != null">
+                    image1=#{item.image1},
+                </if>
+
+                <if test="image2 != null">
+                    image2=#{item.image2},
+                </if>
+
+                <if test="image3 != null">
+                    image3=#{item.image3},
+                </if>
+
+                <if test="image4 != null">
+                    image4=#{item.image4},
+                </if>
+
+                <if test="description != null">
+                    description=#{item.description},
+                </if>
+
+                <if test="stock != null">
+                    stock=#{item.stock},
+                </if>
+
+                <if test="time != null">
+                    time=#{item.time},
+                </if>
+
+                <if test="status != null">
+                    status=#{item.status},
+                </if>
+
+                <if test="style != null">
+                    style=#{item.style},
+                </if>
+
+                <if test="store != null">
+                    store=#{item.store},
+                </if>
+
+                <if test="integral != null">
+                    integral=#{item.integral},
+                </if>
+
+                <if test="sstatus != null">
+                    sstatus=#{sstatus},
+                </if>
+            </trim>
+            where id=#{item.oldId,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+    <!--单个对象删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from i_strategy where id = #{id,jdbcType=VARCHAR};
+        delete from i_integralgoods where str_id = #{id,jdbcType=VARCHAR};
+    </delete>
+    <!--批量删除-->
+    <delete id="batchDelete" parameterType="java.util.List">
+        delete from i_commodity
+        <where>
+            id in
+            <foreach collection="list" item="item" separator="," open="(" close=")">#{item,jdbcType=VARCHAR}</foreach>
+        </where>
+
+    </delete>
+    <!--单个对象查找-->
+    <select id="getMe" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        *
+        from i_commodity where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <!--查找，以Map返回-->
+    <select id="findForMap" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from st_lp
+        <where>
+
+                <if test="commname !=null">
+                    commname like '%${commname}%'
+                </if>
+
+        </where>
+        order by commname ASC
+
+    </select>
+    <!--查询，以对象集合返回-->
+    <select id="find" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from st_lp
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="commname !=null">
+                    commname like '%${commname}%' or
+                </if>
+            </trim>
+        </where>
+        order by commname ASC
+    </select>
+    <!--返回查找条数-->
+    <select id="getRowsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) as total from i_strategy
+        <where>
+            <if test="commname !=null">
+                commname like '%${commname}%'
+            </if>
+        </where>
+    </select>
+    <select id="findByPage" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+
+        *
+        from st_lp
+        <where>
+            <if test="commname !=null">
+                commname like '%${commname}%'
+            </if>
+        </where>
+        <if test="start !=0 or limit!=0">
+            limit #{start},#{limit}
+        </if>
+
+    </select>
+    <!--判断数据是否在使用中-->
+    <select id="objectInUse" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        <![CDATA[ select count(id) from st_lp where commname=#{id} ]]>
+
+    </select>
+</mapper>

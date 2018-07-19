@@ -1,0 +1,2079 @@
+.content .h5,
+.content .hideStyle {
+	display: none
+}
+
+.content .pc {
+	display: block
+}
+
+.content .pc>.title {
+	width: 1200px;
+	margin: 30px auto
+}
+
+.content .pc>.title ul {
+	font-size: medium;
+	overflow: hidden
+}
+
+.content .pc>.title ul li {
+	float: left
+}
+
+.content .pc>.title ul li a.active {
+	color: #333333
+}
+
+.content .pc>.title ul li a {
+	font-size: 14px;
+	color: #999999
+}
+
+.content .pc>.title ul li em {
+	color: #999999;
+	margin-left: 5px;
+	margin-right: 5px
+}
+
+.content .pc .product {
+	width: 1200px;
+	margin: 0 auto;
+	overflow: hidden
+}
+
+.content .pc .product .leftPic .selImg {
+	float: left;
+	width: 89px;
+	height: 586px
+}
+
+.content .pc .product .leftPic .selImg .ImgList {
+	font-size: medium
+}
+
+.content .pc .product .leftPic .selImg .ImgList li:last-child {
+	margin-bottom: 0
+}
+
+.content .pc .product .leftPic .selImg .ImgList li.active {
+	border: 1px solid #813f44;
+	box-sizing: border-box
+}
+
+.content .pc .product .leftPic .selImg .ImgList li.active img {
+	width: 79px;
+	height: 79px;
+	margin-top: 4px;
+	margin-left: 4px
+}
+
+.content .pc .product .leftPic .selImg .ImgList li {
+	margin-bottom: 10px;
+	height: 89px;
+	width: 89px
+}
+
+.content .pc .product .leftPic .selImg .ImgList li .bs {
+	position: absolute;
+	width: 88px;
+	height: 88px;
+	background-color: rgba(0, 0, 0, 0.5)
+}
+
+.content .pc .product .leftPic .selImg .ImgList li .bs em {
+	background-image: url(../../../common/img/playBtn.png);
+	position: absolute;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	margin-left: 30px;
+	margin-top: 23px;
+	width: 36px;
+	height: 44px
+}
+
+.content .pc .product .leftPic .selImg .ImgList li img {
+	cursor: pointer;
+	width: 89px;
+	height: 89px;
+	border: 1px solid #e1e1e1;
+	box-sizing: border-box
+}
+
+.content .pc .product .detailImg {
+	float: left;
+	height: 586px;
+	width: 586px;
+	margin-left: 10px;
+	margin-bottom: 60px
+}
+
+.content .pc .product .detailImg img {
+	height: 586px;
+	width: 586px;
+	border: 1px solid #e1e1e1;
+	box-sizing: border-box
+}
+
+.content .pc .product .detailImg #showVideo {
+	height: 586px;
+	width: 586px;
+	border: 1px solid #e1e1e1;
+	box-sizing: border-box
+}
+
+.content .pc .product .detailMsg {
+	float: left;
+	margin-left: 30px;
+	width: 480px;
+	margin-bottom: 60px
+}
+
+.content .pc .product .detailMsg .proName {
+	font-size: 24px;
+	color: #333333
+}
+
+.content .pc .product .detailMsg .subtips {
+	font-size: 14px;
+	color: #999999;
+	margin-top: 15px;
+	width: 400px;
+	text-align: justify;
+	line-height: 20px
+}
+
+.content .pc .product .detailMsg .subtips em {
+	margin: 0 10px
+}
+
+.content .pc .product .detailMsg .selMsg .cover .coverDetail {
+	font-size: medium;
+	position: absolute;
+	margin-left: -210px;
+	margin-top: -43px;
+	width: 200px;
+	background-color: #fff;
+	text-align: center;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.3)
+}
+
+.content .pc .product .detailMsg .selMsg .cover .coverDetail img {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 100%;
+	max-width: 200px
+}
+
+.content .pc .product .detailMsg .selMsg .cover .coverDetail p {
+	width: 180px;
+	margin: 7px auto 0;
+	font-size: 12px;
+	color: #333333;
+	text-align: left
+}
+
+.content .pc .product .detailMsg .selMsg .frame .frameDetail {
+	width: 195px !important;
+	padding-top: 5px;
+	margin-left: -210px !important
+}
+
+.content .pc .product .detailMsg .selMsg .frame .frameDetail p {
+	width: 195px !important
+}
+
+.content .pc .product .detailMsg .selMsg .frame .frameDetail img {
+	width: 175px !important
+}
+
+.content .pc .product .detailMsg .selMsg .size .sizeDetail,
+.content .pc .product .detailMsg .selMsg .print .sizeDetail,
+.content .pc .product .detailMsg .selMsg .bind .sizeDetail,
+.content .pc .product .detailMsg .selMsg .frame .sizeDetail,
+.content .pc .product .detailMsg .selMsg .paper .sizeDetail,
+.content .pc .product .detailMsg .selMsg .capacity .sizeDetail,
+.content .pc .product .detailMsg .selMsg .style .sizeDetail,
+.content .pc .product .detailMsg .selMsg .gift .sizeDetail,
+.content .pc .product .detailMsg .selMsg .box .sizeDetail,
+.content .pc .product .detailMsg .selMsg .size .printDetail,
+.content .pc .product .detailMsg .selMsg .print .printDetail,
+.content .pc .product .detailMsg .selMsg .bind .printDetail,
+.content .pc .product .detailMsg .selMsg .frame .printDetail,
+.content .pc .product .detailMsg .selMsg .paper .printDetail,
+.content .pc .product .detailMsg .selMsg .capacity .printDetail,
+.content .pc .product .detailMsg .selMsg .style .printDetail,
+.content .pc .product .detailMsg .selMsg .gift .printDetail,
+.content .pc .product .detailMsg .selMsg .box .printDetail,
+.content .pc .product .detailMsg .selMsg .size .bindDetail,
+.content .pc .product .detailMsg .selMsg .print .bindDetail,
+.content .pc .product .detailMsg .selMsg .bind .bindDetail,
+.content .pc .product .detailMsg .selMsg .frame .bindDetail,
+.content .pc .product .detailMsg .selMsg .paper .bindDetail,
+.content .pc .product .detailMsg .selMsg .capacity .bindDetail,
+.content .pc .product .detailMsg .selMsg .style .bindDetail,
+.content .pc .product .detailMsg .selMsg .gift .bindDetail,
+.content .pc .product .detailMsg .selMsg .box .bindDetail,
+.content .pc .product .detailMsg .selMsg .size .frameDetail,
+.content .pc .product .detailMsg .selMsg .print .frameDetail,
+.content .pc .product .detailMsg .selMsg .bind .frameDetail,
+.content .pc .product .detailMsg .selMsg .frame .frameDetail,
+.content .pc .product .detailMsg .selMsg .paper .frameDetail,
+.content .pc .product .detailMsg .selMsg .capacity .frameDetail,
+.content .pc .product .detailMsg .selMsg .style .frameDetail,
+.content .pc .product .detailMsg .selMsg .gift .frameDetail,
+.content .pc .product .detailMsg .selMsg .box .frameDetail,
+.content .pc .product .detailMsg .selMsg .size .paperDetail,
+.content .pc .product .detailMsg .selMsg .print .paperDetail,
+.content .pc .product .detailMsg .selMsg .bind .paperDetail,
+.content .pc .product .detailMsg .selMsg .frame .paperDetail,
+.content .pc .product .detailMsg .selMsg .paper .paperDetail,
+.content .pc .product .detailMsg .selMsg .capacity .paperDetail,
+.content .pc .product .detailMsg .selMsg .style .paperDetail,
+.content .pc .product .detailMsg .selMsg .gift .paperDetail,
+.content .pc .product .detailMsg .selMsg .box .paperDetail,
+.content .pc .product .detailMsg .selMsg .size .capacityDetail,
+.content .pc .product .detailMsg .selMsg .print .capacityDetail,
+.content .pc .product .detailMsg .selMsg .bind .capacityDetail,
+.content .pc .product .detailMsg .selMsg .frame .capacityDetail,
+.content .pc .product .detailMsg .selMsg .paper .capacityDetail,
+.content .pc .product .detailMsg .selMsg .capacity .capacityDetail,
+.content .pc .product .detailMsg .selMsg .style .capacityDetail,
+.content .pc .product .detailMsg .selMsg .gift .capacityDetail,
+.content .pc .product .detailMsg .selMsg .box .capacityDetail,
+.content .pc .product .detailMsg .selMsg .size .styleDetail,
+.content .pc .product .detailMsg .selMsg .print .styleDetail,
+.content .pc .product .detailMsg .selMsg .bind .styleDetail,
+.content .pc .product .detailMsg .selMsg .frame .styleDetail,
+.content .pc .product .detailMsg .selMsg .paper .styleDetail,
+.content .pc .product .detailMsg .selMsg .capacity .styleDetail,
+.content .pc .product .detailMsg .selMsg .style .styleDetail,
+.content .pc .product .detailMsg .selMsg .gift .styleDetail,
+.content .pc .product .detailMsg .selMsg .box .styleDetail,
+.content .pc .product .detailMsg .selMsg .size .giftDetail,
+.content .pc .product .detailMsg .selMsg .print .giftDetail,
+.content .pc .product .detailMsg .selMsg .bind .giftDetail,
+.content .pc .product .detailMsg .selMsg .frame .giftDetail,
+.content .pc .product .detailMsg .selMsg .paper .giftDetail,
+.content .pc .product .detailMsg .selMsg .capacity .giftDetail,
+.content .pc .product .detailMsg .selMsg .style .giftDetail,
+.content .pc .product .detailMsg .selMsg .gift .giftDetail,
+.content .pc .product .detailMsg .selMsg .box .giftDetail,
+.content .pc .product .detailMsg .selMsg .size .boxDetail,
+.content .pc .product .detailMsg .selMsg .print .boxDetail,
+.content .pc .product .detailMsg .selMsg .bind .boxDetail,
+.content .pc .product .detailMsg .selMsg .frame .boxDetail,
+.content .pc .product .detailMsg .selMsg .paper .boxDetail,
+.content .pc .product .detailMsg .selMsg .capacity .boxDetail,
+.content .pc .product .detailMsg .selMsg .style .boxDetail,
+.content .pc .product .detailMsg .selMsg .gift .boxDetail,
+.content .pc .product .detailMsg .selMsg .box .boxDetail {
+	font-size: medium;
+	position: absolute;
+	margin-left: -410px;
+	margin-top: -43px;
+	width: 400px;
+	background-color: #fff;
+	text-align: center;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.3)
+}
+
+.content .pc .product .detailMsg .selMsg .size .sizeDetail img,
+.content .pc .product .detailMsg .selMsg .print .sizeDetail img,
+.content .pc .product .detailMsg .selMsg .bind .sizeDetail img,
+.content .pc .product .detailMsg .selMsg .frame .sizeDetail img,
+.content .pc .product .detailMsg .selMsg .paper .sizeDetail img,
+.content .pc .product .detailMsg .selMsg .capacity .sizeDetail img,
+.content .pc .product .detailMsg .selMsg .style .sizeDetail img,
+.content .pc .product .detailMsg .selMsg .gift .sizeDetail img,
+.content .pc .product .detailMsg .selMsg .box .sizeDetail img,
+.content .pc .product .detailMsg .selMsg .size .printDetail img,
+.content .pc .product .detailMsg .selMsg .print .printDetail img,
+.content .pc .product .detailMsg .selMsg .bind .printDetail img,
+.content .pc .product .detailMsg .selMsg .frame .printDetail img,
+.content .pc .product .detailMsg .selMsg .paper .printDetail img,
+.content .pc .product .detailMsg .selMsg .capacity .printDetail img,
+.content .pc .product .detailMsg .selMsg .style .printDetail img,
+.content .pc .product .detailMsg .selMsg .gift .printDetail img,
+.content .pc .product .detailMsg .selMsg .box .printDetail img,
+.content .pc .product .detailMsg .selMsg .size .bindDetail img,
+.content .pc .product .detailMsg .selMsg .print .bindDetail img,
+.content .pc .product .detailMsg .selMsg .bind .bindDetail img,
+.content .pc .product .detailMsg .selMsg .frame .bindDetail img,
+.content .pc .product .detailMsg .selMsg .paper .bindDetail img,
+.content .pc .product .detailMsg .selMsg .capacity .bindDetail img,
+.content .pc .product .detailMsg .selMsg .style .bindDetail img,
+.content .pc .product .detailMsg .selMsg .gift .bindDetail img,
+.content .pc .product .detailMsg .selMsg .box .bindDetail img,
+.content .pc .product .detailMsg .selMsg .size .frameDetail img,
+.content .pc .product .detailMsg .selMsg .print .frameDetail img,
+.content .pc .product .detailMsg .selMsg .bind .frameDetail img,
+.content .pc .product .detailMsg .selMsg .frame .frameDetail img,
+.content .pc .product .detailMsg .selMsg .paper .frameDetail img,
+.content .pc .product .detailMsg .selMsg .capacity .frameDetail img,
+.content .pc .product .detailMsg .selMsg .style .frameDetail img,
+.content .pc .product .detailMsg .selMsg .gift .frameDetail img,
+.content .pc .product .detailMsg .selMsg .box .frameDetail img,
+.content .pc .product .detailMsg .selMsg .size .paperDetail img,
+.content .pc .product .detailMsg .selMsg .print .paperDetail img,
+.content .pc .product .detailMsg .selMsg .bind .paperDetail img,
+.content .pc .product .detailMsg .selMsg .frame .paperDetail img,
+.content .pc .product .detailMsg .selMsg .paper .paperDetail img,
+.content .pc .product .detailMsg .selMsg .capacity .paperDetail img,
+.content .pc .product .detailMsg .selMsg .style .paperDetail img,
+.content .pc .product .detailMsg .selMsg .gift .paperDetail img,
+.content .pc .product .detailMsg .selMsg .box .paperDetail img,
+.content .pc .product .detailMsg .selMsg .size .capacityDetail img,
+.content .pc .product .detailMsg .selMsg .print .capacityDetail img,
+.content .pc .product .detailMsg .selMsg .bind .capacityDetail img,
+.content .pc .product .detailMsg .selMsg .frame .capacityDetail img,
+.content .pc .product .detailMsg .selMsg .paper .capacityDetail img,
+.content .pc .product .detailMsg .selMsg .capacity .capacityDetail img,
+.content .pc .product .detailMsg .selMsg .style .capacityDetail img,
+.content .pc .product .detailMsg .selMsg .gift .capacityDetail img,
+.content .pc .product .detailMsg .selMsg .box .capacityDetail img,
+.content .pc .product .detailMsg .selMsg .size .styleDetail img,
+.content .pc .product .detailMsg .selMsg .print .styleDetail img,
+.content .pc .product .detailMsg .selMsg .bind .styleDetail img,
+.content .pc .product .detailMsg .selMsg .frame .styleDetail img,
+.content .pc .product .detailMsg .selMsg .paper .styleDetail img,
+.content .pc .product .detailMsg .selMsg .capacity .styleDetail img,
+.content .pc .product .detailMsg .selMsg .style .styleDetail img,
+.content .pc .product .detailMsg .selMsg .gift .styleDetail img,
+.content .pc .product .detailMsg .selMsg .box .styleDetail img,
+.content .pc .product .detailMsg .selMsg .size .giftDetail img,
+.content .pc .product .detailMsg .selMsg .print .giftDetail img,
+.content .pc .product .detailMsg .selMsg .bind .giftDetail img,
+.content .pc .product .detailMsg .selMsg .frame .giftDetail img,
+.content .pc .product .detailMsg .selMsg .paper .giftDetail img,
+.content .pc .product .detailMsg .selMsg .capacity .giftDetail img,
+.content .pc .product .detailMsg .selMsg .style .giftDetail img,
+.content .pc .product .detailMsg .selMsg .gift .giftDetail img,
+.content .pc .product .detailMsg .selMsg .box .giftDetail img,
+.content .pc .product .detailMsg .selMsg .size .boxDetail img,
+.content .pc .product .detailMsg .selMsg .print .boxDetail img,
+.content .pc .product .detailMsg .selMsg .bind .boxDetail img,
+.content .pc .product .detailMsg .selMsg .frame .boxDetail img,
+.content .pc .product .detailMsg .selMsg .paper .boxDetail img,
+.content .pc .product .detailMsg .selMsg .capacity .boxDetail img,
+.content .pc .product .detailMsg .selMsg .style .boxDetail img,
+.content .pc .product .detailMsg .selMsg .gift .boxDetail img,
+.content .pc .product .detailMsg .selMsg .box .boxDetail img {
+	width: 380px;
+	margin: 10px
+}
+
+.content .pc .product .detailMsg .selMsg .size .sizeDetail p,
+.content .pc .product .detailMsg .selMsg .print .sizeDetail p,
+.content .pc .product .detailMsg .selMsg .bind .sizeDetail p,
+.content .pc .product .detailMsg .selMsg .frame .sizeDetail p,
+.content .pc .product .detailMsg .selMsg .paper .sizeDetail p,
+.content .pc .product .detailMsg .selMsg .capacity .sizeDetail p,
+.content .pc .product .detailMsg .selMsg .style .sizeDetail p,
+.content .pc .product .detailMsg .selMsg .gift .sizeDetail p,
+.content .pc .product .detailMsg .selMsg .box .sizeDetail p,
+.content .pc .product .detailMsg .selMsg .size .printDetail p,
+.content .pc .product .detailMsg .selMsg .print .printDetail p,
+.content .pc .product .detailMsg .selMsg .bind .printDetail p,
+.content .pc .product .detailMsg .selMsg .frame .printDetail p,
+.content .pc .product .detailMsg .selMsg .paper .printDetail p,
+.content .pc .product .detailMsg .selMsg .capacity .printDetail p,
+.content .pc .product .detailMsg .selMsg .style .printDetail p,
+.content .pc .product .detailMsg .selMsg .gift .printDetail p,
+.content .pc .product .detailMsg .selMsg .box .printDetail p,
+.content .pc .product .detailMsg .selMsg .size .bindDetail p,
+.content .pc .product .detailMsg .selMsg .print .bindDetail p,
+.content .pc .product .detailMsg .selMsg .bind .bindDetail p,
+.content .pc .product .detailMsg .selMsg .frame .bindDetail p,
+.content .pc .product .detailMsg .selMsg .paper .bindDetail p,
+.content .pc .product .detailMsg .selMsg .capacity .bindDetail p,
+.content .pc .product .detailMsg .selMsg .style .bindDetail p,
+.content .pc .product .detailMsg .selMsg .gift .bindDetail p,
+.content .pc .product .detailMsg .selMsg .box .bindDetail p,
+.content .pc .product .detailMsg .selMsg .size .frameDetail p,
+.content .pc .product .detailMsg .selMsg .print .frameDetail p,
+.content .pc .product .detailMsg .selMsg .bind .frameDetail p,
+.content .pc .product .detailMsg .selMsg .frame .frameDetail p,
+.content .pc .product .detailMsg .selMsg .paper .frameDetail p,
+.content .pc .product .detailMsg .selMsg .capacity .frameDetail p,
+.content .pc .product .detailMsg .selMsg .style .frameDetail p,
+.content .pc .product .detailMsg .selMsg .gift .frameDetail p,
+.content .pc .product .detailMsg .selMsg .box .frameDetail p,
+.content .pc .product .detailMsg .selMsg .size .paperDetail p,
+.content .pc .product .detailMsg .selMsg .print .paperDetail p,
+.content .pc .product .detailMsg .selMsg .bind .paperDetail p,
+.content .pc .product .detailMsg .selMsg .frame .paperDetail p,
+.content .pc .product .detailMsg .selMsg .paper .paperDetail p,
+.content .pc .product .detailMsg .selMsg .capacity .paperDetail p,
+.content .pc .product .detailMsg .selMsg .style .paperDetail p,
+.content .pc .product .detailMsg .selMsg .gift .paperDetail p,
+.content .pc .product .detailMsg .selMsg .box .paperDetail p,
+.content .pc .product .detailMsg .selMsg .size .capacityDetail p,
+.content .pc .product .detailMsg .selMsg .print .capacityDetail p,
+.content .pc .product .detailMsg .selMsg .bind .capacityDetail p,
+.content .pc .product .detailMsg .selMsg .frame .capacityDetail p,
+.content .pc .product .detailMsg .selMsg .paper .capacityDetail p,
+.content .pc .product .detailMsg .selMsg .capacity .capacityDetail p,
+.content .pc .product .detailMsg .selMsg .style .capacityDetail p,
+.content .pc .product .detailMsg .selMsg .gift .capacityDetail p,
+.content .pc .product .detailMsg .selMsg .box .capacityDetail p,
+.content .pc .product .detailMsg .selMsg .size .styleDetail p,
+.content .pc .product .detailMsg .selMsg .print .styleDetail p,
+.content .pc .product .detailMsg .selMsg .bind .styleDetail p,
+.content .pc .product .detailMsg .selMsg .frame .styleDetail p,
+.content .pc .product .detailMsg .selMsg .paper .styleDetail p,
+.content .pc .product .detailMsg .selMsg .capacity .styleDetail p,
+.content .pc .product .detailMsg .selMsg .style .styleDetail p,
+.content .pc .product .detailMsg .selMsg .gift .styleDetail p,
+.content .pc .product .detailMsg .selMsg .box .styleDetail p,
+.content .pc .product .detailMsg .selMsg .size .giftDetail p,
+.content .pc .product .detailMsg .selMsg .print .giftDetail p,
+.content .pc .product .detailMsg .selMsg .bind .giftDetail p,
+.content .pc .product .detailMsg .selMsg .frame .giftDetail p,
+.content .pc .product .detailMsg .selMsg .paper .giftDetail p,
+.content .pc .product .detailMsg .selMsg .capacity .giftDetail p,
+.content .pc .product .detailMsg .selMsg .style .giftDetail p,
+.content .pc .product .detailMsg .selMsg .gift .giftDetail p,
+.content .pc .product .detailMsg .selMsg .box .giftDetail p,
+.content .pc .product .detailMsg .selMsg .size .boxDetail p,
+.content .pc .product .detailMsg .selMsg .print .boxDetail p,
+.content .pc .product .detailMsg .selMsg .bind .boxDetail p,
+.content .pc .product .detailMsg .selMsg .frame .boxDetail p,
+.content .pc .product .detailMsg .selMsg .paper .boxDetail p,
+.content .pc .product .detailMsg .selMsg .capacity .boxDetail p,
+.content .pc .product .detailMsg .selMsg .style .boxDetail p,
+.content .pc .product .detailMsg .selMsg .gift .boxDetail p,
+.content .pc .product .detailMsg .selMsg .box .boxDetail p {
+	margin: 10px auto;
+	font-size: 14px;
+	color: #333333;
+	text-align: center;
+	width: 365px
+}
+
+.content .pc .product .detailMsg .selMsg .pageNum .title {
+	overflow: hidden;
+	margin-top: 25px
+}
+
+.content .pc .product .detailMsg .selMsg .pageNum .title .selTitle {
+	font-size: 14px;
+	color: #999999;
+	float: left
+}
+
+.content .pc .product .detailMsg .selMsg .pageNum .select .selPageNum {
+	font-size: medium;
+	border: 1px solid #813f44;
+	width: 120px;
+	height: 42px;
+	margin-top: 10px
+}
+
+.content .pc .product .detailMsg .selMsg .pageNum .select .selPageNum .next {
+	font-size: 23px;
+	width: 25%;
+	display: inline-block;
+	height: 42px;
+	line-height: 42px;
+	float: left;
+	text-align: center;
+	vertical-align: middle;
+	border-left: 1px solid #813f44;
+	box-sizing: border-box;
+	position: relative;
+	top: 0;
+	cursor: pointer
+}
+
+.content .pc .product .detailMsg .selMsg .pageNum .select .selPageNum .pageNumInput {
+	width: 50%;
+	font-size: medium;
+	float: left;
+	line-height: 42px;
+	border: none;
+	text-align: center
+}
+
+.content .pc .product .detailMsg .selMsg .pageNum .select .selPageNum .reque {
+	font-size: 23px;
+	width: 25%;
+	display: inline-block;
+	height: 42px;
+	line-height: 42px;
+	float: left;
+	text-align: center;
+	vertical-align: middle;
+	border-right: 1px solid #813f44;
+	box-sizing: border-box;
+	cursor: pointer
+}
+
+.content .pc .product .detailMsg .selMsg .size .title,
+.content .pc .product .detailMsg .selMsg .bind .title,
+.content .pc .product .detailMsg .selMsg .print .title,
+.content .pc .product .detailMsg .selMsg .cover .title,
+.content .pc .product .detailMsg .selMsg .paper .title,
+.content .pc .product .detailMsg .selMsg .frame .title,
+.content .pc .product .detailMsg .selMsg .capacity .title,
+.content .pc .product .detailMsg .selMsg .style .title,
+.content .pc .product .detailMsg .selMsg .gift .title,
+.content .pc .product .detailMsg .selMsg .box .title {
+	overflow: hidden;
+	margin-top: 25px
+}
+
+.content .pc .product .detailMsg .selMsg .size .title .selTitle,
+.content .pc .product .detailMsg .selMsg .bind .title .selTitle,
+.content .pc .product .detailMsg .selMsg .print .title .selTitle,
+.content .pc .product .detailMsg .selMsg .cover .title .selTitle,
+.content .pc .product .detailMsg .selMsg .paper .title .selTitle,
+.content .pc .product .detailMsg .selMsg .frame .title .selTitle,
+.content .pc .product .detailMsg .selMsg .capacity .title .selTitle,
+.content .pc .product .detailMsg .selMsg .style .title .selTitle,
+.content .pc .product .detailMsg .selMsg .gift .title .selTitle,
+.content .pc .product .detailMsg .selMsg .box .title .selTitle {
+	font-size: 14px;
+	color: #999999;
+	float: left
+}
+
+.content .pc .product .detailMsg .selMsg .size .title div,
+.content .pc .product .detailMsg .selMsg .bind .title div,
+.content .pc .product .detailMsg .selMsg .print .title div,
+.content .pc .product .detailMsg .selMsg .cover .title div,
+.content .pc .product .detailMsg .selMsg .paper .title div,
+.content .pc .product .detailMsg .selMsg .frame .title div,
+.content .pc .product .detailMsg .selMsg .capacity .title div,
+.content .pc .product .detailMsg .selMsg .style .title div,
+.content .pc .product .detailMsg .selMsg .gift .title div,
+.content .pc .product .detailMsg .selMsg .box .title div {
+	float: right;
+	font-size: 14px
+}
+
+.content .pc .product .detailMsg .selMsg .size .title div a.active,
+.content .pc .product .detailMsg .selMsg .bind .title div a.active,
+.content .pc .product .detailMsg .selMsg .print .title div a.active,
+.content .pc .product .detailMsg .selMsg .cover .title div a.active,
+.content .pc .product .detailMsg .selMsg .paper .title div a.active,
+.content .pc .product .detailMsg .selMsg .frame .title div a.active,
+.content .pc .product .detailMsg .selMsg .capacity .title div a.active,
+.content .pc .product .detailMsg .selMsg .style .title div a.active,
+.content .pc .product .detailMsg .selMsg .gift .title div a.active,
+.content .pc .product .detailMsg .selMsg .box .title div a.active {
+	color: #813f44
+}
+
+.content .pc .product .detailMsg .selMsg .size .title div a,
+.content .pc .product .detailMsg .selMsg .bind .title div a,
+.content .pc .product .detailMsg .selMsg .print .title div a,
+.content .pc .product .detailMsg .selMsg .cover .title div a,
+.content .pc .product .detailMsg .selMsg .paper .title div a,
+.content .pc .product .detailMsg .selMsg .frame .title div a,
+.content .pc .product .detailMsg .selMsg .capacity .title div a,
+.content .pc .product .detailMsg .selMsg .style .title div a,
+.content .pc .product .detailMsg .selMsg .gift .title div a,
+.content .pc .product .detailMsg .selMsg .box .title div a {
+	font-size: 14px;
+	color: #999999;
+	margin: 0 5px
+}
+
+.content .pc .product .detailMsg .selMsg .size .select,
+.content .pc .product .detailMsg .selMsg .bind .select,
+.content .pc .product .detailMsg .selMsg .print .select,
+.content .pc .product .detailMsg .selMsg .cover .select,
+.content .pc .product .detailMsg .selMsg .paper .select,
+.content .pc .product .detailMsg .selMsg .frame .select,
+.content .pc .product .detailMsg .selMsg .capacity .select,
+.content .pc .product .detailMsg .selMsg .style .select,
+.content .pc .product .detailMsg .selMsg .gift .select,
+.content .pc .product .detailMsg .selMsg .box .select {
+	font-size: medium;
+	overflow: hidden
+}
+
+.content .pc .product .detailMsg .selMsg .size .select div img,
+.content .pc .product .detailMsg .selMsg .bind .select div img,
+.content .pc .product .detailMsg .selMsg .print .select div img,
+.content .pc .product .detailMsg .selMsg .cover .select div img,
+.content .pc .product .detailMsg .selMsg .paper .select div img,
+.content .pc .product .detailMsg .selMsg .frame .select div img,
+.content .pc .product .detailMsg .selMsg .capacity .select div img,
+.content .pc .product .detailMsg .selMsg .style .select div img,
+.content .pc .product .detailMsg .selMsg .gift .select div img,
+.content .pc .product .detailMsg .selMsg .box .select div img {
+	width: 40px;
+	height: 40px
+}
+
+.content .pc .product .detailMsg .selMsg .size .select span.active,
+.content .pc .product .detailMsg .selMsg .bind .select span.active,
+.content .pc .product .detailMsg .selMsg .print .select span.active,
+.content .pc .product .detailMsg .selMsg .cover .select span.active,
+.content .pc .product .detailMsg .selMsg .paper .select span.active,
+.content .pc .product .detailMsg .selMsg .frame .select span.active,
+.content .pc .product .detailMsg .selMsg .capacity .select span.active,
+.content .pc .product .detailMsg .selMsg .style .select span.active,
+.content .pc .product .detailMsg .selMsg .gift .select span.active,
+.content .pc .product .detailMsg .selMsg .box .select span.active,
+.content .pc .product .detailMsg .selMsg .size .select span:hover,
+.content .pc .product .detailMsg .selMsg .bind .select span:hover,
+.content .pc .product .detailMsg .selMsg .print .select span:hover,
+.content .pc .product .detailMsg .selMsg .cover .select span:hover,
+.content .pc .product .detailMsg .selMsg .paper .select span:hover,
+.content .pc .product .detailMsg .selMsg .frame .select span:hover,
+.content .pc .product .detailMsg .selMsg .capacity .select span:hover,
+.content .pc .product .detailMsg .selMsg .style .select span:hover,
+.content .pc .product .detailMsg .selMsg .gift .select span:hover,
+.content .pc .product .detailMsg .selMsg .box .select span:hover {
+	color: #813f44;
+	border: 1px solid #813f44
+}
+
+.content .pc .product .detailMsg .selMsg .size .select span,
+.content .pc .product .detailMsg .selMsg .bind .select span,
+.content .pc .product .detailMsg .selMsg .print .select span,
+.content .pc .product .detailMsg .selMsg .cover .select span,
+.content .pc .product .detailMsg .selMsg .paper .select span,
+.content .pc .product .detailMsg .selMsg .frame .select span,
+.content .pc .product .detailMsg .selMsg .capacity .select span,
+.content .pc .product .detailMsg .selMsg .style .select span,
+.content .pc .product .detailMsg .selMsg .gift .select span,
+.content .pc .product .detailMsg .selMsg .box .select span {
+	font-size: 14px;
+	min-width: 110px;
+	height: 40px;
+	display: inline-block;
+	text-align: center;
+	line-height: 40px;
+	border: 1px solid #cccccc;
+	color: #cccccc;
+	float: left;
+	margin-right: 10px;
+	cursor: pointer;
+	margin-top: 10px;
+	padding: 0 5px
+}
+
+.content .pc .product .detailMsg .selMsg .size .select em,
+.content .pc .product .detailMsg .selMsg .bind .select em,
+.content .pc .product .detailMsg .selMsg .print .select em,
+.content .pc .product .detailMsg .selMsg .cover .select em,
+.content .pc .product .detailMsg .selMsg .paper .select em,
+.content .pc .product .detailMsg .selMsg .frame .select em,
+.content .pc .product .detailMsg .selMsg .capacity .select em,
+.content .pc .product .detailMsg .selMsg .style .select em,
+.content .pc .product .detailMsg .selMsg .gift .select em,
+.content .pc .product .detailMsg .selMsg .box .select em {
+	content: '';
+	height: 10px;
+	width: 10px;
+	border-width: 2px 2px 0 0;
+	border-color: #813f44;
+	border-style: solid;
+	transform: rotate(135deg);
+	-webkit-transform: rotate(135deg);
+	-moz-transform: rotate(135deg);
+	position: absolute;
+	margin-left: 35px;
+	margin-top: 20px;
+	cursor: pointer
+}
+
+.content .pc .product .detailMsg .selMsg .size .select em.active,
+.content .pc .product .detailMsg .selMsg .bind .select em.active,
+.content .pc .product .detailMsg .selMsg .print .select em.active,
+.content .pc .product .detailMsg .selMsg .cover .select em.active,
+.content .pc .product .detailMsg .selMsg .paper .select em.active,
+.content .pc .product .detailMsg .selMsg .frame .select em.active,
+.content .pc .product .detailMsg .selMsg .capacity .select em.active,
+.content .pc .product .detailMsg .selMsg .style .select em.active,
+.content .pc .product .detailMsg .selMsg .gift .select em.active,
+.content .pc .product .detailMsg .selMsg .box .select em.active {
+	transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg)
+}
+
+.content .pc .product .detailMsg .selMsg .cover .select div {
+	float: left;
+	margin-top: 10px;
+	margin-right: 10px;
+	width: 42px;
+	height: 42px;
+	text-align: center;
+	overflow: hidden;
+	cursor: pointer
+}
+
+.content .pc .product .detailMsg .selMsg .cover .select div.active,
+.content .pc .product .detailMsg .selMsg .cover .select div:hover {
+	border: 1px solid #813f44;
+	box-sizing: border-box
+}
+
+.content .pc .product .detailMsg .selMsg .cover .select div.active img,
+.content .pc .product .detailMsg .selMsg .cover .select div:hover img {
+	margin-top: 2.5px;
+	width: 35px;
+	height: 35px
+}
+
+.content .pc .product .detailMsg .message {
+	font-size: medium;
+	overflow: hidden
+}
+
+.content .pc .product .detailMsg .message .leftMess {
+	margin-top: 40px;
+	float: left;
+	border-right: 1px dashed #e1e1e1;
+	width: 400px
+}
+
+.content .pc .product .detailMsg .message .leftMess .action {
+	overflow: hidden
+}
+
+.content .pc .product .detailMsg .message .leftMess .action>div:last-child {
+	float: left;
+	margin-bottom: 0;
+	font-size: 12px;
+	line-height: 20px
+}
+
+.content .pc .product .detailMsg .message .leftMess .action>div:last-child>div {
+	margin-bottom: 0
+}
+
+.content .pc .product .detailMsg .message .leftMess div {
+	margin-bottom: 10px
+}
+
+.content .pc .product .detailMsg .message .leftMess div .linn30 {
+	line-height: 30px
+}
+
+.content .pc .product .detailMsg .message .leftMess div .addWidth {
+	width: 8%
+}
+
+.content .pc .product .detailMsg .message .leftMess div .messTit {
+	font-size: 14px;
+	color: #999999;
+	margin-right: 20px;
+	float: left;
+	margin-bottom: 0
+}
+
+.content .pc .product .detailMsg .message .leftMess div .price {
+	font-size: 24px;
+	color: #813f44;
+	font-weight: 600
+}
+
+.content .pc .product .detailMsg .message .leftMess div .priceMo {
+	font-size: 12px;
+	color: #813f44;
+	margin-right: 30px;
+	margin-left: 5px
+}
+
+.content .pc .product .detailMsg .message .leftMess div .active {
+	margin-left: 15px !important
+}
+
+.content .pc .product .detailMsg .message .leftMess div .priceTab {
+	font-size: 12px;
+	color: #813f44;
+	cursor: pointer;
+	margin-left: 0px;
+	text-decoration: underline
+}
+
+.content .pc .product .detailMsg .message .leftMess div .priceTab .amz {
+	width: 12px;
+	height: 12px;
+	border: 1px solid #813f44;
+	display: inline-block;
+	text-align: center;
+	line-height: 12px;
+	border-radius: 50%;
+	color: #813f44;
+	margin-right: 3px;
+	cursor: pointer
+}
+
+.content .pc .product .detailMsg .message .leftMess div .coverPrice .coverName {
+	font-size: 12px;
+	margin-left: 5px;
+	color: #813f44
+}
+
+.content .pc .product .detailMsg .message .leftMess div .coverPrice .pri {
+	color: #813f44;
+	font-size: 20px;
+	font-weight: 600
+}
+
+.content .pc .product .detailMsg .message .leftMess div .coverPrice .unit {
+	color: #813f44;
+	font-size: 12px;
+	margin-left: 5px
+}
+
+.content .pc .product .detailMsg .message .leftMess div .newAct {
+	margin-bottom: 10px;
+	border: 5px solid #fff;
+	border-image-source: url('/product/detail/img/fframee.png');
+	border-image-slice: 5;
+	padding-left: 10px;
+	padding-right: 10px
+}
+
+.content .pc .product .detailMsg .message .leftMess div .addLinehei {
+	float: left;
+	width: 85%;
+	line-height: 21px
+}
+
+.content .pc .product .detailMsg .message .leftMess div .megActive {
+	font-size: 12px;
+	color: #333333;
+	vertical-align: top;
+	display: inline-block
+}
+
+.content .pc .product .detailMsg .message .leftMess div .megActive span {
+	margin: 0 10px;
+	vertical-align: top
+}
+
+.content .pc .product .detailMsg .message .leftMess div .get {
+	color: #813f44;
+	font-size: 12px;
+	text-decoration: underline;
+	margin-left: 10px;
+	vertical-align: top
+}
+
+.content .pc .product .detailMsg .message .rightMess {
+	float: right;
+	margin-top: 40px
+}
+
+.content .pc .product .detailMsg .message .rightMess ul {
+	text-align: right
+}
+
+.content .pc .product .detailMsg .message .rightMess ul li:first-child {
+	margin-top: 10px
+}
+
+.content .pc .product .detailMsg .message .rightMess ul .commentNum {
+	font-size: 16px;
+	color: #813f44;
+	font-weight: 600
+}
+
+.content .pc .product .detailMsg .message .rightMess ul .commentNum a {
+	text-decoration: underline;
+	color: #813f44
+}
+
+.content .pc .product .detailMsg .message .rightMess ul .comment {
+	font-size: 12px;
+	margin-bottom: 10px
+}
+
+.content .pc .product .detailMsg .message .rightMess ul .checkComment {
+	font-size: 12px;
+	text-align: center;
+	color: #813f44;
+	border: 1px solid #813f44;
+	cursor: pointer
+}
+
+.content .pc .product .detailMsg .showImg {
+	position: absolute;
+	width: 300px;
+	background-color: #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	margin-top: 10px;
+	margin-left: 125px;
+	z-index: 9999
+}
+
+.content .pc .product .detailMsg .showImg div {
+	float: left;
+	width: 50%;
+	text-align: center;
+	font-size: medium
+}
+
+.content .pc .product .detailMsg .showImg div img {
+	width: 100px;
+	margin-top: 15px
+}
+
+.content .pc .product .detailMsg .showImg div p {
+	font-size: 20px;
+	margin-bottom: 15px
+}
+
+.content .pc .product .detailMsg .pacRule {
+	font-size: 12px;
+	color: #813f44;
+	text-decoration: underline;
+	margin-top: 20px;
+	cursor: pointer
+}
+
+.content .pc .product .detailMsg .makeIt {
+	font-size: medium;
+	margin-top: 30px
+}
+
+.content .pc .product .detailMsg .makeIt a {
+	border: 1px solid #813f44;
+	width: 200px;
+	height: 50px;
+	font-size: 20px;
+	display: inline-block;
+	text-align: center;
+	line-height: 50px
+}
+
+.content .pc .product .detailMsg .makeIt .makeiNow {
+	color: #ffffff;
+	background-color: #813f44;
+	margin-right: 20px
+}
+
+.content .pc .product .detailMsg .makeIt .makeiApp {
+	color: #813f44
+}
+
+.rightDetail {
+	font-size: 17px;
+	width: 1200px;
+	margin: 30px auto 0;
+	overflow: hidden;
+	line-height: 50px;
+	text-align: center;
+	border-left: solid 1px #e1e1e1;
+	border-top: solid 1px #e1e1e1;
+	border-right: solid 1px #e1e1e1;
+	background-color: #f6f6f6;
+	box-sizing: border-box
+}
+
+.rightDetail div {
+	float: left;
+	width: 200px;
+	height: 50px;
+	border-right: 1px solid #e1e1e1;
+	color: #999999;
+	box-sizing: border-box;
+	cursor: pointer
+}
+
+.rightDetail .active {
+	background-color: #fff;
+	border: none;
+	border-top: 2px solid #813f44;
+	border-right: 1px solid #e1e1e1;
+	color: #813f44
+}
+
+.proDetail {
+	text-align: center;
+	width: 1200px;
+	margin: 0 auto;
+	border: 1px solid #e1e1e1;
+	border-top: none;
+	font-size: medium;
+	box-sizing: border-box;
+	overflow: hidden
+}
+
+.proDetail h1 {
+	font-size: 36px !important;
+	color: #813f44 !important;
+	text-align: center !important;
+	font-family: "PingFangSC-Semibold", "microsoft yahei", "SimHei" !important
+}
+
+.proDetail p {
+	font-size: 20px !important;
+	color: #515151 !important;
+	text-align: center !important;
+	font-family: "PingFangSC-Ultralight", "microsoft yahei", "SimHei" !important
+}
+
+.proDetail p span {
+	font-size: 20px !important;
+	color: #515151 !important;
+	text-align: center !important;
+	font-family: "PingFangSC-Ultralight", "microsoft yahei", "SimHei" !important
+}
+
+.proDetail img {
+	max-width: 1200px
+}
+
+.proDetail .createBook2 {
+	width: 200px;
+	height: 50px;
+	background-color: #813f44;
+	color: #fff;
+	font-size: 20px;
+	display: inline-block;
+	line-height: 50px;
+	margin-bottom: 35px;
+	margin-top: 25px
+}
+
+.morePro {
+	margin-top: 100px
+}
+
+.morePro .recomment1 {
+	text-align: center;
+	font-size: medium
+}
+
+.morePro .recomment1 p {
+	font-size: 24px;
+	color: #999999;
+	margin-bottom: 50px
+}
+
+.morePro .recomment1 p .leftLine {
+	display: inline-block;
+	width: 100px;
+	height: 1px;
+	background-color: #ccc;
+	vertical-align: middle;
+	margin-right: 35px
+}
+
+.morePro .recomment1 p .rightLine {
+	display: inline-block;
+	width: 100px;
+	height: 1px;
+	background-color: #ccc;
+	vertical-align: middle;
+	margin-left: 35px
+}
+
+.morePro .recomment1 a {
+	font-size: medium
+}
+
+.morePro .recomment2 {
+	text-align: center;
+	font-size: medium;
+	margin-bottom: 100px
+}
+
+.morePro .recomment2 p {
+	font-size: 24px;
+	color: #999999;
+	margin-bottom: 50px;
+	margin-top: 65px
+}
+
+.morePro .recomment2 p .leftLine {
+	display: inline-block;
+	width: 100px;
+	height: 1px;
+	background-color: #ccc;
+	vertical-align: middle;
+	margin-right: 35px
+}
+
+.morePro .recomment2 p .rightLine {
+	display: inline-block;
+	width: 100px;
+	height: 1px;
+	background-color: #ccc;
+	vertical-align: middle;
+	margin-left: 35px
+}
+
+.morePro .recomment2 div {
+	width: 1200px;
+	margin: 0 auto;
+	overflow: hidden
+}
+
+.morePro .recomment2 div a:nth-child(2n) {
+	float: right
+}
+
+.morePro .recomment2 div a {
+	float: left;
+	font-size: medium;
+	margin-top: 20px
+}
+
+.morePro .recomment2 div a img {
+	width: 590px;
+	height: 300px
+}
+
+.priceList {
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.5);
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999
+}
+
+.priceList .picBook {
+	width: 600px;
+	height: 400px;
+	background-color: #fff;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	text-align: center
+}
+
+.priceList .picBook .title {
+	height: 50px;
+	line-height: 50px
+}
+
+.priceList .picBook .title P {
+	font-size: 18px;
+	color: #333;
+	border-bottom: 1px solid #e1e1e1
+}
+
+.priceList .picBook .title a {
+	position: absolute;
+	color: #999;
+	font-size: 40px;
+	transform: rotateZ(45deg);
+	-webkit-transform: rotateZ(45deg);
+	-moz-transform: rotateZ(45deg);
+	right: 10px;
+	top: 0
+}
+
+.priceList .picBook .tabTop {
+	font-size: 14px;
+	height: 43px;
+	line-height: 43px;
+	width: 400px;
+	margin: 25px auto 0;
+	margin-right: 105px;
+	color: #fff;
+	background-color: #c6a290
+}
+
+.priceList .picBook .tabTop span:last-child {
+	border-right: none
+}
+
+.priceList .picBook .tabTop span {
+	width: 133px;
+	display: inline-block;
+	box-sizing: border-box;
+	border-right: 1px solid #eddbd2
+}
+
+.priceList .picBook .con {
+	margin-bottom: 50px;
+	height: 260px;
+	overflow-x: hidden;
+	overflow-y: scroll
+}
+
+.priceList .picBook .con .table1 table {
+	width: 400px;
+	min-height: 200px;
+	margin: 0 auto
+}
+
+.priceList .picBook .con .table1 table tr {
+	height: 43px
+}
+
+.priceList .picBook .con .table1 table tr td.getColor {
+	border: 1px solid #c6a290;
+	box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	color: #c6a290
+}
+
+.priceList .picBook .con .table1 table tr td {
+	width: 133px;
+	font-size: 18px;
+	text-align: center;
+	border: 1px solid #c6a290;
+	box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box
+}
+
+.priceList .picBook .con .table1 table tr th {
+	width: 133px;
+	font-size: 18px;
+	text-align: center;
+	background-color: #c6a290;
+	color: #fff;
+	font-size: 14px;
+	border: 1px solid #c6a290;
+	box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box
+}
+
+.priceList .timeBook {
+	width: 970px;
+	height: 460px;
+	background-color: #fff;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%)
+}
+
+.priceList .timeBook .con {
+	overflow: hidden
+}
+
+.priceList .timeBook .con .table2 {
+	margin-top: 50px;
+	margin-right: 55px;
+	float: right
+}
+
+.priceList .timeBook .con .table2 table {
+	width: 400px;
+	height: 259px;
+	text-align: center
+}
+
+.priceList .timeBook .con .table2 table tr {
+	height: 43px
+}
+
+.priceList .timeBook .con .table2 table tr th {
+	background-color: #c6a290;
+	color: #fff;
+	font-size: 14px;
+	text-align: center;
+	border: 1px solid #eddbd2;
+	box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	width: 100px
+}
+
+.priceList .timeBook .con .table2 table tr .getColor {
+	color: #C6A290
+}
+
+.priceList .timeBook .con .table2 table tr td {
+	font-size: 14px;
+	color: #333;
+	border: 1px solid #eddbd2;
+	box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box
+}
+
+.priceList .timeBook .con .table1 {
+	margin-top: 50px;
+	margin-left: 55px;
+	float: left
+}
+
+.priceList .timeBook .con .table1 table {
+	width: 400px;
+	height: 220px;
+	text-align: center
+}
+
+.priceList .timeBook .con .table1 table tr {
+	height: 43px
+}
+
+.priceList .timeBook .con .table1 table tr th {
+	background-color: #c6a290;
+	color: #fff;
+	font-size: 14px;
+	text-align: center;
+	border: 1px solid #eddbd2;
+	box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box
+}
+
+.priceList .timeBook .con .table1 table tr .getColor {
+	color: #C6A290
+}
+
+.priceList .timeBook .con .table1 table tr td {
+	font-size: 14px;
+	color: #333;
+	border: 1px solid #eddbd2;
+	box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box
+}
+
+.priceList .timeBook .ale {
+	width: 850px;
+	margin: 30px auto 0
+}
+
+.priceList .timeBook .ale p {
+	font-size: 12px;
+	color: #999
+}
+
+.priceList .timeBook .title {
+	position: relative;
+	height: 58px;
+	line-height: 58px;
+	border-bottom: 1px solid #e1e1e1;
+	text-align: center
+}
+
+.priceList .timeBook .title p {
+	font-size: 18px;
+	color: #333
+}
+
+.priceList .timeBook .title a {
+	position: absolute;
+	color: #999;
+	font-size: 40px;
+	transform: rotateZ(45deg);
+	-webkit-transform: rotateZ(45deg);
+	-moz-transform: rotateZ(45deg);
+	right: 10px;
+	top: 0
+}
+
+.blackBg {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1000
+}
+
+.blackBg div {
+	width: 600px;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	position: absolute;
+	text-align: center
+}
+
+.blackBg div img {
+	width: 600px
+}
+
+.blackBg div a {
+	position: absolute;
+	width: 68px;
+	height: 68px;
+	right: 0;
+	top: 0;
+	cursor: pointer
+}
+
+.blackBgg {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1000
+}
+
+.blackBgg .conn {
+	font-size: 15px;
+	background-color: #fff;
+	width: 400px;
+	margin: 10% auto 0;
+	text-align: center;
+	position: relative;
+	border-radius: 2px
+}
+
+.blackBgg .conn span {
+	position: absolute;
+	left: 0;
+	margin-top: 15px;
+	margin-left: 20px;
+	color: #333;
+	font-size: 16px
+}
+
+.blackBgg .conn .close {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	right: 0;
+	cursor: pointer
+}
+
+.blackBgg .conn .close:after {
+	content: '';
+	position: absolute;
+	width: 20px;
+	height: 1.2px;
+	background-color: #999;
+	display: inline-block;
+	transform: rotateZ(45deg);
+	-webkit-transform: rotateZ(45deg);
+	-moz-transform: rotateZ(45deg);
+	margin-top: 20px;
+	right: 10px
+}
+
+.blackBgg .conn .close:before {
+	content: '';
+	width: 20px;
+	position: absolute;
+	height: 1.2px;
+	background-color: #999;
+	display: inline-block;
+	transform: rotateZ(135deg);
+	-webkit-transform: rotateZ(135deg);
+	-moz-transform: rotateZ(135deg);
+	margin-top: 20px;
+	right: 10px
+}
+
+.blackBgg .conn p {
+	padding-top: 60px;
+	text-align: left;
+	margin-bottom: 35px;
+	margin-left: 20px
+}
+
+.blackBgg .conn div {
+	width: 190px;
+	margin: 0 10px 0 auto;
+	overflow: hidden;
+	padding-bottom: 15px
+}
+
+.blackBgg .conn div .quit {
+	float: left;
+	width: 64px;
+	margin-right: 5%;
+	color: #999;
+	height: 36px;
+	line-height: 36px;
+	font-size: 14px;
+	border: 1px solid #999;
+	border-radius: 3px;
+	box-sizing: border-box
+}
+
+.blackBgg .conn div .goTicket {
+	float: left;
+	width: 100px;
+	margin-left: 5%;
+	color: #fff;
+	background-color: #caaa9a;
+	height: 36px;
+	line-height: 36px;
+	border-radius: 3px;
+	font-size: 14px
+}
+
+.packAgeSelect {
+	margin: 0 auto 7px;
+	font-size: medium;
+	position: relative;
+	display: inline-block
+}
+
+.packAgeSelect div {
+	display: inline-block;
+	width: 65px;
+	height: 30px;
+	color: #c1aaac;
+	font-size: 14px;
+	line-height: 30px;
+	text-align: center;
+	position: relative;
+	background-color: #f6f6f6;
+	cursor: pointer;
+	margin-right: 10px;
+	border-radius: 2px
+}
+
+.packAgeSelect .active {
+	border: 1px solid #813f44;
+	box-sizing: border-box;
+	color: #813f44
+}
+
+.packAgeSelect .active em {
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	bottom: -1px;
+	right: 25px;
+	z-index: 999
+}
+
+.calPackage {
+	width: 1200px;
+	height: 250px;
+	margin: 0 auto 50px;
+	background-color: #f6f6f6;
+	text-align: center;
+	font-size: medium;
+	position: relative
+}
+
+.calPackage .newHeadd {
+	position: absolute;
+	left: 0;
+	top: -41px
+}
+
+.calPackage .newHeadd .tit {
+	font-size: 18px;
+	vertical-align: bottom;
+	margin-right: 30px;
+	display: inline-block;
+	line-height: 40px;
+	height: 40px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #ff4d4f;
+	color: #fff;
+	border-radius: 3px 3px 0 0
+}
+
+.calPackage .newHeadd .littleTri {
+	position: absolute;
+	left: 0;
+	border-left: 14px solid #ff4d4f;
+	border-bottom: 14px solid transparent;
+	border-top: 0 solid #ff4d4f
+}
+
+.calPackage>div {
+	display: inline-block;
+	font-size: medium;
+	vertical-align: top
+}
+
+.calPackage .pacHeader {
+	width: 114px;
+	height: 114px;
+	background-image: url('/product/detail/img/pacHeader2.png');
+	background-size: 114px 114px;
+	background-repeat: no-repeat;
+	position: absolute;
+	left: 0;
+	top: 0
+}
+
+.calPackage .pacHeader .headerMsg {
+	font-size: 12px;
+	color: #fff;
+	transform: rotateZ(-45deg);
+	-webkit-transform: rotateZ(-45deg);
+	-moz-transform: rotateZ(-45deg);
+	margin-top: 32px;
+	margin-right: 32px;
+	display: inline-block;
+	letter-spacing: 2px
+}
+
+.calPackage .buyPac {
+	width: 185px;
+	height: 185px;
+	background-color: #fff;
+	border: 1px solid #e1e1e1;
+	margin-top: 20px
+}
+
+.calPackage .buyPac #justDoIt {
+	width: 143px;
+	height: 44px;
+	border-radius: 3px;
+	background-color: #813f44;
+	margin: 0 auto;
+	display: inline-block;
+	line-height: 44px;
+	color: #fff
+}
+
+.calPackage .buyPac .befPri {
+	font-size: 12px;
+	color: #999;
+	text-decoration: line-through;
+	margin-bottom: 10px
+}
+
+.calPackage .buyPac .pacPri {
+	font-size: 17px;
+	color: #813f44;
+	margin: 10px 0 0
+}
+
+.calPackage .buyPac .saleBg {
+	background-image: url('/product/detail/img/saleImg2.jpg?v=1');
+	background-repeat: no-repeat;
+	background-size: auto auto;
+	width: 78px;
+	height: 67px;
+	text-align: center;
+	margin: 0 auto
+}
+
+.calPackage .buyPac .saleBg .salePri {
+	font-size: 14px;
+	color: #fff;
+	padding-top: 6px;
+	padding-right: 6px;
+	margin: 0 auto;
+	width: 44px
+}
+
+.calPackage .buyPac .pacImg {
+	vertical-align: top;
+	margin: 9px 9px 20px
+}
+
+.calPackage .buyPac .pacCal {
+	font-size: 12px;
+	color: #333
+}
+
+.calPackage .addIcon .iconImg {
+	margin-top: 115px;
+	margin-right: 30px;
+	margin-left: 28px
+}
+
+.calPackage .pac .pacImg {
+	width: 185px;
+	height: 185px;
+	vertical-align: top;
+	margin-top: 20px
+}
+
+.calPackage .pac .pacCal {
+	font-size: 12px;
+	color: #333;
+	margin-top: 10px
+}
+
+.pacBg {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	left: 0;
+	top: 0;
+	z-index: 1000
+}
+
+.pacBg .thrAlert {
+	width: 390px;
+	height: 200px;
+	background-color: #fff;
+	border-radius: 3px;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	position: absolute
+}
+
+.pacBg .thrAlert .thrCon {
+	position: relative;
+	width: 350px;
+	margin: 20px auto
+}
+
+.pacBg .thrAlert .thrCon div {
+	font-size: medium
+}
+
+.pacBg .thrAlert .thrCon div img {
+	vertical-align: middle;
+	margin-right: 5px
+}
+
+.pacBg .thrAlert .thrCon div span {
+	font-size: 14px;
+	color: #666
+}
+
+.pacBg .thrAlert .thrCon .goAway {
+	width: 88px;
+	height: 36px;
+	margin: 30px 0 0 auto;
+	display: block;
+	background-color: #C9A291;
+	color: #fff;
+	font-size: 14px;
+	line-height: 36px;
+	text-align: center;
+	border-radius: 3px
+}
+
+.pacBg .thrAlert .thrCon .tit {
+	font-size: 18px;
+	color: #333;
+	font-weight: bold;
+	margin-bottom: 30px
+}
+
+.pacBg .thrAlert .thrCon .closeBtn {
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	right: 0;
+	top: 0
+}
+
+.pacBg .thrAlert .thrCon .closeBtn:before {
+	content: '';
+	width: 28px;
+	height: 2px;
+	background-color: #cacaca;
+	position: absolute;
+	transform: rotateZ(45deg);
+	-webkit-transform: rotateZ(45deg);
+	-moz-transform: rotateZ(45deg);
+	margin-top: 12px;
+	right: -4px
+}
+
+.pacBg .thrAlert .thrCon .closeBtn:after {
+	content: '';
+	width: 28px;
+	height: 2px;
+	background-color: #cacaca;
+	position: absolute;
+	transform: rotateZ(135deg);
+	-webkit-transform: rotateZ(135deg);
+	-moz-transform: rotateZ(135deg);
+	margin-top: 12px;
+	right: -4px
+}
+
+.pacBg .secAlert {
+	width: 600px;
+	background-color: #fff;
+	border-radius: 3px;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	position: absolute
+}
+
+.pacBg .secAlert .secCon {
+	position: relative;
+	width: 560px;
+	margin: 20px auto
+}
+
+.pacBg .secAlert .secCon .tit {
+	font-size: 18px;
+	color: #333;
+	font-weight: bold;
+	margin-bottom: 20px
+}
+
+.pacBg .secAlert .secCon #buyCalPac {
+	width: 88px;
+	height: 36px;
+	margin: 30px auto 0;
+	display: block;
+	background-color: #C9A291;
+	color: #fff;
+	font-size: 14px;
+	line-height: 36px;
+	text-align: center;
+	border-radius: 3px
+}
+
+.pacBg .secAlert .secCon .payFun {
+	font-size: medium
+}
+
+.pacBg .secAlert .secCon .payFun .tit {
+	font-size: 14px;
+	color: #333;
+	margin-top: 30px;
+	margin-bottom: 20px
+}
+
+.pacBg .secAlert .secCon .payFun>div>div {
+	display: inline-block;
+	margin-right: 40px;
+	cursor: pointer
+}
+
+.pacBg .secAlert .secCon .payFun .paySel {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	border-radius: 50%;
+	border: 1px solid #e1e1e1;
+	box-sizing: border-box;
+	vertical-align: top;
+	margin-top: 8px;
+	margin-right: 10px
+}
+
+.pacBg .secAlert .secCon .payFun .paySel2 {
+	vertical-align: top;
+	margin-top: 8px;
+	margin-right: 10px
+}
+
+.pacBg .secAlert .secCon .keepRule {
+	font-size: medium;
+	margin-top: 20px;
+	padding-bottom: 30px;
+	border-bottom: 1px solid #e1e1e1
+}
+
+.pacBg .secAlert .secCon .keepRule em {
+	cursor: pointer
+}
+
+.pacBg .secAlert .secCon .keepRule em .noSel {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	border: 1px solid #e1e1e1;
+	border-radius: 3px;
+	box-sizing: border-box;
+	vertical-align: middle
+}
+
+.pacBg .secAlert .secCon .keepRule em img {
+	vertical-align: middle
+}
+
+.pacBg .secAlert .secCon .keepRule em span {
+	font-size: 12px;
+	color: #333
+}
+
+.pacBg .secAlert .secCon .pacRule .tit {
+	font-size: 14px;
+	color: #333;
+	font-weight: bold;
+	margin-top: 20px;
+	margin-bottom: 0
+}
+
+.pacBg .secAlert .secCon .pacRule .con {
+	font-size: 12px;
+	color: #666;
+	margin-top: 10px;
+	text-align: justify
+}
+
+.pacBg .secAlert .secCon table {
+	width: 560px
+}
+
+.pacBg .secAlert .secCon table tr th:first-child {
+	width: 200px;
+	border-left: none
+}
+
+.pacBg .secAlert .secCon table tr th {
+	font-size: 14px;
+	color: #fff;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	background-color: #c9a291;
+	width: 120px;
+	border-left: 1px solid #e1e1e1;
+	box-sizing: border-box
+}
+
+.pacBg .secAlert .secCon table tr td:first-child {
+	border-left: none
+}
+
+.pacBg .secAlert .secCon table tr .moreNum {
+	width: 100px;
+	margin: 0 auto;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap
+}
+
+.pacBg .secAlert .secCon table tr .canHover {
+	cursor: pointer
+}
+
+.pacBg .secAlert .secCon table tr .canHover div {
+	width: 92px;
+	margin: 0 auto;
+	border: 1px solid #e1e1e1;
+	font-size: medium
+}
+
+.pacBg .secAlert .secCon table tr .canHover div em {
+	display: inline-block;
+	width: 20px;
+	font-size: medium
+}
+
+.pacBg .secAlert .secCon table tr .canHover div input {
+	width: 33px;
+	border: none;
+	text-align: center;
+	border-left: 1px dashed #e1e1e1;
+	border-right: 1px dashed #e1e1e1
+}
+
+.pacBg .secAlert .secCon table tr td {
+	font-size: 14px;
+	color: #666;
+	text-align: center;
+	height: 95px;
+	background-color: #fafafa;
+	border-left: 1px solid #e1e1e1;
+	box-sizing: border-box
+}
+
+.pacBg .secAlert .secCon table tr td input {
+	width: 50px
+}
+
+.pacBg .secAlert .secCon .closeBtn {
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	right: 0;
+	top: 0
+}
+
+.pacBg .secAlert .secCon .closeBtn:before {
+	content: '';
+	width: 28px;
+	height: 2px;
+	background-color: #cacaca;
+	position: absolute;
+	transform: rotateZ(45deg);
+	-webkit-transform: rotateZ(45deg);
+	-moz-transform: rotateZ(45deg);
+	margin-top: 12px;
+	right: -4px
+}
+
+.pacBg .secAlert .secCon .closeBtn:after {
+	content: '';
+	width: 28px;
+	height: 2px;
+	background-color: #cacaca;
+	position: absolute;
+	transform: rotateZ(135deg);
+	-webkit-transform: rotateZ(135deg);
+	-moz-transform: rotateZ(135deg);
+	margin-top: 12px;
+	right: -4px
+}
+
+.pacBg .firAlert {
+	width: 390px;
+	background-color: #fff;
+	border-radius: 3px;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	position: absolute
+}
+
+.pacBg .firAlert .firCon {
+	position: relative;
+	width: 350px;
+	margin: 20px auto
+}
+
+.pacBg .firAlert .firCon .tit {
+	font-size: 18px;
+	color: #333;
+	font-weight: bold;
+	margin-bottom: 10px
+}
+
+.pacBg .firAlert .firCon .con {
+	font-size: 14px;
+	color: #666;
+	margin-top: 20px;
+	text-align: justify
+}
+
+.pacBg .firAlert .firCon .closeBtn {
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	right: 0;
+	top: 0
+}
+
+.pacBg .firAlert .firCon .closeBtn:before {
+	content: '';
+	width: 28px;
+	height: 2px;
+	background-color: #cacaca;
+	position: absolute;
+	transform: rotateZ(45deg);
+	-webkit-transform: rotateZ(45deg);
+	-moz-transform: rotateZ(45deg);
+	margin-top: 12px;
+	right: -4px
+}
+
+.pacBg .firAlert .firCon .closeBtn:after {
+	content: '';
+	width: 28px;
+	height: 2px;
+	background-color: #cacaca;
+	position: absolute;
+	transform: rotateZ(135deg);
+	-webkit-transform: rotateZ(135deg);
+	-moz-transform: rotateZ(135deg);
+	margin-top: 12px;
+	right: -4px
+}

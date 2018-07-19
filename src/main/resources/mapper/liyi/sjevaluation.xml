@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kesun.dao.liyi.Isj_evaluation">
+<resultMap id="BaseResultMap" type="kesun.entity.liyi.sj_evaluation">
+    <result column="createDate" property="createDate"/>
+
+    <result column="id" property="id"/>
+
+    <result column="o_id" property="o_id"/>
+
+    <result column="assess" property="assess"/>
+
+    <result column="assesstime" property="assesstime"/>
+
+    <result column="reply" property="reply"/>
+
+    <result column="replytime" property="replytime"/>
+
+    <result column="type" property="type"/>
+    <result column="status" property="status"/>
+    <result column="createDate" property="createDate"/>
+
+</resultMap>
+
+
+<sql id="Base_Column_List">
+id,o_id,assesstime,assess,reply,replytime,type,status
+</sql>
+<sql id="colums">
+<trim suffix="" suffixOverrides=",">
+    <if test="id!= null">
+        id,
+    </if>
+    <if test="o_id!= null">
+        o_id,
+    </if>
+    <if test="assesstime!= null">
+        assesstime,
+    </if>
+    <if test="assess != null">
+        assess,
+    </if>
+    <if test="reply!= null">
+        reply,
+    </if>
+    <if test="replytime!= null">
+        replytime,
+    </if>
+
+    <if test="type!= null">
+        type,
+    </if>
+    <if test="status!= null">
+        status,
+    </if>
+</trim>
+</sql>
+
+<sql id="columsValue">
+<trim suffix="" suffixOverrides=",">
+    <if test="id!= null">
+        #{id},
+    </if>
+    <if test="o_id!= null">
+        #{o_id},
+    </if>
+    <if test="assesstime!= null">
+        #{createDate},
+    </if>
+    <if test="assess != null">
+        #{assess},
+    </if>
+    <if test="reply!= null">
+        #{reply},
+    </if>
+    <if test="replytime!= null">
+        #{replytime},
+    </if>
+
+    <if test="type!= null">
+        #{type},
+    </if>
+
+    <if test="status!= null">
+        #{status},
+    </if>
+</trim>
+</sql>
+
+<sql id="columsItemsValue">
+<trim suffix="" suffixOverrides=",">
+    <if test="item.id!= null">
+        #{item.id},
+    </if>
+    <if test="o_id!= null">
+        #{item.o_id},
+    </if>
+    <if test="item.assesstime!= null">
+        #{item.assesstime},
+    </if>
+    <if test="item.assess != null">
+        #{item.assess},
+    </if>
+    <if test="item.reply!= null">
+        #{item.reply},
+    </if>
+    <if test="item.replytime!= null">
+        #{item.replytime},
+    </if>
+
+    <if test="item.type!= null">
+        #{item.type},
+    </if>
+    <if test="item.status!= null">
+        #{item.status},
+    </if>
+
+</trim>
+</sql>
+
+
+        <!--单个对象新增-->
+<insert id="save" parameterType="kesun.entity.liyi.sj_evaluation">
+insert into i_evaluation  (
+<include refid="colums"/>
+) values (
+<include refid="columsValue"/>)
+</insert>
+
+
+        <!--批量新增-->
+<insert id="batchSave" parameterType="java.util.List">
+insert into I_user (
+<include refid="colums"/>
+) values
+<foreach collection="list" item="item" index="index" separator=",">
+    (
+    <include refid="columsItemsValue"/>
+    );
+</foreach>
+</insert>
+
+        <!--单个对象更新-->
+<update id="update" parameterType="kesun.entity.liyi.sj_commodity">
+update i_evaluation  set
+<trim suffix="" suffixOverrides=",">
+        <if test="id!= null">
+            id=#{id},
+        </if>
+        <if test="assesstime!= null">
+            assesstime=#{assesstime},
+        </if>
+        <if test="assess != null">
+            assess=#{assess},
+        </if>
+        <if test="reply!= null">
+            reply=#{reply},
+        </if>
+        <if test="replytime!= null">
+            replytime=#{createDate},
+        </if>
+
+        <if test="type!= null">
+            type=#{type},
+        </if>
+        <if test="status!= null">
+            status=#{status},
+        </if>
+</trim>
+where id=#{id,jdbcType=VARCHAR}
+</update>
+        <!--对象批量更新-->
+<update id="batchUpdate" parameterType="java.util.List">
+<foreach collection="list" item="item" index="index" open="" close="" separator=";">
+    update I_user  set
+    <trim suffix="" suffixOverrides=",">
+        <if test="item.id != null">
+            id=#{item.id},
+        </if>
+        <if test="item.s_id != null">
+            id=#{item.s_id},
+        </if>
+        <if test="item.oldId != null">
+            oldId=#{item.oldId},
+        </if>
+        <if test="item.name != null">
+            name=#{item.name},
+        </if>
+
+        <if test="item.nickname!= null">
+            nickname=#{item.nickname},
+        </if>
+
+        <if test="item.password!= null">
+            password=#{item.password},
+        </if>
+        <if test="item.phone!= null">
+            phone=#{item.phone},
+        </if>
+        <if test="item.email!= null">
+            email=#{item.email},
+        </if>
+        <if test="address!= null">
+            address=#{address},
+        </if>
+
+        <if test="item.birthday!= null">
+            birthday=#{item.birthday},
+        </if>
+
+        <if test="item.sex!= null">
+            sex=#{item.sex},
+        </if>
+        <if test="item.integral!= null">
+            integral=#{item.integral},
+        </if>
+        <if test="item.avatar!= null">
+            avatar=#{item.avatar},
+        </if>
+        <if test="item.status!= null">
+            status=#{item.status},
+        </if>
+        <if test="item.time!= null">
+            time=#{item.time},
+        </if>
+    </trim>
+    where id=#{item.oldId,jdbcType=VARCHAR}
+</foreach>
+</update>
+
+
+        <!--单个对象删除-->
+<delete id="delete" parameterType="java.lang.String">
+delete from i_evaluation  where id = #{id,jdbcType=VARCHAR}
+</delete>
+
+
+
+        <!--批量删除-->
+<delete id="batchDelete" parameterType="java.util.List">
+delete from I_user
+<where>
+    id in
+    <foreach collection="list" item="item" separator="," open="(" close=")">#{item.id,jdbcType=VARCHAR}</foreach>
+</where>
+
+</delete>
+        <!--单个对象查找-->
+<select id="getMe" parameterType="java.lang.String" resultMap="BaseResultMap">
+select
+*
+from I_user where id = #{id,jdbcType=VARCHAR}
+</select>
+
+
+    <!--查询视图,查询评价-->
+    <select id="getm2" parameterType="java.lang.String" resultType="java.util.Map">
+
+        select * from evaluationview where storeid=#{0} and type like #{1} and evalustatus='已评价' and evstatus like concat('%',#{2},'%')
+
+
+    </select>
+    <select id="getm2Page" parameterType="java.util.Map" resultType="java.util.Map">
+
+        select * from evaluationview where storeid=#{storeid} and type like concat('%',#{type},'%') and evalustatus='已评价' and evstatus like concat('%',#{status},'%')
+
+        limit #{start},#{limit}
+
+    </select>
+    <select id="getm2Count" parameterType="java.util.Map" resultType="java.lang.Integer">
+
+        select count(1) from evaluationview where storeid=#{storeid} and type like concat('%',#{type},'%') and evalustatus='已评价' and evstatus like concat('%',#{status},'%')
+
+    </select>
+
+
+    <!--查询视图,查询评价-->
+    <select id="getm3" parameterType="java.lang.String" resultType="java.util.Map">
+        select * from evaluationview where id=#{id}
+    </select>
+
+    <select id="evaluationgetm" parameterType="java.lang.String" resultType="java.util.Map">
+
+        select count(evaluationview.assess) as evcount from evaluationview where comid=#{0} and evalustatus='已评价'
+
+    </select>
+
+    <select id="evaluationcount" parameterType="java.lang.String" resultType="java.util.Map">
+
+        select COUNT(evaluationview.type) as typecount,evaluationview.comid,type,storeid
+from evaluationview WHERE comid=#{0} GROUP BY type,evaluationview.comid,storeid
+
+
+    </select>
+    <select id="evaluationgetme2" parameterType="java.lang.String" resultType="java.util.Map">
+        select * from evaluationview where storeid=#{1} and type like concat('%',#{2},'%') and evalustatus='已评价' and comid=#{0}
+    </select>
+
+
+    <select id="usergetevaluation" parameterType="java.util.Map" resultType="java.util.Map">
+
+        select * from evaluationview where uid=#{uid} order by assesstime desc
+
+        limit #{start},#{limit}
+
+    </select>
+
+
+    <select id="evaluationCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+
+        select count(1) from evaluationview where uid=#{uid}
+
+    </select>
+
+
+        <!--查找，以Map返回-->
+<select id="findForMap" parameterType="java.util.Map" resultType="java.util.Map">
+select
+<include refid="Base_Column_List"/>
+from  I_user
+<where>
+    <trim prefix="" suffixOverrides="or">
+        <if test="name!=null">
+            name like '%${name}%' or
+        </if>
+    </trim>
+</where>
+order by name ASC
+
+</select>
+        <!--查询，以对象集合返回-->
+<select id="find" parameterType="java.util.Map" resultMap="BaseResultMap">
+select
+<include refid="Base_Column_List"/>
+from I_user
+<where>
+    <trim prefix="" suffixOverrides="or">
+        <if test="name!=null">
+            name like '%${name}%' or
+        </if>
+    </trim>
+</where>
+order by name ASC
+</select>
+        <!--返回查找条数-->
+<select id="getRowsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+select count(1) as total from I_user
+<where>
+    <if test="name!=null">
+        name like '%${name}%'
+    </if>
+</where>
+</select>
+        <!--分页查找-->
+<select id="findByPage" parameterType="java.util.Map" resultType="java.util.Map">
+select
+<include refid="Base_Column_List"/>
+from I_user
+<where>
+    <if test="name!=null">
+        name like '%${name}%'
+    </if>
+</where>
+order by name ASC
+<if test="start !=0 or limit!=0">
+    limit #{start},#{limit}
+</if>
+
+</select>
+        <!--判断数据是否在使用中-->
+<select id="objectInUse" parameterType="java.lang.String" resultType="java.lang.Boolean">
+<![CDATA[ select count(id) from I_user   where name=#{id} ]]>
+</select>
+
+</mapper>

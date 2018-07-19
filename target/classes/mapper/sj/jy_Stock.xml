@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kesun.dao.sj.inter.jy_IStock">
+    <resultMap id="StockResultMap" type="kesun.entity.sj.jy_Commodity">
+        <result property="id" column="id"/>
+        <result property="commname" column="commname"/>
+        <result property="price" column="price"/>
+        <result property="stock" column="stock"/>
+
+        <association property="style" javaType="kesun.entity.sj.jy_Style">
+            <id property="id" column="name"/>
+            <result property="stylename" column="stylename"/>
+        </association>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,commname,price,stock,stylename
+    </sql>
+
+    <sql id="colums">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="commname != null">
+                commname,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            <if test="stock != null">
+                stock,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="columsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="commname != null">
+                #{commname},
+            </if>
+            <if test="price != null">
+                #{price},
+            </if>
+            <if test="stock != null">
+                #{stock},
+            </if>
+            <if test="name !=null">
+                #{name.id}
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="columsItemsValue">
+        <trim suffix="" suffixOverrides=",">
+            <if test="item.id != null">
+                #{item.id},
+            </if>
+            <if test="item.commname != null">
+                #{item.commname},
+            </if>
+            <if test="item.price != null">
+                #{item.price},
+            </if>
+            <if test="item.sales != null">
+                #{item.sales},
+            </if>
+            <if test="item.stock != null">
+                #{item.stock},
+            </if>
+            <if test="item.stylename != null">
+                #{item.stylename.id},
+            </if>
+        </trim>
+    </sql>
+
+    <!--单个对象新增-->
+    <insert id="save" parameterType="kesun.entity.sj.jy_Commodity">
+        insert into i_commodity (
+        <include refid="colums"/>
+        ) values (
+        <include refid="columsValue"/>)
+    </insert>
+    <!--批量新增-->
+    <insert id="batchSave" parameterType="java.util.List">
+        insert into i_commodity(
+        id,commname,price,stock
+        ) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            <include refid="columsItemsValue"/>
+            );
+        </foreach>
+    </insert>
+    <!--单个对象更新-->
+    <update id="update" parameterType="kesun.entity.sj.jy_Commodity">
+        update i_commodity set
+        <trim suffix="" suffixOverrides=",">
+            <if test="commname != null">
+                commname=#{commname},
+            </if>
+            <if test="price != null">
+                price=#{price},
+            </if>
+            <if test="stock != null">
+                stock=#{stock},
+            </if>
+
+        </trim>
+        where id=#{id,jdbcType=VARCHAR}
+    </update>
+    <!--对象批量更新-->
+    <update id="batchUpdate" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update i_commodity set
+            <trim suffix="" suffixOverrides=",">
+                <if test="item.id != null">
+                    id=#{item.id},
+                </if>
+                <if test="item.oldId != null">
+                    oldId=#{item.oldId},
+                </if>
+                <if test="item.commname != null">
+                    commname=#{item.commname},
+                </if>
+                <if test="item.price != null">
+                    price=#{item.price},
+                </if>
+                <if test="item.sales != null">
+                    sales=#{item.sales},
+                </if>
+                <if test="item.stock != null">
+                    stock=#{item.stock},
+                </if>
+            </trim>
+            where id=#{item.id,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+
+    <!--单个对象查找-->
+    <select id="getMe" parameterType="java.lang.String" resultMap="StockResultMap">
+        select
+        *
+        from i_commodity where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <!--查找，以Map返回-->
+    <select id="findForMap" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+          *
+        from commdity_style
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="commname!=null">
+                    commname like '%${commname}%' or
+                </if>
+            </trim>
+        </where>
+        order by stock ASC
+    </select>
+
+    <!--查询，以对象集合返回-->
+    <select id="find" parameterType="java.util.Map" resultMap="StockResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from commdity_style
+        <where>
+            <trim prefix="" suffixOverrides="or">
+                <if test="commname!=null">
+                    commname like '%${commname}%' or
+                </if>
+            </trim>
+        </where>
+        order by commname ASC
+    </select>
+    <!--返回查找条数-->
+    <select id="getRowsCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(1) as total from commdity_style
+        <where>
+            commname like '%${commname}%' and s_id=#{s_id}
+        </where>
+    </select>
+    <!--分页查找-->
+    <select id="findByPage" parameterType="java.util.Map" resultType="java.util.Map">
+        select
+        *
+        from commdity_style
+        <where>
+            commname like '%${commname}%' and s_id=#{s_id}
+        </where>
+        order by stock ASC
+        <if test="start !=0 or limit!=0">
+            limit #{start},#{limit}
+        </if>
+    </select>
+    <!--判断数据是否在使用中-->
+    <select id="objectInUse" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        <![CDATA[ select count(id) from commdity_style where id=#{id} ]]>
+    </select>
+
+    <select id="getme2" parameterType="String" resultType="java.util.Map">
+        select
+        *
+        from commdity_style where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+
+</mapper>
